@@ -1,0 +1,68 @@
+.user_picture {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 56.7%;
+  background-image: url("http://api.town.icloudinn.com/static/img/user_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 25px;
+}
+.user_picture .user_photo {
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  top: 50%;
+  margin-top: -30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+.user_picture .user_photo .icon_photo {
+  width: 100%;
+  height: 100%;
+}
+.user_picture .user_name {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  text-align: center;
+}
+.user_picture .user_name .login {
+  width: 100%;
+  height: 0;
+  padding-top: 39%;
+  padding-bottom: 20%;
+}
+.user_picture .user_name .edtr {
+  width: 100%;
+  height: 0;
+  padding-top: 39%;
+  padding-bottom: 20%;
+}
+.user_picture .user_name .edtr span {
+  margin-right: 15px;
+}
+.user-content {
+  background-color: #fff;
+}
+.town-button-row {
+  padding: 20px;
+}
+.to_login {
+  padding-right: 20px;
+  text-align: right;
+  font-size: 14px;
+}
+.weui-cell_access.user_nav {
+  color: #000;
+}
+.weui-cell_access.user_nav .weui-cell__ft:after {
+  border-color: #1aad19;
+}
+.user_set {
+  background-color: #fff;
+  margin-top: 25px;
+}

@@ -1,0 +1,116 @@
+//收货地址
+.town-content{
+    background-color: white;
+    .town-input-group{
+
+            .weui-cell.phone{
+
+               .weui-cell__hd{
+
+                    border-right: 1px solid grey;
+               }
+               .weui-cell__bd{
+                   padding-left:15px;
+               }
+            }
+
+           .weui-cell{
+                position:relative;
+                .weui-cell__hd{
+
+                    label{
+                        color:#444444;
+                    }
+                }
+
+               .address_icon{
+                  position: absolute;
+                  right:20px;
+                  top:15px;
+               }
+
+               .weui-cell__set{
+                    width:100%;
+                    text-align:right;
+                    color:#1aad19;
+                }
+           }
+        }
+}
+
+.address_remove{
+    margin-top:10px;
+    background-color: white;
+    color:#1aad19;
+}
+//全部用户的收货地址
+.town-content.ad.ad_select{
+
+    .addres{
+        margin-bottom:0px;
+    }
+}
+.town-content.ad{
+     background-color:#eee;
+     margin-bottom: 65px;
+    .addres{
+        background-color: white;
+        margin-bottom:10px;
+        .top{
+            overflow: hidden;
+            padding:15px;
+            .link{
+                float: left;
+                width:50%;
+                outline:none;
+                border: 0;
+                font-size:16px;
+                background-color:white;
+                margin-bottom: 0px;
+            }
+            .tel{
+                float: right;
+                width:50%;
+                outline:none;
+                border: 0;
+                font-size:16px;
+                background-color:white;
+                text-align:right;
+                margin-bottom: 0px;
+            }
+        }
+        .addr{
+            padding:0px 15px 15px 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            font-size:16px;
+        }
+        .bottom{
+            padding:15px;
+            overflow: hidden;
+            .set{
+                float: left;
+                color: #1aad19;
+            }
+            .operation{
+                float: right;
+                .editor{
+                    float: left;
+                    margin-right:15px;
+                    span{
+                        display: none;
+                    }
+                }
+                .delete{
+                    float: right;
+
+                }
+            }
+        }
+    }
+}
+.add{
+    width:100%;
+    height:auto;
+    position:fixed;
+    bottom:0px;
+}

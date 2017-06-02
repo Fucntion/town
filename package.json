@@ -1,0 +1,44 @@
+{
+  "name": "town",
+  "version": "1.0.0",
+  "description": "mui+vue小镇演义前端",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack-dev-server  --progress --color --open --inline --hot",
+    "build": "cross-env NODE_ENV=production webpack --progress --color --hide-modules"
+  },
+  "keywords": [
+    "vue",
+    "mui"
+  ],
+  "author": "Function",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "videojs-contrib-hls": "^5.4.0",
+    "vue": "^2.2.6",
+    "vue-mui": "^2.0.0",
+    "vue-resource": "^1.2.1",
+    "vue-router": "^2.3.1",
+    "vue-video-player": "^3.0.2",
+    "vuex": "^2.2.1"
+  },
+  "devDependencies": {
+    "webpack": "^2.3.2",
+    "babel-core": "^6.0.0",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "cross-env": "^3.0.0",
+    "css-loader": "^0.25.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
+    "file-loader": "^0.9.0",
+    "json-loader": "^0.5.4",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "video.js": "^5.12.6",
+    "vue-loader": "^9.7.0",
+    "webpack-dev-server": "^2.1.0-beta.0"
+  }
+}
