@@ -2,7 +2,7 @@
 <div class="wrap" v-if="townInfo" >
 	<div id="banner">
 		   
-		<div class="bar" :class="{head:ishead}">
+		<div class="bar">
 			<img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/>
 			<div class="bar-right"><img src="../../assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()"></div>
 		</div>

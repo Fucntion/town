@@ -141,7 +141,7 @@
 
                 this.$http.get('/cate/' + cateId).then(response => {
 
-                    self.cateInfo = response.body
+                    self.cateInfo = response.body.data
 
                     this.$nextTick(function () {
 

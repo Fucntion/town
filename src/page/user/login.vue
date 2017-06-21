@@ -37,7 +37,7 @@
 
 <script>
 
-    import Store from 'store'
+    import Store from 'store';
     export default {
         name: 'ware',
         data: function () {
@@ -80,9 +80,9 @@
                     console.log(result);
 
                     var datas = JSON.parse(result.data);
-                    var access_token = datas.data.access_token;
+                    
                     if(result.code == 100){
-
+						var access_token = datas.data.access_token;
                         localStorage.setItem("token",access_token );
 
                         self.judge = "登录成功"

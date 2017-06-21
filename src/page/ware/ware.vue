@@ -195,7 +195,7 @@
                 this.$http.get('/ware/' + wareId).then(response => {
 
 
-                    self.wareInfo = response.body
+                    self.wareInfo = response.body.data
                     self.select_sku = self.wareInfo.goods_sku[0]
                     self.active_sku_id = self.wareInfo.goods_sku[0].goods_sku_id
                     self.show = true

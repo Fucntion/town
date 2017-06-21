@@ -7,7 +7,7 @@
 	"id": "H59FFF9C4",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "小镇演义",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.0.2",/*应用版本名称*/
+		"name": "1.0.4",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "小镇演义，为全域旅游而生",/*应用描述信息*/
@@ -154,7 +154,7 @@
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "C:/Users/Administrator/Desktop/640.png","retina47":"C:/Users/Administrator/Desktop/750.png","retina40":"C:/Users/Administrator/Desktop/5.png"
+						"retina35": "E:/ioszs/750.png","retina47":"E:/ioszs/750.png","retina40":"E:/ioszs/750.png"
 					},
 					"ipad": {
 						 /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -169,7 +169,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "","hdpi":"C:/Users/Administrator/Desktop/480.png","xhdpi":"C:/Users/Administrator/Desktop/720.png","xxhdpi":"C:/Users/Administrator/Desktop/f2.png"
+					"ldpi": "","hdpi":"E:/ioszs/750.png","xhdpi":"E:/ioszs/750.png","xxhdpi":"E:/ioszs/750.png"
 				}
 			},
 			"debug": false

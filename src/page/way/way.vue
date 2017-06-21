@@ -122,7 +122,7 @@
 
                 this.$http.get('/lu/' + wayId).then(response => {
 
-                    self.wayInfo = response.body
+                    self.wayInfo = response.body.data
 
                     this.$nextTick(function () {
 
