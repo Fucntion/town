@@ -1,0 +1,16 @@
+{
+  "index.html": {
+    "resources": [
+      "dist/app.js",
+      "static/js/jquery.js",
+      "dist/vender.js",
+      "static/css/swiper-3.4.2.min.css",
+      "static/js/mui.picker.js",
+      "dist/css/app.css",
+      "static/js/mui.picker.min.js",
+      "static/js/swiper-3.4.2.min.js",
+      "static/js/mui.js",
+      "static/js/mui.poppicker.js"
+    ]
+  }
+}

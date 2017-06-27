@@ -1,0 +1,644 @@
+{
+	"@platforms": [
+		"android",
+		"iPhone",
+		"iPad"
+	],
+	"id": "H59FFF9C4",/*应用的标识，创建应用时自动生成，勿手动修改*/
+	"name": "小镇演义",/*应用名称，程序桌面图标名称*/
+	"version": {
+		"name": "1.0.4",/*应用版本名称*/
+		"code": "83"
+	},
+	"description": "小镇演义，为全域旅游而生",/*应用描述信息*/
+	"icons": {
+		"72": "icon.png"
+	},
+	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"developer": {
+		"name": "",/*开发者名称*/
+		"email": "",/*开发者邮箱地址*/
+		"url": "http://www.dcloud.io"
+	},
+	"permissions": {
+
+
+		"Cache": {
+			"description": "管理应用缓存"
+		},
+
+		"Console": {
+			"description": "跟踪调试输出日志"
+		},
+
+
+
+		"Events": {
+			"description": "应用扩展事件"
+		},
+
+		"NativeUI": {},
+		"Navigator": {},
+		"NativeObj": {},
+		"Zip": {},
+		
+		"File": {},
+		"Audio": {},
+		"Camera": {},
+		"Speech": {},
+		"Device": {},
+		"Runtime": {},
+		"Gallery": {},
+		"Storage": {},
+		"Webview": {},
+		"Barcode": {},
+		"Uploader": {},
+		"Contacts": {},
+		"Proximity": {},
+		"Messaging": {},
+		"Invocation": {},
+		"Downloader": {},
+		"Orientation": {},
+		"Geolocation": {},
+		"Accelerometer": {},
+		"XMLHttpRequest": {},
+		"Payment": {},
+		"Share": {},"Maps":{}
+	},
+	"plus": {
+		"statusbar": {
+			"immersed": true,
+			"style":"UIStatusBarStyleBlackOpaque"
+		},
+		"splashscreen": {
+			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+			"waiting": false,
+			"delay": "3000"
+		},
+		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
+		"distribute": {
+			"plugins": {
+				"share": {
+					
+					"weixin": {"appid":"wxbe02a4b56312f554","appsecret":"f7fd94ff50128a5deaa152ab11adf801","description":"可选，微信分享"}
+				},
+				"payment": {
+					"weixin": {
+						"description": "微信支付",
+						"appid": "wxbe02a4b56312f554"
+					}
+				},
+				"maps": {"baidu":{"appkey_ios":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey_android":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey":"","description":""}
+					
+				},
+				"oauth": {}
+			},
+			"apple": {
+				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+				"mobileprovision": "",/*iOS应用打包配置文件*/
+				"password": "",/*iOS应用打包个人证书导入密码*/
+				"p12": "",/*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+				"devices": "universal",/*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+				"frameworks": []
+			},
+			"google": {
+				"packagename": "",/*Android应用包名，如io.dcloud.HelloH5*/
+				"keystore": "",/*Android应用打包使用的密钥库文件*/
+				"password": "",/*Android应用打包使用密钥库中证书的密码*/
+				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
+				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+			},
+			"orientation": [
+				"portrait-primary"
+			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"icons": {
+				"ios": {
+					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+					"iphone": {
+						"normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png",
+						"retina8": "unpackage/res/icons/180x180.png",
+						"settings-retina8": "unpackage/res/icons/87x87.png"
+					},
+					"ipad": {
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png"
+					}
+				},
+				"android": {
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png",
+					"xxxhdpi": "unpackage/res/icons/192x192.png"
+				}
+			},
+			"splashscreen": {
+				"ios": {
+					"iphone": {
+						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
+						"retina35": "E:/ioszs/750.png","retina47":"E:/ioszs/750.png","retina40":"E:/ioszs/750.png"
+					},
+					"ipad": {
+						 /*iPad竖屏启动图片，分辨率：768x1004*/
+						/*iPad高分屏竖屏图片，分辨率：1536x2008*/
+						 /*iPad横屏启动图片，分辨率：1024x748*/
+						/*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+						 /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+						/*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+						"landscape7": "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+						"landscape-retina7": ""
+					}
+				},
+				"android": {
+					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
+					"ldpi": "","hdpi":"E:/ioszs/750.png","xhdpi":"E:/ioszs/750.png","xxhdpi":"E:/ioszs/750.png"
+				}
+			},
+			"debug": false
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"MyLessCss/css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/index.js",
+					"js/common.js",
+					"js/immersed.js",
+					"login.html",
+					"geolocation.html",
+					"js/geolocation.js",
+					"js/ajax.js",
+					"js/mui/common.js",
+					"js/mui/mui.min.js",
+					"js/mui/immersed.js",
+					"MyLessCss/css/main.css",
+					"list.html",
+					"js/list-ajax.js",
+					"live.html",
+					"dist/app.js",
+					"static/css/mui.poppicker.css",
+					"static/css/mui.picker.css",
+					"dist/vender.js",
+					"dist/css/app.css",
+					"static/js/mui.js",
+					"static/css/mui.min.css",
+					"static/js/mui.picker.js",
+					"static/js/mui.poppicker.js",
+					"src/assets/js/iconfont.js",
+					"dist/font/iconfont.eot",
+					"dist/font/iconfont.woff",
+					"dist/font/iconfont.ttf",
+					"dist/font/iconfont.svg",
+					"static/images/icon_tabbar.png",
+					"TcPlayer.js",
+					"static/js/TcPlayer.js",
+					"static/js/videojs-hls/video.js",
+					"static/js/videojs-hls/videojs-contrib-hls.js",
+					"static/js/videojs-hls/video.css",
+					"static/lib/APlayer/APlayer.min.js",
+					"static/lib/APlayer/APlayer.min.css",
+					"static/js/mui.picker.min.js",
+					"static/js/jquery-1.12.1.min.js",
+					"static/css/swiper-3.4.2.min.css",
+					"static/js/swiper-3.4.2.min.js",
+					"static/js/jquery.js"
+				],
+				"refer": [
+					"map.html"
+				],
+				"priority": 0
+			},
+			"map.html": {
+				"resources": [
+					"css/common.css",
+					"js/common.js",
+					"js/immersed.js",
+					"img/map.png",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"MyLessCss/css/map.css",
+					"js/map.js",
+					"js/mui.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"login.html": {
+				"resources": [
+					"css/common.css",
+					"js/common.js",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"geolocation.html": {
+				"resources": [
+					"css/common.css",
+					"js/common.js",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"list.html": {
+				"resources": [
+					"js/list-ajax.js",
+					"MyLessCss/css/shangpin.css",
+					"goods.html",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"index.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"goods.html": {
+				"resources": [
+					"js/list-ajax.js",
+					"MyLessCss/css/main.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"MyLessCss/css/shangpin.css",
+					"css/mui.min.css",
+					"list.html",
+					"pay.html",
+					"js/goods.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"pay.html": {
+				"resources": [
+					"css/common.css",
+					"js/common.js",
+					"js/immersed.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"live.html": {
+				"resources": [
+					"index.html",
+					"MyLessCss/css/app.css",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/ajax.js"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"src/assets/css/widget/weui-tips/weui-dialog.less",
+				"src/assets/img/live_s.png",
+				"src/assets/img/plus_s.png",
+				"dist/img/slider1.png",
+				"src/vuex/store.js",
+				"src/assets/css/widget/weui-grid/weui-grid.less",
+				"src/assets/css/icon/iconfont.svg",
+				"src/page/address/edit.vue",
+				"src/assets/img/plus_1.png",
+				"src/assets/css/widget/weui-tab/weui-tabbar.less",
+				"src/assets/css/widget/weui-cell/weui-gallery.less",
+				"src/assets/img/user_s.png",
+				"src/assets/img/home_s.png",
+				"src/assets/img/left.png",
+				"src/assets/css/widget/weui-cell/weui-access.less",
+				"src/assets/css/widget/weui-tips/weui-mask.less",
+				"dist/img/slider3.png",
+				"src/assets/css/widget/weui-panel/weui-panel.less",
+				"src/assets/img/address.png",
+				"package.json",
+				"src/assets/css/base/variable/weui-msg.less",
+				"src/assets/css/widget/weui-picker/weui-picker.less",
+				"src/assets/css/goods/address.less",
+				"src/assets/css/widget/weui-button/weui-button.less",
+				"src/page/order/list.vue",
+				"src/app.js",
+				"src/assets/css/widget/weui-searchbar/weui-searchbar.less",
+				"src/assets/img/right_s.png",
+				"static/images/icon_nav_nav.png",
+				"src/page/user/user.vue",
+				"src/assets/js/common.js",
+				"src/page/user/login.vue",
+				"src/assets/css/icon/iconfont.woff",
+				"static/images/icon_nav_special.png",
+				"static/js/city.data-3.js",
+				"src/assets/img/find_s.png",
+				"src/page/ware/ware.vue",
+				"static/images/pic_article.png",
+				"src/util.js",
+				"src/assets/css/index.less",
+				"src/assets/css/widget/weui-button/weui-btn_plain.less",
+				"src/directive.js",
+				"src/page/address/list.vue",
+				"src/assets/css/widget/weui-button/weui-btn_loading.less",
+				"src/components/loading.vue",
+				"src/page/home.vue",
+				"src/assets/css/widget/weui-agree/weui-agree.less",
+				"src/assets/css/widget/weui-button/weui-btn_disabled.less",
+				"src/assets/css/widget/weui-tips/weui-actionsheet.less",
+				"src/page/address/add.vue",
+				"src/assets/css/icon/iconfont.ttf",
+				"src/assets/css/base/variable/color.less",
+				"src/assets/css/widget/weui-button/weui-btn_default.less",
+				"src/assets/css/user/user.less",
+				"src/assets/css/widget/weui-cell/weui-form/weui-form_common.less",
+				"src/page/town/location.vue",
+				"src/vuex/getter.js",
+				"src/assets/css/widget/weui-cell/weui-check/weui-radio.less",
+				"src/assets/img/slider2.png",
+				"src/page/town/list.vue",
+				"static/images/icon_nav_form.png",
+				"webpack.config.js",
+				"src/assets/css/base/mixin/setArrow.less",
+				"static/js/mui.min.js",
+				"src/assets/css/widget/weui-cell/weui-cell_global.less",
+				"src/page/live/list.vue",
+				"src/assets/img/slider1.png",
+				"src/assets/img/slider3.png",
+				"src/assets/css/base/variable/weui-button.less",
+				"src/assets/css/widget/weui-slider/weui-slider.less",
+				"src/assets/img/user.png",
+				"dist/vender.js.map",
+				"src/assets/css/base/variable/weui-dialog.less",
+				"static/images/pic_160.png",
+				"src/assets/css/icon/iconfont.eot",
+				"src/assets/css/icon/weui-font.less",
+				"dist/img/slider4.png",
+				"src/assets/css/base/mixin/setOnepx.less",
+				"src/assets/css/base/fn.less",
+				"src/assets/css/widget/weui-footer/weui-footer.less",
+				"static/images/icon_nav_layout.png",
+				"static/images/layers/popout.png",
+				"src/assets/css/widget/weui-button/weui-btn_warn.less",
+				"static/images/icon_nav_feedback.png",
+				"src/assets/css/base/mixin/text.less",
+				"src/assets/css/widget/weui-cell/weui-check.less",
+				"src/page/ware/list.vue",
+				"src/assets/css/live/list.less",
+				"src/assets/img/live.png",
+				"src/assets/css/widget/weui-tab/weui-tab.less",
+				"static/images/icon_nav_search.png",
+				"static/images/layers/content.png",
+				"src/assets/img/right.png",
+				"src/assets/css/base/reset.less",
+				"src/assets/css/widget/weui-page/weui-article.less",
+				"src/assets/img/address_s.png",
+				"src/page/order/order.vue",
+				"src/assets/css/base/variable/weui-cell.less",
+				"src/assets/css/base/variable/weui-grid.less",
+				"src/assets/img/plus_1s.png",
+				"src/assets/css/widget/weui-cell/weui-form/weui-select.less",
+				"src/assets/img/plus.png",
+				"static/images/layers/transparent.gif",
+				"src/assets/css/app.less",
+				"static/images/icon_footer_link.png",
+				"src/assets/css/icon/weui-icon_font.less",
+				"static/images/logo.png",
+				"src/assets/css/order/order.less",
+				"src/page/scene/list.vue",
+				"src/assets/css/widget/weui-cell/weui-switch.less",
+				"src/assets/css/widget/weui-cell/weui-form.less",
+				"src/assets/css/widget/weui-tab/weui-navbar.less",
+				"src/page/map/map.vue",
+				"src/assets/css/widget/weui-cell/weui-check/weui-checkbox.less",
+				"src/assets/css/weui.less",
+				"src/assets/css/widget/weui-tips/weui-badge.less",
+				"src/assets/img/slider4.png",
+				"src/assets/img/left_s.png",
+				"src/assets/css/widget/weui-cell/weui-form/weui-form-preview.less",
+				"static/images/icon_nav_z-index.png",
+				"src/page/address/select.vue",
+				"src/filter.js",
+				"src/routes.js",
+				"src/assets/css/widget/weui-flex/weui-flex.less",
+				"src/assets/css/widget/weui-button/weui-btn_primary.less",
+				"static/images/icon_intro.png",
+				"dist/app.js.map",
+				"static/fonts/mui.ttf",
+				"src/assets/css/widget/weui-tips/weui-toast.less",
+				"src/assets/css/widget/weui-button/weui-btn_global.less",
+				"src/assets/css/widget/weui-tips/weui-loadmore.less",
+				"src/assets/img/find.png",
+				"static/css/mui.css",
+				"src/page/scene/scene.vue",
+				"src/assets/css/widget/weui-media-box/weui-media-box.less",
+				"src/assets/css/widget/weui-loading/weui-loading.less",
+				"src/assets/css/widget/weui-cell/weui-uploader.less",
+				"src/page/pay.vue",
+				"src/page/live/room.vue",
+				"src/page/user/register.vue",
+				"src/assets/css/widget/weui-progress/weui-progress.less",
+				"dist/css/app.css.map",
+				"src/assets/css/widget/weui-cell/weui-check/weui-check_common.less",
+				"src/assets/css/base/variable/weui-progress.less",
+				"src/assets/css/base/variable/global.less",
+				"static/images/layers/navigation.png",
+				"src/assets/css/goods/ware.less",
+				"static/images/vcode.jpg",
+				"src/assets/css/widget/weui-cell/weui-form/weui-vcode.less",
+				"src/app.vue",
+				"dist/img/slider2.png",
+				"src/vuex/action.js",
+				"src/assets/css/widget/weui-page/weui-msg.less",
+				"src/assets/img/home.png",
+				"src/assets/css/icon/iconfont.css",
+				"src/assets/js/immersed.js",
+				"static/images/icon_footer.png",
+				"src/assets/css/widget/weui-animate/weui-animate.less",
+				"src/assets/css/mui.less",
+				"src/assets/css/base/mixin/mobile.less"
+			]
+		}
+	},
+	"fullscreen": false,
+	"unpackage": [
+	  "src/app.js",
+	  "src/app.vue",
+	  "src/assets/css/app.less",
+	  "src/assets/css/base/fn.less",
+	  "src/assets/css/base/mixin/mobile.less",
+	  "src/assets/css/base/mixin/setArrow.less",
+	  "src/assets/css/base/mixin/setOnepx.less",
+	  "src/assets/css/base/mixin/text.less",
+	  "src/assets/css/base/reset.less",
+	  "src/assets/css/base/variable/color.less",
+	  "src/assets/css/base/variable/global.less",
+	  "src/assets/css/base/variable/weui-button.less",
+	  "src/assets/css/base/variable/weui-cell.less",
+	  "src/assets/css/base/variable/weui-dialog.less",
+	  "src/assets/css/base/variable/weui-grid.less",
+	  "src/assets/css/base/variable/weui-msg.less",
+	  "src/assets/css/base/variable/weui-progress.less",
+	  "src/assets/css/goods/address.less",
+	  "src/assets/css/goods/ware.less",
+	  "src/assets/css/icon/iconfont.css",
+	  "src/assets/css/icon/iconfont.eot",
+	  "src/assets/css/icon/iconfont.svg",
+	  "src/assets/css/icon/iconfont.ttf",
+	  "src/assets/css/icon/iconfont.woff",
+	  "src/assets/css/icon/weui-font.less",
+	  "src/assets/css/icon/weui-icon_font.less",
+	  "src/assets/css/index.less",
+	  "src/assets/css/live/list.less",
+	  "src/assets/css/mui.less",
+	  "src/assets/css/order/order.less",
+	  "src/assets/css/user/user.less",
+	  "src/assets/css/weui.less",
+	  "src/assets/css/widget/weui-agree/weui-agree.less",
+	  "src/assets/css/widget/weui-animate/weui-animate.less",
+	  "src/assets/css/widget/weui-button/weui-btn_default.less",
+	  "src/assets/css/widget/weui-button/weui-btn_disabled.less",
+	  "src/assets/css/widget/weui-button/weui-btn_global.less",
+	  "src/assets/css/widget/weui-button/weui-btn_loading.less",
+	  "src/assets/css/widget/weui-button/weui-btn_plain.less",
+	  "src/assets/css/widget/weui-button/weui-btn_primary.less",
+	  "src/assets/css/widget/weui-button/weui-btn_warn.less",
+	  "src/assets/css/widget/weui-button/weui-button.less",
+	  "src/assets/css/widget/weui-cell/weui-access.less",
+	  "src/assets/css/widget/weui-cell/weui-cell_global.less",
+	  "src/assets/css/widget/weui-cell/weui-check/weui-check_common.less",
+	  "src/assets/css/widget/weui-cell/weui-check/weui-checkbox.less",
+	  "src/assets/css/widget/weui-cell/weui-check/weui-radio.less",
+	  "src/assets/css/widget/weui-cell/weui-check.less",
+	  "src/assets/css/widget/weui-cell/weui-form/weui-form-preview.less",
+	  "src/assets/css/widget/weui-cell/weui-form/weui-form_common.less",
+	  "src/assets/css/widget/weui-cell/weui-form/weui-select.less",
+	  "src/assets/css/widget/weui-cell/weui-form/weui-vcode.less",
+	  "src/assets/css/widget/weui-cell/weui-form.less",
+	  "src/assets/css/widget/weui-cell/weui-gallery.less",
+	  "src/assets/css/widget/weui-cell/weui-switch.less",
+	  "src/assets/css/widget/weui-cell/weui-uploader.less",
+	  "src/assets/css/widget/weui-flex/weui-flex.less",
+	  "src/assets/css/widget/weui-footer/weui-footer.less",
+	  "src/assets/css/widget/weui-grid/weui-grid.less",
+	  "src/assets/css/widget/weui-loading/weui-loading.less",
+	  "src/assets/css/widget/weui-media-box/weui-media-box.less",
+	  "src/assets/css/widget/weui-page/weui-article.less",
+	  "src/assets/css/widget/weui-page/weui-msg.less",
+	  "src/assets/css/widget/weui-panel/weui-panel.less",
+	  "src/assets/css/widget/weui-picker/weui-picker.less",
+	  "src/assets/css/widget/weui-progress/weui-progress.less",
+	  "src/assets/css/widget/weui-searchbar/weui-searchbar.less",
+	  "src/assets/css/widget/weui-slider/weui-slider.less",
+	  "src/assets/css/widget/weui-tab/weui-navbar.less",
+	  "src/assets/css/widget/weui-tab/weui-tab.less",
+	  "src/assets/css/widget/weui-tab/weui-tabbar.less",
+	  "src/assets/css/widget/weui-tips/weui-actionsheet.less",
+	  "src/assets/css/widget/weui-tips/weui-badge.less",
+	  "src/assets/css/widget/weui-tips/weui-dialog.less",
+	  "src/assets/css/widget/weui-tips/weui-loadmore.less",
+	  "src/assets/css/widget/weui-tips/weui-mask.less",
+	  "src/assets/css/widget/weui-tips/weui-toast.less",
+	  "src/assets/img/address.png",
+	  "src/assets/img/address_s.png",
+	  "src/assets/img/find.png",
+	  "src/assets/img/find_s.png",
+	  "src/assets/img/home.png",
+	  "src/assets/img/home_s.png",
+	  "src/assets/img/left.png",
+	  "src/assets/img/left_s.png",
+	  "src/assets/img/live.png",
+	  "src/assets/img/live_s.png",
+	  "src/assets/img/plus.png",
+	  "src/assets/img/plus_1.png",
+	  "src/assets/img/plus_1s.png",
+	  "src/assets/img/plus_s.png",
+	  "src/assets/img/right.png",
+	  "src/assets/img/right_s.png",
+	  "src/assets/img/slider1.png",
+	  "src/assets/img/slider2.png",
+	  "src/assets/img/slider3.png",
+	  "src/assets/img/slider4.png",
+	  "src/assets/img/user.png",
+	  "src/assets/img/user_s.png",
+	  "src/assets/js/common.js",
+	  "src/assets/js/immersed.js",
+	  "src/components/loading.vue",
+	  "src/directive.js",
+	  "src/filter.js",
+	  "src/page/address/add.vue",
+	  "src/page/address/edit.vue",
+	  "src/page/address/list.vue",
+	  "src/page/address/select.vue",
+	  "src/page/home.vue",
+	  "src/page/live/list.vue",
+	  "src/page/live/room.vue",
+	  "src/page/map/map.vue",
+	  "src/page/order/list.vue",
+	  "src/page/order/order.vue",
+	  "src/page/pay.vue",
+	  "src/page/scene/list.vue",
+	  "src/page/scene/scene.vue",
+	  "src/page/town/list.vue",
+	  "src/page/town/location.vue",
+	  "src/page/user/login.vue",
+	  "src/page/user/register.vue",
+	  "src/page/user/user.vue",
+	  "src/page/ware/list.vue",
+	  "src/page/ware/ware.vue",
+	  "src/routes.js",
+	  "src/util.js",
+	  "src/vuex/action.js",
+	  "src/vuex/getter.js",
+	  "src/vuex/store.js",
+	  "package.json",
+	  "webpack.config.js",
+	  "dist/css/app.css.map",
+	  "dist/app.js.map",
+	  "dist/vender.js.map",
+	  "static/css/mui.css",
+	  "static/fonts/mui.ttf",
+	  "static/images/layers/content.png",
+	  "static/images/layers/navigation.png",
+	  "static/images/layers/popout.png",
+	  "static/images/layers/transparent.gif",
+	  "static/images/icon_footer.png",
+	  "static/images/icon_footer_link.png",
+	  "static/images/icon_intro.png",
+	  "static/images/icon_nav_feedback.png",
+	  "static/images/icon_nav_form.png",
+	  "static/images/icon_nav_layout.png",
+	  "static/images/icon_nav_nav.png",
+	  "static/images/icon_nav_search.png",
+	  "static/images/icon_nav_special.png",
+	  "static/images/icon_nav_z-index.png",
+	  "static/images/logo.png",
+	  "static/images/pic_160.png",
+	  "static/images/pic_article.png",
+	  "static/images/vcode.jpg",
+	  "static/js/city.data-3.js",
+	  "static/js/mui.min.js",
+	  "dist/img/slider1.png",
+	  "dist/img/slider2.png",
+	  "dist/img/slider3.png",
+	  "dist/img/slider4.png"
+	]
+}

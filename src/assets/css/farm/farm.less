@@ -1,0 +1,134 @@
+
+
+
+.farm-detail{
+
+  .content{
+    margin: 10px 0 0px;
+    padding: 0;
+    .sku_box{
+      width: 96%;
+      margin: 0 auto;
+      .select{
+        color: #e7e7eb;
+      }
+      td,th{
+        border: 1px solid #e7e7eb;
+        text-align: center;
+        padding: 5px 0;
+      }
+    }
+    .m_content{
+      position: relative;
+        overflow: hidden;
+    }
+    .rqm_title{
+      text-align: center;
+      margin: 5px 0 10px 0;
+
+    }
+
+  }
+
+}
+
+#choose{
+  .sku_group{
+
+    .gdiv.disabled{
+        color: gray !important;
+        // border: 1px solid gray !important;
+    }
+
+  }
+}
+.fram_title{
+    padding: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    word-spacing: break-word;
+    letter-spacing: 20px;
+    width: 20px;
+    // z-index: 10;
+}
+.fram_mask{
+    position: absolute;
+//  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    z-index:-1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    // padding-top:170%;
+    height:100%;
+    border-radius: 10px;
+}
+
+
+.news_box{
+    overflow: hidden;
+    width:100%;
+    .news_time{
+        float:left;
+        width:49%;
+        box-sizing: border-box;
+        padding-right:5px;
+        text-align: right;
+    }
+    .news_hr{
+        float:left;
+        // width:1px;
+        height: 150px;
+        border:1px solid #ccc;
+        position: relative;
+        &:after{
+            content:"";
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            background:#1aad19;
+            top:8px;
+            left:-4px;
+            border-radius: 50%;
+        }
+    }
+     .news_img{
+        box-sizing: border-box;
+        float:left;
+        width:49%;
+        padding-left:5px;
+    }
+}
+
+.news_info{
+    width: 100%;
+    left: 0;
+    background: #EFEFF4;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    .top.head{
+        padding-top: 15px;
+        .icon-close {
+             top: 25px;
+        }
+    }
+    .top {
+        position: relative;
+        border-bottom: 1px solid #ccc;
+         .title {
+            font-size: 16px;
+            text-align: center;
+        }
+        .icon-close {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+
+    .news_content{
+        padding:20px;
+    }
+}
