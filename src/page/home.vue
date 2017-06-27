@@ -27,7 +27,7 @@
   </div>
 
 		<div class="search-bar" :class="{top:ishead}">
-			<div @click="toMap()" class="change_town_btn">切换
+			<div @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}
 				</div>
 			<div class="scan" @click="Toscan()" v-show="!is_weixin" ><img src="~assets/img/qrcode.png" /></div>
 		</div>
@@ -55,6 +55,7 @@
 				baiduPoint:null, 
 				gpsAddress:null,  
 				baiduAddress:null, 
+
 			}
 		},
 		computed: {
@@ -130,6 +131,7 @@
 					self.$nextTick(function () {
 						self.accordions()
 					})
+
 					
 				}, response => {
 					console.log("请求失败")
@@ -195,7 +197,7 @@
 							alert('Geolocation error: ' + e.message);
 						} );
 					}
-					
+					 
 					if(window.plus){
 						plusReady();
 					}else{
@@ -211,15 +213,89 @@
 
 				
 			},
+			// 编写自定义函数,创建标注
+			addMarker:function (point,type,resource_id,label){
+			
+	
+
+			var pt = new BMap.Point(point.lng,point.lat);
+			var myIcon = new BMap.Icon("http://town.icloudinn.com/map/map.png", new BMap.Size(30,30));
+			var marker = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+			map.addOverlay(marker);              // 将标注添加到地图中
+			if(label){
+				var label = new BMap.Label(label,{offset:new BMap.Size(20,-10)});
+				marker.setLabel(label);
+			}
+			
+			
+
+			},
 			mapload:function(){
 				// 百度地图API功能
 				var self =this
 				var map = new BMap.Map("mapbox");
 				window.map = map
-
+				map.centerAndZoom(new BMap.Point(120.381734,19.995524),14);
 				//获取当前位置
 				self.getLocation()
 
+		
+				//加载风景
+				this.$http.get('/test/getScene').then(response => {
+					// get body data
+					
+					var sceneList = response.body.data
+
+					for(var i=0;i<sceneList.length;i++){
+						var point = new BMap.Point(sceneList[i].lng,sceneList[i].lat),
+							type = 'scene',
+							label = sceneList[i].scene_name,
+							resource_id = sceneList[i].scene_id;
+							// label = 
+						self.addMarker(point,type,resource_id,label);
+					}
+				}, response => {
+					// error callback
+				});
+
+				
+				// //加载酒店
+				// this.$http.get('/test/getHotel').then(response => {
+				// 	// get body data
+					
+				// 	var hotelList = response.body.data
+
+				// 	for(var i=0;i<hotelList.length;i++){
+						
+				// 		var point = new BMap.Point(hotelList[i].lng,hotelList[i].lat),
+				// 			type = 'hotel',
+				// 			label = hotelList[i].hotel_name,
+				// 			resource_id = hotelList[i].hotel_id;
+				// 			// label = 
+				// 		self.addMarker(point,type,resource_id,label);
+				// 	}
+				// }, response => {
+				// 	// error callback
+				// });
+
+				// //加载酒店
+				// this.$http.get('/test/getCate').then(response => {
+				// 	// get body data
+					
+				// 	var cateList = response.body.data
+
+				// 	for(var i=0;i<cateList.length;i++){
+				// 		console.log(cateList[i])
+				// 		var point = new BMap.Point(cateList[i].lng,cateList[i].lat),
+				// 			type = 'hotel',
+				// 			label = cateList[i].hotel_name,
+				// 			resource_id = cateList[i].hotel_id;
+				// 			// label = 
+				// 		self.addMarker(point,type,resource_id,label);
+				// 	}
+				// }, response => {
+				// 	// error callback
+				// });
 				
 				// 添加带有定位的导航控件
 				var navigationControl = new BMap.NavigationControl({
