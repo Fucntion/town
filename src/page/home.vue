@@ -1,142 +1,60 @@
 <template>
-<div class="wrap">
-	<div id="banner">
+<div class="wrap" style="overflow: hidden;">
+
+	<div id="index_address" style="z-index:4" v-show="town_show">
 		
-			<div class="search-bar" :class="{top:ishead}">
-				<div class="scan" @click="Toscan()" v-show="is_weixin" ></div>
-			<!--<div class="weui-search">
-				<div class="weui-icon-search" ></div>
-				<input type="text" class="weui-input">
+      <div class="address_content">
+			<header class="bar" :class="{head:ishead}">
+				<div class="bar-icon"  @click="changeTownShow()"><img src="~assets/img/left.png" class="icon_img"   /></div>
+				<div class="bar-title"  >请选择您所在的镇</div>
+			</header>
+			<div class="address_box marTop" :class="{head:ishead}">
+				<ul id="accordion" class="accordion">
+
+					<li v-for="city in townInfo"><div class="link">{{city.city_name}}</div>
+
+						<ul class="submenu">
+							<li v-for="town in city.townList" @click="reloadMap(town)" ><p>{{town.town_name}}</p></li>
+						</ul>
+
+					</li>	
+
+				</ul>
+
+			</div>
 			
-			</div>-->
-			</div>
-		    <div id="slider" class="mui-slider slider-home" >
-		    	
-			<div class="mui-slider-group mui-slider-loop">
-				
-				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						
-						<img src="http://api.town.icloudinn.com/static/img/slider2.jpg">
-					</a>
+      </div>
+  </div>
+
+		<div class="search-bar" :class="{top:ishead}">
+			<div @click="toMap()" class="change_town_btn">切换
 				</div>
-				<!-- 第一张 -->
-				<!--<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider1.jpg">
-					</a>
-				</div>-->
-				<!-- 第二张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider2.jpg">
-					</a>
-				</div>
-				<!-- 第三张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider3.jpg">
-					</a>
-				</div>
-				<!-- 第四张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider4.jpg">
-					</a>
-				</div>
-				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider4.jpg">
-					</a>
-				</div>
-			</div>
-			<div class="mui-slider-indicator">
-				<div class="mui-indicator mui-active"></div>
-				<div class="mui-indicator"></div>
-				<!--<div class="mui-indicator"></div>-->
-				<div class="mui-indicator"></div>
-			</div>
+			<div class="scan" @click="Toscan()" v-show="!is_weixin" ><img src="~assets/img/qrcode.png" /></div>
 		</div>
-	</div>
-	<div class="index_list">
-		<div class="index_box box_bor">
-			<div class="index_title">
-				<p>游玩资讯</p>
-				<img width="56%" src="~assets/img/home_news.png" />			
-			</div>
-		</div>
-		<div class="index_box">
-			<!--232323223-->
-			<div class="index_img" @click="way()">
-				<div class="index_title">
-					<img width="20%"  src="~assets/img/home_travel.png" />
-					精品游线
-				</div>
-			</div>
-			<div class="index_img" >
-				<div class="index_title">
-					<img  width="20%"   src="~assets/img/home_farm.png" />
-					农产品众筹
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="index_town">
-		<div class="town_img" @click="Totownindex(item,1)" v-for="item in townInfo"  :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}">
-			<div class="index_item">
-				<div class="index_title">{{item.city_name}}*{{item.town_name}}</div>
-				<p>--海南水果之乡</p>
-			</div>
-			<div class="index_mask"></div>
-		</div>
-	</div>
-	<footer>
-		<div class="weui-tabbar index-tabbar">
-		<a href="#/" class="weui-tabbar__item">
-			<span style="display: inline-block;position: relative;">
-			<img src="../assets/img/home.png" class="icon_img"/>
-		</span>
-			<p class="weui-tabbar__label">首页</p>
-		</a>
-		
-		<a href="#/towninfo" class="weui-tabbar__item" >
-			
-		</a>
-		<a href="#/user" class="weui-tabbar__item">
-			<img src="../assets/img/user_s.png" class="icon_img"/>
-			<p class="weui-tabbar__label">我的</p>
-		</a>
-		
-	</div>
-	<a href="#/towninfo" class="weui-tabbar__item" id="nav_town">
-			<span style="display: inline-block;position: relative;">
-				<img src="~assets/img/town_s.png" class="icon_img"/>
-			</span>
-			<p class="weui-tabbar__label">玩转小镇</p>
-		</a>
-	</footer>
+
+	<a class="zuimei" href="#/towninfo">
+		<p>玩转</p>
+		<p>小镇</p>
+	</a>
+<div  id="mapbox"></div>
 </div>
 </template>
 <script>
 
-	
-	require('../assets/js/immersed.js');
 
 	export default {
 		name: 'home',
 		data: function () {
 
 			return {
-				townInfo:null,
-				ishead:null
+				ishead:null,
+				town_show:false,
+				townInfo:[],
+				IS_TOWN_NAME:'演丰镇',
+				gpsPoint:null,  
+				baiduPoint:null, 
+				gpsAddress:null,  
+				baiduAddress:null, 
 			}
 		},
 		computed: {
@@ -150,7 +68,83 @@
 			} 
 		},
 		methods: {
+			changeTownShow:function(){
+				var self = this
+				self.town_show = false;
+			},
+			reloadMap:function(town_info){
+				var self =this
+				//后台会返回镇中心的经纬度
+				console.log(town_info)
+				self.IS_TOWN_NAME = town_info.town_name
+				if(town_info.lat&&town_info.lng){
+					map.centerAndZoom(new BMap.Point(town_info.lat,town_info.lng),14);      // 用城市名设置地图中心点
+					localStorage.setItem("town_id",town_info.town_id);//这里的每个接口都有用
+					localStorage.setItem("town_name",town_info.town_name);
+					localStorage.setItem("city_name",town_info.city_);
+				}
+				self.town_show = false;
+			},
+			accordions:function(){
 			
+				var Accordion = function(el, multiple) {
+
+					this.el = el || {};
+					
+					this.multiple = multiple || false;
+					
+					// Variables privadas
+					var links = this.el.find('.link');
+
+					console.log( links)
+					// Evento
+					links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+				}
+
+				Accordion.prototype.dropdown = function(e) {
+					console.log(22)
+					var $el = e.data.el,
+						$this = $(this),
+						$next = $this.next();
+
+					$next.slideToggle();
+					$this.parent().toggleClass('open');
+
+					if (!e.data.multiple) {
+						$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+					};
+				}	
+
+				var accordion = new Accordion($('#accordion'), false);
+				console.log(11)
+
+			},
+			toTown:function(){
+
+				var self = this
+				// 不传参数就返回所有镇列表
+				
+				self.$http.get('/city/list/').then(response => {
+
+					self.townInfo = response.body.data
+					self.$nextTick(function () {
+						self.accordions()
+					})
+					
+				}, response => {
+					console.log("请求失败")
+				});
+			},
+			toMap:function(){
+				var self = this
+				// self.location_web()
+				self.town_show = true
+
+				// self.accordions()
+			},
+			totowninfo:function(){
+                this.$router.push('/towninfo')
+            },
 			istop:function(){
 				
 				var self=this
@@ -162,6 +156,9 @@
 		           return self.ishead=false
 		        }
 			},
+			Toscan:function(){
+				this.$router.push('/scan')
+			},
 			Totownindex:function(towns,a){
 
 				var self = this
@@ -169,39 +166,93 @@
 					localStorage.setItem("town_id",towns.town_id);//这里的每个接口都有用
 					localStorage.setItem("town_name",towns.town_name);
 					localStorage.setItem("city_name",self.city);
-					
 					self.$router.push('townindex/'+towns.town_id)
 					
 				}
 			},
-			way:function(){
-				this.$router.push('/waylist')
-			},
-			share:function(){
-				this.$router.push('/share')
-			},
-			Toscan:function(){
-				this.$router.push('/scan')
-			},
-			toTown:function(){
+			getLocation:function(){
+		
+				var ua= navigator.userAgent.toLowerCase();
+				console.log('ua is',ua,ua.indexOf('html5plus')>=0)
+				if(ua.indexOf("micromessenger")>=0) {
+					console.log("is wechat")
+					map.centerAndZoom(new BMap.Point(117.264089,28.268578),14);
+					
+					
+				}else if(ua.indexOf('html5plus')>=0) {
 
-				var self = this
-				// 不传参数就返回所有镇列表
-				if(sessionStorage.getItem('townList')){
+					function plusReady(){
+						plus.geolocation.getCurrentPosition(function(p){
+							
+							map.centerAndZoom(new BMap.Point(p.coords.longitude,p.coords.latitude),14);
+							var pt = new BMap.Point(p.coords.longitude,p.coords.latitude);
+
+							var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+							var marker2 = new BMap.Marker(pt,{icon:myIcon});  // 创建标注
+							map.addOverlay(marker2);              // 将标注添加到地图中
+							
+						}, function(e){
+							alert('Geolocation error: ' + e.message);
+						} );
+					}
 					
-					self.townInfo = JSON.parse(sessionStorage.getItem('townList'))
-					
+					if(window.plus){
+						plusReady();
+					}else{
+						document.addEventListener("plusready",plusReady,false);
+					}
+
 				}else{
-					self.$http.get('/town/list/').then(response => {
-					// self.$http.post('/town/list/',{city_name:city}).then(response => {
-	
-						self.townInfo = response.body.data
-						sessionStorage.setItem('townList',JSON.stringify(response.body.data))
-					}, response => {
-						console.log("请求失败")
-					});
-				
+					console.log("is web");
+					map.centerAndZoom(new BMap.Point(110.381734,19.995524),14);
 				}
+				
+
+
+				
+			},
+			mapload:function(){
+				// 百度地图API功能
+				var self =this
+				var map = new BMap.Map("mapbox");
+				window.map = map
+
+				//获取当前位置
+				self.getLocation()
+
+				
+				// 添加带有定位的导航控件
+				var navigationControl = new BMap.NavigationControl({
+					// 靠左上角位置
+					anchor:BMAP_ANCHOR_BOTTOM_RIGHT,
+					// LARGE类型
+					type:BMAP_ANCHOR_TOP_LEFT,
+					// 启用显示定位
+					enableGeolocation: true,
+					offset: new BMap.Size(10, 100)
+				});
+				map.addControl(navigationControl);
+
+				// 添加定位控件
+				// var opts = {}
+				var geolocationControl = new BMap.GeolocationControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT});
+				
+				geolocationControl.addEventListener("locationSuccess", function(e){
+					// 定位成功事件
+					var address = '';
+					address += e.addressComponent.province;
+					address += e.addressComponent.city;
+					address += e.addressComponent.district;
+					address += e.addressComponent.street;
+					address += e.addressComponent.streetNumber;
+					console.log("当前定位地址为：" + address);
+				});
+				geolocationControl.addEventListener("locationError",function(e){
+					// 定位失败事件
+					alert(e.message);
+				});
+				map.addControl(geolocationControl);
+				//方便其他地方用
 				
 			}
 			
@@ -216,15 +267,10 @@
 		mounted() {
 
 			var self = this
-			 self.$nextTick(function () {
-
-				var gallery = mui('.mui-slider')
-				gallery.slider({
-					interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
-				});
-			})
+			self.mapload()
 			self.toTown()
 			self.istop()
+			 
 			
 
 		}

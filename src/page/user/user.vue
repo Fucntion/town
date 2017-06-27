@@ -64,7 +64,7 @@
 			<span style="display: inline-block;position: relative;">
 			<img src="~assets/img/home_s.png" class="icon_img"/>
 		</span>
-			<p class="weui-tabbar__label">首页</p>
+			<p class="weui-tabbar__label">附近</p>
 		</a>
 		
 		<a href="#/towninfo" class="weui-tabbar__item" >

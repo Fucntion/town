@@ -30,7 +30,8 @@
 				</a>
 			</div>
 			<div class="town_car">
-				<a href="http://m.xiaoerzuche.com/hour" class="town_box">
+				<a href="#" class="town_box">
+				<!--<a href="http://m.xiaoerzuche.com/hour" class="town_box">-->
 					<div class="weui__icon">
 						<img src="~assets/img/town/car.png" alt="">
 					</div>
@@ -93,7 +94,7 @@
 			<span style="display: inline-block;position: relative;">
 			<img src="~assets/img/home_s.png" class="icon_img"/>
 		</span>
-			<p class="weui-tabbar__label">首页</p>
+			<p class="weui-tabbar__label">附近</p>
 		</a>
 		
 		<a href="#/towninfo" class="weui-tabbar__item" >
