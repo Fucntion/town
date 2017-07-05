@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import Store from 'store'
+ 
 export default {
 	name:'warelist',
 	data: function() {
@@ -85,7 +85,7 @@ export default {
 		}
 	},
 	components: {
-		Store
+		 
 	},
 	watch: {
 
@@ -93,11 +93,11 @@ export default {
 	mounted() {
 
 		var self = this
-			Store.commit('openLoading')
+			//   
 
 		self.$http.get('/ware/list').then(response => {
 
-			Store.commit('closeLoading')
+			//   
 
 			if(!_.isArray(response.body.data))return
 			self.wareList = response.body.data
@@ -117,7 +117,7 @@ export default {
 			// error callback
 		});
 
-    	self.ishead = Store.getters.getvisible;
+    	  
     	
 	}
 }

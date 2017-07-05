@@ -12,7 +12,7 @@
 
 <script>
 
-    import Store from 'store'
+     
 	import 'static/css/common.css'
 require('../../assets/js/immersed.js');
 
@@ -144,7 +144,7 @@ export default {
         
         var self=this
         self.init()
-        self.ishead = Store.getters.getvisible;
+          
     }
 }
 </script>

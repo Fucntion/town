@@ -73,7 +73,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     import Slider from 'plugin/slider'
     export default {
         name: 'ware',
@@ -254,7 +254,7 @@
             var self=this
             self.init()
              
-            self.ishead = Store.getters.getvisible;
+              
 
 
 

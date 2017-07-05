@@ -25,7 +25,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     export default {
         name: 'scene',
         data: function () {
@@ -77,7 +77,7 @@
             var self = this
             self.init()
 
-            self.ishead = Store.getters.getvisible;
+              
 
         }
     }

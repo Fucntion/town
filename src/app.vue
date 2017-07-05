@@ -1,21 +1,21 @@
 <template>
 
 <div id="town">
-	<loading v-if="isLoading.show" :text="isLoading.text" ></loading>
+	<!--<loading v-if="isLoading.show" :text="isLoading.text" ></loading>-->
 	<router-view></router-view>
 </div>
 </template>
 
 <script>
-import Store from 'store'
-import loading from 'plugin/loading.vue'
+
+// import loading from 'plugin/loading.vue'
 
 export default {
 	name:'app',
 	data: function() {
 
 		return {
-			isLoading:Store.getters.getLoading
+			
 		}
 	},
 	computed:{
@@ -26,8 +26,8 @@ export default {
 	
 	},
 	components: {
-		Store,
-		loading
+
+		
 	},
 	watch: {
 

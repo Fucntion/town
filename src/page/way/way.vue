@@ -28,7 +28,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     import Slider from 'plugin/slider'
     export default {
         name: 'way',
@@ -150,7 +150,7 @@
             var self=this
             self.init()
              
-            self.ishead = Store.getters.getvisible;
+              
 
 
 

@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import Store from 'store'
+ 
 export default {
 	name:'farmlist',
 	data: function() {
@@ -88,7 +88,7 @@ export default {
 		}
 	},
 	components: {
-		Store
+		// 
 	},
 	watch: {
 
@@ -97,10 +97,10 @@ export default {
 
 		var self = this
 			
-		Store.commit('openLoading')
+		  
 
 		this.$http.get('/farm/list').then(response => {
-			Store.commit('closeLoading')
+			  
 			if(!_.isArray(response.body.data))return
 			
 			self.farmList = response.body.data
@@ -113,7 +113,7 @@ export default {
 			// error callback
 		});
 		 
-		self.ishead = Store.getters.getvisible;
+		 
 
 	}
 }

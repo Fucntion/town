@@ -43,7 +43,7 @@
 </template>
 
 <script>
-	import Store from 'store'
+	 
 export default {
 	name:'livelist',
 	data: function() {
@@ -58,14 +58,14 @@ export default {
     },
 	methods: {
 		toRoom:function(item){
-      Store.commit('setRoom',item.room)
+      //// .commit('setRoom',item.room)
       localStorage.setItem('room',JSON.stringify(item))
 			window.hlsUrl = item.room.playUr
 			this.$router.push('/room/25')
 		}
 	},
 	components: {
-		Store
+		// 
 	},
 	watch: {
 
@@ -73,10 +73,10 @@ export default {
 	mounted() {
 
         var self = this
-		Store.commit('openLoading')
+		  
         this.$http.get('/live/list').then(response => {
             // get body data
-			Store.commit('closeLoading')
+			  
             self.liveList = response.body.data
 
             this.$nextTick(function () {
@@ -90,7 +90,7 @@ export default {
             // error callback
         });
 
-		self.ishead = Store.getters.getvisible;
+		 
 	}
 }
 </script>

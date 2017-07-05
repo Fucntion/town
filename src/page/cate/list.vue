@@ -22,7 +22,7 @@
 </template>
 
 <script>
-	import Store from 'store'
+	 
 export default {
 	name:'hotellist',
 	data: function() {
@@ -42,7 +42,7 @@ export default {
 		}
 	},
 	components: {
-		Store
+		 
 	},
 	watch: {
 
@@ -51,11 +51,11 @@ export default {
 
         var self = this
 
-        Store.commit('openLoading')
+          
 
         this.$http.get('/cate/list').then(response => {
 
-            Store.commit('closeLoading')
+              
 
             self.cateList = response.body.data
 
@@ -64,7 +64,7 @@ export default {
             // error callback
         });
         
-        self.ishead = Store.getters.getvisible;
+         
 	}
 }
 </script>

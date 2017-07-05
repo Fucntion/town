@@ -37,7 +37,7 @@
 
 <script>
 
-    import Store from 'store';
+
     export default {
         name: 'ware',
         data: function () {
@@ -129,7 +129,7 @@
         mounted() {
 
             var self=this
-            self.ishead = Store.getters.getvisible;
+
 
 
         }

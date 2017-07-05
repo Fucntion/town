@@ -34,7 +34,7 @@
 
 <script>
 
-import Store from 'store'
+ 
 export default {
 	name:'sceneList',
 	data: function() {
@@ -64,18 +64,18 @@ export default {
 
         var self = this
 
-        Store.commit('openLoading')
+        //   
         
         this.$http.post('/scene/list',{town_id:localStorage.getItem('town_id')}).then(response => {
             // get body data
-            Store.commit('closeLoading')
+            //   
             self.sceneList = response.body.data
 
         }, response => {
             // error callback
         });
 
-        self.ishead = Store.getters.getvisible;
+          
 	}
 }
 </script>

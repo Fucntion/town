@@ -148,7 +148,7 @@
 	
 <script>
 
-import Store from 'store'
+
 // import 'static/js/jquery.js'
 // import 'static/js/index.js'
 export default {
@@ -272,7 +272,7 @@ export default {
 
 		self.init()
 		self.toTown()
-		self.ishead = Store.getters.getvisible;
+		  
 
 		
 	}

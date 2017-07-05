@@ -36,7 +36,7 @@
 
 <script>
 
-import Store from 'store'
+ 
 export default {
 	name:'orderlist',
 	data: function() {
@@ -64,11 +64,11 @@ export default {
 
 		var self = this
 
-		Store.commit('openLoading')
+		  
 
 		this.$http.get('/order/list').then(response => {
 
-			Store.commit('closeLoading')
+			  
 			// get body data
 			self.orderList = response.body
 			// self.orderList = self.orderList.purchaser
@@ -76,7 +76,7 @@ export default {
 		}, response => {
 			// error callback
 		});
-		self.ishead = Store.getters.getvisible;
+		 
 
 	}
 }

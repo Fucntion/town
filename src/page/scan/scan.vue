@@ -14,7 +14,7 @@
 
 <script>
 	
-	import Store from 'store'
+	 
 	require('../../assets/js/common.js')
 
 	export default {
@@ -92,7 +92,7 @@
 
 		},
 		components: {
-			Store
+			 
 		},
 		watch: {
 
@@ -101,7 +101,7 @@
 
 			var self = this
 
-			self.ishead = Store.getters.getvisible;
+			  
 
 			if(window.plus) {
 				self.plusReady();

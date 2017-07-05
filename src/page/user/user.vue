@@ -88,7 +88,7 @@
 </template>
 
 <script>
-    import Store from 'store'
+     
     export default {
         name: 'ware',
         data: function () {
@@ -142,7 +142,7 @@
             console.log('user')
             // var self=this
             // self.init()
-            // self.ishead = Store.getters.getvisible;
+              
 
 
 

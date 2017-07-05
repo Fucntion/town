@@ -69,7 +69,7 @@
 </template>
 <script>
 
-	import Store from 'store'
+	 
 	export default {
 		name: 'townindex',
 		data: function () {
@@ -223,7 +223,7 @@
 				});
 			})
 			self.init()
-			self.ishead = Store.getters.getvisible;
+			  
 
 		}
 	}

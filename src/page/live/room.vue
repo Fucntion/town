@@ -19,7 +19,7 @@
 
 <script>
 
-import Store from 'store'
+ 
 export default {
 	name:'room',
 	data: function() {
@@ -40,7 +40,7 @@ export default {
 
 	},
 	components: {
-    Store
+    // 
 	},
 	watch: {
 
@@ -48,7 +48,7 @@ export default {
 	mounted() {
 
 var self =this
-self.room = Store.getters.getRoom||localStorage.getItem('room')
+self.room = localStorage.getItem('room')
 
 	}
 }

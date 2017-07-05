@@ -125,7 +125,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     import Slider from 'plugin/slider'
     export default {
         name: 'farm',
@@ -316,7 +316,7 @@
                 self.initPay()
             })
 
-            self.ishead = Store.getters.getvisible;
+             
         }
     }
 

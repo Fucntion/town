@@ -68,7 +68,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     import 'static/css/mui.picker.css'
     import 'static/css/mui.poppicker.css'
     var cityData3=require('static/js/city.data-3.js')
@@ -224,7 +224,7 @@
             var self = this
             self.init()
             self.inits()
-            self.ishead = Store.getters.getvisible;
+             
 
         }
     }

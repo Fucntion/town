@@ -72,7 +72,7 @@ module.exports = {
 			vue$: 'vue/dist/vue',
 			util: path.join(__dirname, './src/util'),
 			static: path.join(__dirname, './static'),
-			store: path.join(__dirname, './src/vuex/store.js'),
+			//  : path.join(__dirname, './src/vuex/ .js'),
 			assets: path.join(__dirname, './src/assets'),
 			plugin: path.join(__dirname, './src/components'),
 		},

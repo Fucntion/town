@@ -21,4 +21,9 @@ util.isEnvironment = function(){
 
 }
 
-export default util
+export default  {
+  install: function(Vue) {
+    // Do stuff
+    Object.defineProperty(Vue.prototype, '$util', { value: util });
+  }
+}

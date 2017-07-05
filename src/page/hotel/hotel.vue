@@ -154,7 +154,7 @@
 
 <script>
 
-import Store from 'store'
+ 
 import 'static/css/mui.picker.min.css'
     export default {
         name: 'hotel',
@@ -523,7 +523,7 @@ import 'static/css/mui.picker.min.css'
                 self.initPay()
             })
 
-            self.ishead = Store.getters.getvisible;
+             
 
 
         }

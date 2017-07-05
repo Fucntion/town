@@ -23,7 +23,7 @@
 	
 <script>
 
-import Store from 'store'
+ 
 export default {
 	name:'home',
 	data: function() {
@@ -73,7 +73,7 @@ export default {
 			// error callback
 		});
 
-        self.ishead = Store.getters.getvisible;
+          
 	}
 }
 </script>

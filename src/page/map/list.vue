@@ -34,7 +34,7 @@
 </template>
 <script>
 
-	import Store from 'store'
+	 
 	// import 'static/css/swiper-3.4.2.min.css'
     // import 'static/js/swiper-3.4.2.min.js'
 	export default {
@@ -80,7 +80,7 @@
 			var self=this
 			self.Swiper() 
 				
-			self.ishead = Store.getters.getvisible;
+			 
 		}
 	}
 

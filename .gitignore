@@ -34,7 +34,7 @@ node_modules
 # OSX
 # =========================
 
-.DS_Store
+.DS_ 
 .AppleDouble
 .LSOverride
 

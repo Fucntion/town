@@ -41,7 +41,7 @@
 
 <script>
 
-    import Store from 'store'
+     
     export default {
         name: 'order',
         data: function () {
@@ -207,7 +207,7 @@
             self.inits()
             self.initz()
 
-            self.ishead = Store.getters.getvisible;
+              
 
         }
     }
