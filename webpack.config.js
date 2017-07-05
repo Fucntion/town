@@ -70,6 +70,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			vue$: 'vue/dist/vue',
+			util: path.join(__dirname, './src/util'),
 			static: path.join(__dirname, './static'),
 			store: path.join(__dirname, './src/vuex/store.js'),
 			assets: path.join(__dirname, './src/assets'),

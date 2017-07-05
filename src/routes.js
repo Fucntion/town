@@ -1,15 +1,8 @@
 const routes = [
-
 	{
 		path: '/error',
 		component: { template: '<h3>出错了</h3>' },
 		name: '出错了'
-
-	},
-	{
-		path: '/',
-		name: '首页',
-		component: require('./page/home.vue')
 	},
 	{
 		path: '/login',
@@ -160,6 +153,11 @@ const routes = [
 		path: '/way/:id',
 		name: '游玩路线详情',
 		component: require('./page/way/way.vue')
+	},
+	{
+		path: '/',
+		name: '首页',
+		component: require('./page/home.vue')
 	},
 
 

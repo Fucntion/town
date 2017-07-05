@@ -40,10 +40,7 @@ const getters = {
 
 
 const mutations = {
-    //  setLoadingStatus:function(state){
 
-    //      state.loadingStatus = !state.loadingStatus
-    // }
     setRoom: function (state,obj) {
         state.room = obj
     },
@@ -55,17 +52,7 @@ const mutations = {
     closeLoading: function (state) {
         state.isLoading.show = false
     },
-    // visibleing:function(state){
-
-    //     if(navigator.userAgent.indexOf("Html5Plus")>=0){
-				
-    //         state.visible=false
-    //     }else{
-
-    //         state.visible=true
-    //     }
-        
-    // }
+   
 
    
 

@@ -1,6 +1,10 @@
 import Vue from 'vue'
 var _ = require('lodash')
 
+import util from 'util/util'
+Vue.use(util)
+
+
 import VueRouter from 'vue-router'
 import routes from './routes'
 
@@ -63,18 +67,14 @@ Vue.http.interceptors.push((request, next) => {
 });
 
 
-var VueVideoPlayer = require('vue-video-player')
 
-
-// mount with global
-Vue.use(VueVideoPlayer)
 
 require ('./assets/css/app.less')
 import App from './App.vue'
 
-import './filter.js'
+// import './filter.js'
 
-import './directive.js'
+// import './directive.js'
 
 
 const app = new Vue({

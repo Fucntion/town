@@ -21,8 +21,11 @@
     .box{
         padding: 10px;
         overflow: hidden;
-        overflow-x: scroll;
-        white-space:nowrap;
+        
+        // white-space:nowrap;
+        &.info_box{
+            overflow-y: scroll;
+        }
         .item{
             display: inline-block;
             color: #6c6c6c;

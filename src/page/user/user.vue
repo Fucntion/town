@@ -139,10 +139,10 @@
 
         },
         mounted() {
-
-            var self=this
-            self.init()
-            self.ishead = Store.getters.getvisible;
+            console.log('user')
+            // var self=this
+            // self.init()
+            // self.ishead = Store.getters.getvisible;
 
 
 

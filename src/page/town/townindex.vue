@@ -14,7 +14,7 @@
 			<div  class="info_title">
 				简介
 			</div>
-            <div v-html="townInfo.town_desc" class="box">
+            <div v-html="townInfo.town_desc" class="box info_box">
 
             </div>
 		</div>

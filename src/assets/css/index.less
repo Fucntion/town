@@ -1,4 +1,10 @@
-
+.wrap{
+  position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
 .weui-grids.index-grids .weui-grid {
     width: 25%;
@@ -175,17 +181,17 @@
 
 .zuimei{
 	position: absolute;
-	bottom: 10px;
+	bottom: 20px;
 	left:50%;
 	z-index: 2;
-	width: 40px;
+	width: 80px;
 	height: 40px;
-	padding: 20px;
-	margin-left: -40px;
+    line-height: 40px;
+	padding: 0 20px;
+	margin-left: -60px;
 	color: white;
 	text-align: center;
 	font-size: 16px;
-	border-radius: 50%;
 	background: #09BB07;
 	p{
 		margin:0;
@@ -211,7 +217,7 @@
         width:60px;
         font-size: 14px;
         text-align:center;
-        background: #999999;
+        background: rgba(0,0,0,0.3);
         color:white;
         float: left;
         border-radius: 2px;
@@ -220,13 +226,13 @@
         
         border-radius: 2px;
         float: right;
-        // padding: 4px;
+        padding: 2px;
         text-align: center;   
-        background: #999999;
+        background: rgba(0,0,0,0.4);
         width: 30px;
         height: 30px;
         img{
-            margin-top: 3px;
+            margin-top: 2px;
             width: 26px;
             height: 26px;
         }
@@ -303,3 +309,79 @@
 // .town-content .town-input-group .weui-cell .weui-cell__hd .weui-label {
 //     width: 86px;
 // }
+
+
+.info_box{
+	padding: 10px;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.marker_info_box{
+  position: absolute;
+  bottom: 0;
+  z-index: 3;
+  font-size: 14px;
+  .hr{
+    height: 1px;
+    width: 100%;
+    background: #CCCCCC; 
+    margin: 10px 0 6px 0;
+  }
+  .feature{
+      font-size: 12px;
+  }
+  .info{
+
+    display: flex;
+    
+    .info_l{
+        flex: 1;
+        dd{
+            // margin-top: 6px;
+        }
+        .name{
+            margin-bottom: 10px;
+            span{
+                font-size: 16px;
+                color: #333333;
+                font-weight: 600;
+            }
+            small{
+                font-size: 14px;
+                margin-left: 6px;
+            }
+        }
+        .address{
+
+        }
+        .juli{
+            // margin-top: 20px;
+        }
+
+    } 
+    .info_r{
+        // flex: 1;
+        width: 100px;
+        text-align: right;
+        .btn{
+            padding: 6px 10px;
+            margin-top:8px; 
+            width: 80px;
+            text-align: center;
+            color: white;
+            background: #09BB07;
+            display: block;
+        }
+        .go{
+            background: #576B95;
+        }
+        .detail{
+
+        }
+    }
+    
+  }
+
+}

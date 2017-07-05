@@ -2,8 +2,9 @@
 <div class="wrap list_wrap">
 
     <header class="bar towninfo_bar" :class="{head:ishead}">
-		<div class="bar-icon" @click="toMap()"><img src="../../assets/img/address_s.png" class="icon_img" /> {{townName}}</div>
-		<div class="bar-title" >附近</div>
+		<div class="bar-icon"  ><img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
+		<!--<div class="bar-icon" @click="toMap()"><img src="../../assets/img/address_s.png" class="icon_img" /> {{townName}}</div>-->
+		<div class="bar-title" >{{townName}}</div>
 	</header>
     <div class="towns_content marTop towninfo_bar" :class="{head:ishead}">
         <div class="town_left flex">
@@ -163,7 +164,7 @@ export default {
 			district: null,
 			street: null,
 			town_show:false,
-			townName:'永兴镇',
+			townName:'未选择所在镇',
 			townInfo:[],
 			ishead:null
 		}
@@ -249,7 +250,7 @@ export default {
 		},
 		init:function(){
 			var self = this
-			if(!localStorage.getItem("town_id")){
+			if(!localStorage.getItem("town_id")||!localStorage.getItem("town_name")){
 					
 				self.town_show = true	
 			}else{
