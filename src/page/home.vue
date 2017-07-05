@@ -408,7 +408,7 @@ export default {
 
 		// localStorage.clear()
 		// sessionStorage.clear()
-		console.log(util)
+		console.log(this.$util)
 		var self = this
 		self.IS_TOWN_NAME = localStorage.getItem("town_name")||'我在哪？'
 		self.mapload()
