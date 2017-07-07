@@ -36,7 +36,7 @@
 		</a>
 		<a href="#/user" class="weui-tabbar__item">
 			<img src="../../assets/img/user_s.png" class="icon_img"/>
-			<p class="weui-tabbar__label">我的</p>
+			<p class="weui-tabbar__label">发现</p>
 		</a>
 	</div>
 </div>

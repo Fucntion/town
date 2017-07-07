@@ -75,19 +75,19 @@ const routes = [
 		component: require('./page/live/room.vue')
 	},
 	{
-		path: '/townindex/:id',
-		name: '小镇主页',
-		component: require('./page/town/townindex.vue')
+		path: '/town/category/:id',
+		name: '小镇主页', 
+		component: require('./page/town/category.vue')
 	},
 	{
-		path: '/towninfo',
-		name: '玩转小镇',
-		component: require('./page/town/towninfo.vue')
-	},
-	{
-		path: '/townintroduction',
+		path: '/town/info/:id',
 		name: '小镇简介',
-		component: require('./page/town/introduction.vue')
+		component: require('./page/town/info.vue')
+	},
+	{
+		path: '/town/:id',
+		name: '玩转小镇',
+		component: require('./page/town/index.vue')
 	},
 	{
 		path: '/map',
@@ -158,7 +158,29 @@ const routes = [
 		path: '/',
 		name: '首页',
 		component: require('./page/home.vue')
+	}, 
+	{
+		path: '/nearby',
+		name: '附近',
+		component: require('./page/nearby.vue')
 	},
+	{
+		path: '/find',
+		name: '发现',
+		component: require('./page/find/index.vue')
+	},
+	{
+		path: '/play',
+		name: '活动首页',
+		component: require('./page/play/index.vue')
+	},
+	{
+		path: '/play/:id',
+		name: '活动详情',
+		component: require('./page/play/index.vue')
+	},
+
+	
 
 
 ]

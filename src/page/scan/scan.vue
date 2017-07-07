@@ -87,7 +87,7 @@
 				if(typeof(plus)!='undefined'&&plus){
 					self.scan.close();
 				}
-				this.$router.push('/')
+				history.go(-1)
 			}
 
 		},

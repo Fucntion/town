@@ -74,7 +74,7 @@ export default {
 					effect : 'coverflow',
 					slidesPerView:1.4,
 					centeredSlides: true,
-					coverflow: {
+					coverflow: { 
 								rotate: 10,
 								stretch:-18,
 								depth: 50,

@@ -58,37 +58,13 @@
     <div class="weui-btn-area" v-if="!istoken">
         <div class="weui-btn weui-btn_primary" @click="logout()">退出登录</div>
     </div>
-   <footer>
-		<div class="weui-tabbar index-tabbar">
-		<a href="#/" class="weui-tabbar__item">
-			<span style="display: inline-block;position: relative;">
-			<img src="~assets/img/home_s.png" class="icon_img"/>
-		</span>
-			<p class="weui-tabbar__label">附近</p>
-		</a>
-		
-		<a href="#/towninfo" class="weui-tabbar__item" >
-			
-		</a>
-		<a href="#/user" class="weui-tabbar__item">
-			<img src="~assets/img/user.png" class="icon_img"/>
-			<p class="weui-tabbar__label">我的</p>
-		</a>
-		
-	</div>
-	<a href="#/towninfo" class="weui-tabbar__item" id="nav_town">
-			<span style="display: inline-block;position: relative;">
-				<img src="~assets/img/town_s.png" class="icon_img"/>
-			</span>
-			<p class="weui-tabbar__label">玩转小镇</p>
-		</a>
-	</footer>
+   <foot></foot>
 	
 </div>
 </template>
 
 <script>
-     
+     import footer from 'plugin/footer'
     export default {
         name: 'ware',
         data: function () {
@@ -133,7 +109,7 @@
 
         },
         components: {
-
+            foot:footer
         },
         watch: {
 

@@ -12,7 +12,7 @@
 	<div class="town_index">
 		<div  class="block info_item">
 			<div  class="info_title">
-				简介
+				简介 
 			</div>
             <div v-html="townInfo.town_desc" class="box info_box">
 
@@ -63,7 +63,7 @@
 		</div>
 	</div>
     <div class="weui-btn-area">
-        <div class="weui-btn weui-btn_primary" @click="totowninfo()">进入小镇</div>
+        <div class="weui-btn weui-btn_primary" @click="totown()">进入小镇</div>
     </div>
 </div>
 </template>
@@ -165,8 +165,8 @@
                     (e.index>0)&&self.shareAction(shareBts[e.index-1],true);
                 }):plus.nativeUI.alert('当前环境无法支持分享操作!');
             },
-			totowninfo:function(){
-                this.$router.push('/towninfo')
+			totown:function(){
+                this.$router.push('/town/'+this.$route.params.id||sessionStorage.getItem('town_id'))
             },
 			init:function(){
 
@@ -182,7 +182,7 @@
                     // error callback
                 });
 
-                this.$http.get('/cate/list').then(response => {
+                this.$http.get('/cate',{town_id:15}).then(response => {
 
 
                     self.cateList = response.body.data
@@ -191,7 +191,7 @@
                     // error callback
                 });
 
-                this.$http.get('/ware/list').then(response => {
+                this.$http.get('/ware',{town_id:15}).then(response => {
 
 
                     self.wareList = response.body.data

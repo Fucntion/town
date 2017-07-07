@@ -13,8 +13,6 @@
 <script>
 
      
-	import 'static/css/common.css'
-require('../../assets/js/immersed.js');
 
 export default {
 	name:'home',
@@ -119,16 +117,21 @@ export default {
             },
             init:function(){
 
-                var self=this
-                 this.$http.get('/town/'+localStorage.getItem('town_id')).then(response => {
-                    // get body data
-                    console.log(response.body.data)
-                    self.townList = response.body.data
+                var self=this,
+                    town_id = this.$route.params.id||sessionStorage.getItem('town_id')
 
+                    if(!town_id){
+                        // alert 小镇id不对
+                        return
+                    }
+                 this.$http.get('/town/'+town_id).then(response => {
+
+                    self.townList = response.body.data
                     self.townName = response.body.data.town_name
                     self.townDesc = response.body.data.town_desc
                 }, response => {
                     // error callback
+                    alert(JSON.stringify(response.body))
                 });
 
             }

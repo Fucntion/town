@@ -1,0 +1,123 @@
+#town {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+}
+.wrap.list_wrap {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wrap .list-bar {
+  background: #F2F2F2;
+  border: none;
+  color: #444444;
+}
+.icon_img {
+  width: 20px;
+  height: 20px;
+}
+.icon_left {
+  width: 25px;
+  height: 25px;
+}
+.block {
+  background: #fff;
+  margin: 10px 0;
+  padding: 0 10px;
+}
+.block_title {
+  margin: 10px 0;
+  padding: 0 10px;
+}
+.bar {
+  text-align: center;
+  line-height: 44px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 999;
+  background: #1AAD19;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  color: #fff;
+}
+.bar.bar-clear {
+  border: none;
+  background: none;
+}
+.bar.notfixed {
+  position: absolute;
+}
+.bar .bar-icon {
+  position: absolute;
+  padding-left: 30px;
+  font-size: 14px;
+  line-height: 44px;
+}
+.bar .icon_img {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.bar .bar-title {
+  font-size: 18px;
+}
+.bar .bar-right {
+  width: 40px;
+  height: 20px;
+  position: absolute;
+  right: 15px;
+  top: 0px;
+  font-size: 16px;
+  color: #fff;
+}
+.mui-dtpicker {
+  bottom: -23px;
+}
+.mui-dtpicker .mui-dtpicker-title h5 {
+  padding: 8px 0px;
+}
+.swiper-container.card_container {
+  background: #f2f2f2;
+  height: 100%;
+  position: absolute;
+  box-sizing: border-box;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.swiper-container .swiper-slide {
+  margin: 15% 0 0;
+}
+.swiper-container .swiper-slide .card_img {
+  position: relative;
+}
+.swiper-container .swiper-slide .card_img .img {
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
+  height: 0;
+  width: 100%;
+  padding-top: 172%;
+  background-size: cover;
+}
+.swiper-container .swiper-slide .card_img .card_mask {
+  background-size: 100% auto;
+  height: 18px;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-image: url('~assets/img/shadow.jpg');
+}

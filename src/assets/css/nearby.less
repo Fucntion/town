@@ -1,0 +1,167 @@
+// out: false
+#mapbox{
+top: 0;
+left: 0;
+right: 0;
+bottom: 50px;
+position: absolute
+;z-index: 1;}
+
+// .search-bar {
+//     position: absolute;
+//     // top: 10px;
+//     width: 100%;
+//     z-index: 3;
+//     box-sizing: border-box;
+//     padding: 0 10px;
+    
+
+// }
+
+.zuimei{
+	position: absolute;
+	bottom: 60px;
+	left:50%;
+	z-index: 2;
+	width: 80px;
+	height: 40px;
+    line-height: 40px;
+	padding: 0 20px;
+	margin-left: -60px;
+	color: white;
+	text-align: center;
+	font-size: 14px;
+	background: #09BB07;
+	p{
+		margin:0;
+		padding:0;
+		line-height:20px;
+	}
+}
+
+  
+.nearby-search-bar{
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    z-index: 3;
+    box-sizing: border-box;
+    padding: 0px 15px;
+
+    .change_town_btn{
+        display: inline-block;
+        padding: 0px 15px;
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 14px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .scan {
+        
+        float: right;
+        // text-align: center; 
+        margin-bottom: 7px;
+        width: 34px;
+        height: 34px;
+        background: rgba(0, 0, 0, 0.3);
+        background-image: url('~assets/img/qrcode.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 25px 25px;
+        
+    }
+}
+
+
+
+.scene_audio {
+    width: 100%;
+    overflow: auto;
+}
+
+.m_content.child_colo.way_content {
+    width: 100%;
+    overflow: hidden;
+}
+
+// .town-content .town-input-group .weui-cell .weui-cell__hd .weui-label {
+//     width: 86px;
+// }
+
+
+.info_box{
+	padding: 10px;
+    background: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.marker_info_box{
+  position: absolute;
+  bottom: 0;
+  z-index: 501;//底部是500
+  font-size: 14px;
+  .hr{
+    height: 1px;
+    width: 100%;
+    background: #CCCCCC; 
+    margin: 10px 0 6px 0;
+  }
+  .feature{
+      font-size: 12px;
+  }
+  .info{
+
+    display: flex;
+    
+    .info_l{
+        flex: 1;
+        dd{
+            // margin-top: 6px;
+        }
+        .name{
+            margin-bottom: 10px;
+            span{
+                font-size: 16px;
+                color: #333333;
+                font-weight: 600;
+            }
+            small{
+                font-size: 14px;
+                margin-left: 6px;
+            }
+        }
+        .address{
+
+        }
+        .juli{
+            // margin-top: 20px;
+        }
+
+    } 
+    .info_r{
+        // flex: 1;
+        width: 100px;
+        text-align: right;
+        .btn{
+            padding: 6px 10px;
+            margin-top:8px; 
+            width: 80px;
+            text-align: center;
+            color: white;
+            background: #09BB07;
+            display: block;
+        }
+        .go{
+            background: #576B95;
+        }
+        .detail{
+
+        }
+    }
+    
+  }
+
+}

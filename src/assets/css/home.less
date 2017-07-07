@@ -1,0 +1,170 @@
+// out: false
+
+
+.head{
+    position: relative;
+    text-align: center;
+    z-index: 3;
+    background: #1AAD19;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    
+}
+
+
+
+
+.weui-grids.index-grids .weui-grid {
+    width: 25%;
+}
+
+
+
+.title {
+    .town-pull-left {
+        float: left;
+    }
+    .plus {
+        float: right;
+        width: 18px;
+        height: 18px;
+    }
+}
+
+.marTop {
+    margin-top: 44px;
+}
+
+.marTop.head {
+    margin-top: 60px;
+}
+
+.index_nav{
+    padding: 20px 10px;
+    background: white;
+}
+
+.nav{
+    
+    // padding: 10px;
+    display: flex;
+    // background: #1AAD19;
+    .nav_item{
+        flex: 1;
+        text-align: center;
+        img{
+            width: 44px;
+            height: 44px;
+
+        }
+        p{
+            font-size: 12px;
+            color: #333333;
+        }
+    }
+}
+
+
+
+.mudi_box{
+    background: none;
+    padding: 10px;
+    .mudi_row{
+        display: flex;
+        
+        .mudi_item{
+            flex:1;
+            text-align: center;
+            .thumb{
+            margin: 0 auto;
+            width: 110px;
+            height: 110px;
+            background-size: cover;
+            background-position: center center;
+            }
+            .name{
+                margin: 10px 0 5px 0;
+                // text-align: left;
+                font-size: 14px;
+                .small{
+                    color: #666666;
+                }
+            }
+
+        }
+    }
+   
+}
+
+
+.index_town {
+    margin-bottom: 55px;
+    .town_img {
+        width: 96%;
+        margin: 5px auto;
+        //      border: 1px solid #ccc;
+        border-radius: 3px;
+        position: relative;
+        height: 0;
+        padding-top: 56.7%;
+        background-size: cover;
+        background-position: center center;
+        .index_item {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom: 50%;
+            font-size: 16px;
+            line-height: 16px;
+            margin-top: -16px;
+            // left: 10px;
+            color: #fff;
+            z-index: 5;
+        }
+        .index_mask {
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+            z-index: 2;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            padding-top: 60%;
+            border-radius: 3px;
+        }
+    }
+}
+
+
+.weui-icon_msg.warn_show {
+    margin-top: 10px;
+    font-size: 70px;
+}
+
+
+.search-bar{
+    position: absolute;
+    top: 7px;
+    height: 33px;
+    width: 100%;
+    z-index: 3;
+    box-sizing: border-box;
+    padding: 0 10px;
+
+    .scan {
+        
+        float: right;
+        margin-bottom: 7px;
+        width: 26px;
+        height: 26px;
+        background: rgba(0, 0, 0, 0.3);
+        background-image: url('~assets/img/qrcode.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 22px 22px;
+        
+    }
+}
+
+

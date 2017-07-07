@@ -6,7 +6,7 @@ module.exports = {
 
 	 entry: {
 	 	app: './src/app.js',
-	 	vender:['vue','vuex','vue-resource','vue-router']
+	 	vender:['vue','vue-resource','vue-router']
 	 },
 	output: {
 		path: path.resolve(__dirname, './dist'),
@@ -56,7 +56,7 @@ module.exports = {
 				loader: 'url-loader',
 				query: {
 					name: 'img/[name].[ext]?[hash:8]',
-					limit: 8192 // inline base64 URLs for <=8k images, direct URLs for the rest
+					limit: 8192*3 // inline base64 URLs for <=8k images, direct URLs for the rest
 				}
 			}, {
 				test: /\.(svg|eot|woff|woff2|ttf)$/,
@@ -70,9 +70,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			vue$: 'vue/dist/vue',
-			util: path.join(__dirname, './src/util'),
 			static: path.join(__dirname, './static'),
-			//  : path.join(__dirname, './src/vuex/ .js'),
 			assets: path.join(__dirname, './src/assets'),
 			plugin: path.join(__dirname, './src/components'),
 		},

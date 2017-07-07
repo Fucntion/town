@@ -1,9 +1,10 @@
 import Vue from 'vue'
 var _ = require('lodash')
 
-import util from 'util/util'
+import util from './util/util'
 Vue.use(util)
 
+Vue.config.productionTip = false
 
 import VueRouter from 'vue-router'
 import routes from './routes'
@@ -27,7 +28,7 @@ router.beforeEach((to, from, next) => {
 
 })
 
-
+var env = 0;//0线上，1开发
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
 
@@ -44,11 +45,15 @@ Vue.http.interceptors.push((request, next) => {
         request.url = request.url.substr(7)
 
     }else{
-
-      var url = 'http://api.town.icloudinn.com'
+		if(env === 1){
+			var url = 'http://api.town.icloudinn.com/v1'
+		}else{
+			var url = 'http://api.town.icloudinn.com'
+		}
+      
         request.url = url + request.url
         request.headers.set('token', localStorage.getItem("token"))
-    	request.headers.set('town', localStorage.getItem("town_id"))
+    	request.headers.set('town', sessionStorage.getItem("town_id")) //后台接口把town_id废弃了
     }
 
 
@@ -69,7 +74,8 @@ Vue.http.interceptors.push((request, next) => {
 
 
 
-require ('./assets/css/app.less')
+require ('assets/css/app.less')
+
 import App from './App.vue'
 
 // import './filter.js'
