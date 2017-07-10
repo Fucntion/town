@@ -88,9 +88,9 @@
 		   </div>
 		</div>
    </div>
-   
+<!--   
 	<foot>
-		</foot>
+		</foot>-->
 
 </div>
 </template>

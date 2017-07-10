@@ -9,14 +9,18 @@
 		<img :src="'http://api.town.icloudinn.com/uploads/'+townInfo.town_thumb" />
 			
 	</div>
-	<div class="town_index">
-		<div  class="block info_item">
+
+	<div class="info_list">
+		<div  class="block info_item info_item_desc">
 			<div  class="info_title">
 				简介 
 			</div>
-            <div v-html="townInfo.town_desc" class="box info_box">
+            <div v-html="townInfo.town_desc" style="margin-top:20px;"  :class="isDrop?'desc_box':''" >
 
             </div>
+
+                <div class="weui-btn weui-btn_primary" style="border-radius:0;margin:10px 0;font-size:14px;margin:10px 0;" @click="changeDrop()">显示全部</div>
+
 		</div>
 		<div class="block info_item" v-if="sceneList.length>0">
 			<div  class="info_title">
@@ -61,6 +65,21 @@
                 </a>
             </div>
 		</div>
+        <div class="block info_item" v-if="hotelList.length>0">
+			<div  class="info_title">
+				民宿
+			</div>
+            
+            <div class="box">
+<a class="item" v-for="(hotel,index) in hotelList" :href="'/#/hotel/'+hotel.hotel_id" >
+
+    <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + hotel.thumb + ')'}"></div>
+
+                    <p> {{hotel.name}}</p>
+                
+                </a>
+            </div>
+		</div>
 	</div>
     <div class="weui-btn-area">
         <div class="weui-btn weui-btn_primary" @click="totown()">进入小镇</div>
@@ -71,7 +90,7 @@
 
 	 
 	export default {
-		name: 'townindex',
+		name: 'town_category',
 		data: function () {
 
 			return {
@@ -81,7 +100,9 @@
                 desc:null,
                 sceneList:[],
                 cateList:[],
-                wareList:[]
+                wareList:[],
+                hotelList:[],
+                isDrop:true
 			}
 		},
 		computed: {
@@ -89,7 +110,9 @@
 		},
 		methods: {
 
-			
+			changeDrop:function(){
+                this.isDrop = !this.isDrop
+            },
             // 更新分享服务及发布分享
            
             updateSerivces:function(){
@@ -166,7 +189,7 @@
                 }):plus.nativeUI.alert('当前环境无法支持分享操作!');
             },
 			totown:function(){
-                this.$router.push('/town/'+this.$route.params.id||sessionStorage.getItem('town_id'))
+                this.$router.push('/town/'+this.$route.params.id)
             },
 			init:function(){
 
@@ -175,14 +198,13 @@
 
                 this.$http.get('/town/' + townId ).then(response => {
 
-
                     self.townInfo = response.body.data
                     self.sceneList = self.townInfo.scene
                 }, response => {
                     // error callback
                 });
 
-                this.$http.get('/cate',{town_id:15}).then(response => {
+                this.$http.get('/cate/list').then(response => {
 
 
                     self.cateList = response.body.data
@@ -191,10 +213,19 @@
                     // error callback
                 });
 
-                this.$http.get('/ware',{town_id:15}).then(response => {
+                this.$http.get('/ware/list').then(response => {
 
 
                     self.wareList = response.body.data
+
+                }, response => {
+                    // error callback
+                });
+
+                this.$http.get('/hotel/list').then(response => {
+
+
+                    self.hotelList = response.body.data
 
                 }, response => {
                     // error callback

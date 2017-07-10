@@ -112,7 +112,7 @@ export default {
 					self.$router.push('/scene/'+info.resource_id)
 				break;
 				case 'town':
-				self.$router.push('/townindex/'+info.resource_id)
+				self.$router.push('/town/category/'+info.resource_id)
 				// alert('类别有误')
 				break;
 				default:

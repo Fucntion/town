@@ -212,6 +212,9 @@
 		<div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
 		<div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
 		<div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
+		<div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
+		<div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
+		<div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
 		
 	</div>
 	<foot></foot>
@@ -219,7 +222,7 @@
 </template>
 <script>
 
-	
+
 	import footer from 'plugin/footer'
 
 	export default {
@@ -292,8 +295,11 @@
 				gallery.slider({
 					interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
 				});
+
+				// new JRoll(".wrap");
 			})
 			self.getTown()
+
 			// self.istop()
 			
 
