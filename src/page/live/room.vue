@@ -2,7 +2,7 @@
 <div class="wrap">
 
      <header class="bar">
-		<div class="bar-icon"  ><img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
+		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >直播列间</div>
 	</header>
     <div class="town-content" v-if="room">

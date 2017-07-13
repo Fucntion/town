@@ -1,15 +1,10 @@
 <template>
-<div class="wrap" style="overflow: hidden;">
+<div class="wrap" >
 	 <!--搜索-->
 	<div v-show="!marker_info_box" class="nearby-search-bar" :style="{paddingTop:ishead+'px'}">
-		<span @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}
-			</span>
-		<div class="scan" @click="Toscan()" v-show="!is_plus" ></div>
+		<span @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}</span>
+		<div class="scan" @click="Toscan()" v-if="isplus=='plus'" ></div>
 	</div>
-
-	
-
-	
 
 	<!--底部按钮-->
 	<div class="zuimei" @click="totown()"  v-show="!marker_info_box">
@@ -47,11 +42,13 @@
 	<!--选择所在镇组件-->
 	<div id="index_address" style="z-index:4" v-show="town_show">	
       <div class="address_content">
-			<header class="bar" :class="{head:ishead}">
-				<div class="bar-icon"  @click="changeTownShow()"><img src="~assets/img/left.png" class="icon_img"   /></div>
+			<header class="bar" :style="{paddingTop:ishead+'px'}">
+				<div class="bar-icon"  @click="changeTownShow()">
+					<img src="~assets/img/left.png" class="icon_img icon_left"  /></div>
 				<div class="bar-title"  >请选择您所在的镇</div>
 			</header>
-			<div class="address_box marTop" :class="{head:ishead}">
+			<div class="bar_after"></div>
+			<div class="address_box marTop" :style="{marginTop:ishead+'px'}">
 				<ul id="accordion" class="accordion">
 
 					<li v-for="city in townInfo"><div class="link">{{city.city_name}}</div>
@@ -76,7 +73,7 @@
 
 import footer from 'plugin/footer'
 export default {
-	name: 'home',
+	name: 'nearby',
 	data: function () {
 
 		return {
@@ -133,9 +130,10 @@ export default {
 			self.IS_TOWN_ID = town_info.town_id
 			if(town_info.lat&&town_info.lng){
 				map.panTo([town_info.lng,town_info.lat]); // 用城市名设置地图中心点
-				sessionStorage.setItem("town_id",town_info.town_id);//这里的每个接口都有用
+				
+				// sessionStorage.setItem("town_id",town_info.town_id);//这里的每个接口都有用
 				// sessionStorage.setItem("town_name",town_info.town_name);
-				// sessionStorage.setItem("city_name",town_info.city_);
+
 			}
 			self.town_show = false;
 		},
@@ -180,7 +178,7 @@ export default {
 				alert('请先点击左上角选择镇')
 				return 
 			}else{
-				this.$router.push('/town/'+self.IS_TOWN_ID)
+				this.$router.push({path:'/town/'+self.IS_TOWN_ID,query:{town_name:self.IS_TOWN_NAME}})
 			}
 
 
@@ -275,6 +273,12 @@ export default {
 				case 'town':
 				imageUrl = "http://town.icloudinn.com/static/images/zhen.png"
 				break;
+				case 'hotel':
+				imageUrl = "http://town.icloudinn.com/static/images/ms.png"
+				break;
+				case 'cate':
+				imageUrl = "http://town.icloudinn.com/static/images/shi.png"
+				break;
 				default:
 				break;
 			}
@@ -364,12 +368,68 @@ export default {
 				var sceneList = response.body.data
 
 				for(var i=0;i<sceneList.length;i++){
-					var point = [sceneList[i].lng,sceneList[i].lat],
+
+					if(sceneList[i].lat&&sceneList[i].lng){
+
+						var point = [sceneList[i].lng,sceneList[i].lat],
 						type = 'scene',
 						label = sceneList[i].scene_name,
 						resource_id = sceneList[i].scene_id;
 				
-					self.addMarker(point,type,resource_id,label);
+						self.addMarker(point,type,resource_id,label);
+					}
+					
+
+					
+				}
+							
+			}, response => {
+				// error callback
+			});
+
+			//加载酒店
+			this.$http.get('/test/getHotel').then(response => {
+				// get body data
+				
+				var hotelList = response.body.data
+
+				for(var i=0;i<hotelList.length;i++){
+					
+					if(hotelList[i].lat&&hotelList[i].lng){
+						var point = [hotelList[i].lng,hotelList[i].lat],
+						type = 'hotel',
+						label = hotelList[i].hotel_name,
+						resource_id = hotelList[i].hotel_id;
+				
+						self.addMarker(point,type,resource_id,label);
+					}
+					
+
+					
+				}
+							
+			}, response => {
+				// error callback
+			});
+
+
+			//加载美食
+			this.$http.get('/test/getCate').then(response => {
+				// get body data
+				
+				var cateList = response.body.data
+
+				for(var i=0;i<cateList.length;i++){
+					
+					if(cateList[i].lat&&cateList[i].lng){
+						var point = [cateList[i].lng,cateList[i].lat],
+						type = 'cate',
+						label = cateList[i].cate_name,
+						resource_id = cateList[i].cate_id;
+				
+						self.addMarker(point,type,resource_id,label);
+					}
+					
 
 					
 				}

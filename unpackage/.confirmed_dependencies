@@ -10,7 +10,14 @@
       "static/js/mui.picker.min.js",
       "static/js/swiper-3.4.2.min.js",
       "static/js/mui.js",
-      "static/js/mui.poppicker.js"
-    ]
+      "static/js/mui.poppicker.js",
+      "static/img/play1.png",
+      "static/img/play2.png",
+      "static/img/play3.png",
+      "static/img/play4.png",
+      "static/img/play5.png",
+      "static/img/play6.png"
+    ],
+    "refer": []
   }
 }

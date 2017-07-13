@@ -1,11 +1,11 @@
 <template>
 <div class="wrap">
-   <header class="bar" :class="{head:ishead}">
-		<div class="bar-icon"><img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
+   <header class="bar" :style="{marginTop:ishead+'px'}">
+		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >选择收货地址</div>
         <div class="bar-right" @click="present()">保存</div>
 	</header>
-    <div class="town-content marTop" :class="{head:ishead}">
+    <div class="town-content marTop" :style="{marginTop:ishead+'px'}">
         <div class="town-input-group">
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">收货人</label></div>
@@ -30,7 +30,7 @@
                     <input type="hidden" class="town-input-clear" v-model="addressInfo.city">
                     <input type="hidden" class="town-input-clear" v-model="addressInfo.area">
                 </div>
-                <img src="../../assets/img/right.png" class="icon_img address_icon"/>
+                <img src="~assets/img/right.png" class="icon_img address_icon"/>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">详细地址</label></div>

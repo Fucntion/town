@@ -46,6 +46,17 @@ util.getRandomArrayElements=function (arr, count) {
     return shuffled.slice(min);
 }
 
+util.swiperTop = function(){
+
+    // 底部
+    var availHeight =  window.screen.availHeight-54,
+        availWidth = window.screen.availWidth,
+        boxwidth = availWidth*0.71,
+        boxheight = boxwidth*1.72+18;
+        // console.log(boxheight)
+        return availHeight/2-boxheight/2
+}
+
 export default {
   install: function(Vue) {
     Object.defineProperty(Vue.prototype, '$util', { value: util });

@@ -1,11 +1,11 @@
 <template>
 <div class="wrap">
-    <header class="bar" :class="{head:ishead}">
-		<div class="bar-icon"><img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
+    <header class="bar" :style="{marginTop:ishead+'px'}">
+		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >选择收货地址</div>
         <div class="bar-right" @click="addresslist()">管理</div>
 	</header>
-    <div class="town-content ad ad_select marTop" :class="{head:ishead}">
+    <div class="town-content ad ad_select marTop" :style="{marginTop:ishead+'px'}">
         <div class="addres" v-for="item in addressList" @click="addressSelect(item)">
             <div class="top">
                 <input class="link" type="text" :value="item.link" disabled="disabled">

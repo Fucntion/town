@@ -1,7 +1,7 @@
 <template>
 	<div class="wrap">
-		<header class="bar" :class="{head:ishead}">
-			<div class="bar-icon"><img src="../../assets/img/left.png" class="icon_img icon_left" @click="closeScan()" /></div>
+		<header class="bar" :style="{marginTop:ishead+'px'}">
+			<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="closeScan()" /></div>
 			<div class="bar-title">扫一扫</div>
 		</header>
 		
@@ -23,7 +23,7 @@
 
 			return {
 
-				ishead: null,
+				ishead:this.$util.istop(),
 				scan: null,
 			}
 		},
@@ -114,12 +114,7 @@
 </script>
 <style lang="less">
 
-	html,
-	body {
-		margin: 0px;
-		padding: 0px;
-		height: 100%;
-	}
+	
 	
 	#bcid {
 		position: absolute;

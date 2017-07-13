@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap"> 
-	<div class="head"   :style="{paddingTop:ishead+'px'}">
+	<div class="bar"   :style="{paddingTop:ishead+'px'}" v-if="isplus=='plus'">
 		发现
 		<!--<div class="search-bar" >
 			<div class="scan" @click="Toscan()" v-show="is_plus" ></div>
@@ -8,12 +8,12 @@
 		</div>-->
 	</div>
 
-		<div class="swiper-container card_container" :style="{paddingTop:ishead+'px'}">
+		<div class="swiper-container card_container" :style="{marginTop:ishead+'px',top:swiperTop+'px'}" >
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"  v-for="(ware,index) in wareList"  @click="toware(ware.goods_id)" >
+				<div class="swiper-slide"  v-for="(lu,index) in luList"  @click="tolu(lu.lu_id)" >
 					<div class="hands_img card_img" >
 						
-						<div class="img" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + ware.thumb + ')'}"></div>
+						<div class="img" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + lu.thumb + ')'}"></div>
 						
 						<div class="card_mask"></div>
 					</div>		
@@ -34,8 +34,10 @@
 		data: function () {
 
 			return {
-				wareList:[],
-				ishead:this.$util.istop()
+				luList:[],
+				ishead:this.$util.istop(),
+				isplus:this.$util.isEnvironment(),
+				swiperTop:this.$util.swiperTop()
 			}
 		},
 		computed: {
@@ -44,9 +46,9 @@
 		methods: {
 			toware:function(goods_id){
 
-			this.$router.push('ware/'+goods_id)
+				this.$router.push('ware/'+goods_id)
 
-		},
+			},
 			Swiper:function(){
 					var mySwiper = new Swiper('.swiper-container', {
 						autoplay: 50000,
@@ -73,42 +75,7 @@
 
 					return self.ishead = false
 				}
-			},
-			Totownindex: function (towns, a) {
-
-				var self = this
-				if (a == 1) {
-					localStorage.setItem("town_id", towns.town_id);//这里的每个接口都有用
-					localStorage.setItem("town_name", towns.town_name);
-					localStorage.setItem("city_name", self.city);
-
-					self.$router.push('townindex/' + towns.town_id)
-
-				}
-			},
-			way: function () {
-				this.$router.push('/waylist')
-			},
-			share: function () {
-				this.$router.push('/share')
-			},
-			Toscan: function () {
-				this.$router.push('/scan')
-			},
-			toTown: function () {
-
-				var self = this
-				self.$http.get('/town/list/').then(response => {
-					// self.$http.post('/town/list/',{city_name:city}).then(response => {
-
-					self.townInfo = response.body.data
-					// sessionStorage.setItem('townList',JSON.stringify(response.body.data))
-				}, response => {
-					console.log("请求失败")
-				});
-
 			}
-
 		},
 		components: {
 			foot: footer
@@ -122,13 +89,13 @@
 			var self = this
 
 
-		self.$http.get('/test/getGoods').then(response => {
+		self.$http.get('/test/travelRoute').then(response => {
 
-
+ 
 
 			if(!_.isArray(response.body.data))return
-			self.wareList = response.body.data
-
+			self.luList = self.$util.getRandomArrayElements(response.body.data,6)
+			// console.log(self.wareList)
 			self.$nextTick(function () {
 				// console.log($('.card_img img'))
     			

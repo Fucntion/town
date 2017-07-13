@@ -1,11 +1,11 @@
 <template>
 <div class="wrap">
-   <header class="bar" :class="{head:ishead}">
-		<div class="bar-icon"><img src="../../assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
+   <header class="bar" :style="{marginTop:ishead+'px'}">
+		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >确认订单</div>
 	</header>
 
-    <div class="town-content marTop" :class="{head:ishead}">
+    <div class="town-content marTop" :style="{marginTop:ishead+'px'}">
 
         <div class="address-box" @click="toaddress()" >
             <img src="../../assets/img/address_s.png"  class="icon_img order_icon left "/>
@@ -13,7 +13,7 @@
                <div class="info-group"> 收货人:<h2>{{name}}</h2><h2> {{tel}}</h2></div>
                <div class="info-group address"> 地址:{{address}}</div>
             </div>
-            <img src="../../assets/img/right.png" class="icon_img order_icon right"/>
+            <img src="~assets/img/right.png" class="icon_img order_icon right"/>
         </div>
 
         <div class="ware-list" >

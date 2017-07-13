@@ -7,7 +7,11 @@ Vue.use(util)
 Vue.config.productionTip = false
 
 import VueRouter from 'vue-router'
+
 import routes from './routes'
+
+
+
 
 Vue.use(VueRouter)
 
@@ -45,11 +49,9 @@ Vue.http.interceptors.push((request, next) => {
         request.url = request.url.substr(7)
 
     }else{
-		if(env === 1){
-			var url = 'http://api.town.icloudinn.com/v1'
-		}else{
-			var url = 'http://api.town.icloudinn.com'
-		}
+
+
+		var url = 'http://api.town.icloudinn.com'
       
         request.url = url + request.url
         request.headers.set('token', localStorage.getItem("token"))

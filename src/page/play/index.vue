@@ -1,12 +1,13 @@
 <template>
 <div class="wrap">
-    <div class="head"   :style="{paddingTop:ishead+'px'}">
+    <div class="bar "   :style="{paddingTop:ishead+'px'}"  v-if="isplus=='plus'">
 		活动
 		<!--<div class="search-bar" >
 			<div class="scan" @click="Toscan()" v-show="is_plus" ></div>
 
 		</div>-->
-	</div>
+	</div> 
+	<div class="bar_after" v-if="isplus=='plus'"></div>
 	<!--<div id="banner">
 
 			<div class="search-bar" :class="{top:ishead}">
@@ -113,7 +114,8 @@
 		data: function() {
 
 			return {
-				ishead:this.$util.istop()
+				ishead:this.$util.istop(),
+				isplus:this.$util.isEnvironment()
 				
 			}
 		},
