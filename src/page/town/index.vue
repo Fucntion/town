@@ -6,7 +6,7 @@
 		<!--<div class="bar-icon" @click="toMap()"><img src="../../assets/img/address_s.png" class="icon_img" /> {{IS_TOWN_NAME}}</div>-->
 		<div class="bar-title" >{{IS_TOWN_NAME}}</div>
 	</header>
-	<div class="bar_after"></div>
+	<div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
 
     <div class="towns_content" >
         <div class="town_left flex">

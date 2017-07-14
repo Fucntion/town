@@ -1,14 +1,16 @@
 <template>
 <div class="wrap">
      <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-		<div class="bar-title" >民宿酒店</div>
+		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+		民宿酒店
     </header>
-    
-    <div class="town-content marTop js-content" :style="{marginTop:ishead+'px'}">
+    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+
+    <div class="town-content  js-content">
         <div id="hotel" class="hotel_box">
             <div class="town-row">
-                <div @click="toHotel(item)" class="town-col-xs-12" v-for="item in hotelList" :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb + ')'}">
+                <div @click="toHotel(item)" class="town-col-xs-12" v-for="item in hotelList" 
+                :style="{backgroundImage: 'url(' + item.thumb + ')'}">
                     <div class="hotel_title">{{item.name}}</div>
                     <div class="hotel_number"><span>{{parseInt(Math.random()*100)+1}}</span>人来过</div>
                     <div class="mask"></div>
@@ -29,7 +31,7 @@ export default {
 
 		return {
             hotelList: [],
-            ishead:null
+            ishead:this.$util.istop()
            
             
 		}
@@ -40,7 +42,7 @@ export default {
 	methods: {
 		toHotel:function(item){
 
-			this.$router.push('hotel/'+item.hotel_id)
+			this.$router.push('/hotel/'+item.hotel_id)
 		}
        
 	},

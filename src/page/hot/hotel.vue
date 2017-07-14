@@ -1,10 +1,10 @@
 <template>
     <div class="wrap white_wrap" v-if="hotelList.length>0">
         
-         <div class="bar bot" :style="{marginTop:ishead+'px'}">
+         <div class="bar bot" :style="{paddingTop:ishead+'px'}">
              热门美食
             <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
-            <!--<img src="~assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()">-->
+            
         </div>
         <div class="bar_after"></div>
        

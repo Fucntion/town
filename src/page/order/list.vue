@@ -1,10 +1,10 @@
 <template>
 <div class="wrap">
-	<header class="bar" :style="{marginTop:ishead+'px'}">
+	<header class="bar" :style="{paddingTop:ishead+'px'}">
 		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >我的订单</div>
 	</header>
-	<div id="order_list" class="marTop" :style="{marginTop:ishead+'px'}">
+	<div id="order_list" class="" >
 		<div class="weui-form-preview" v-for="order in orderList">
             <div class="weui-form-preview__hd">
                 <div class="weui-form-preview__item">

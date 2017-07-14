@@ -1,10 +1,12 @@
 <template>
 <div class="wrap">
-     <header class="bar" :style="{marginTop:ishead+'px'}" >
+     <header class="bar" :style="{paddingTop:ishead+'px'}" >
 		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >直播列表</div>
 	</header>
-    <div class="town-content marTop" :style="{marginTop:ishead+'px'}">
+
+	<div class="bar_after"></div>
+    <div class="town-content " >
         <div id="live" class="live_box">
             <div class="town-row">
                 <div @click="toRoom(item)" class="town-col-xs-12" v-for="item in liveList" :style="{backgroundImage: 'url(' + item.room.coverImgUrl + ')'}">

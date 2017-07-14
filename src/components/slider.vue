@@ -5,7 +5,7 @@
         <div class="mui-slider-item mui-slider-item-duplicate">
             <div class="mask"></div>
             <a href="javascript:;">
-                <img :src="'http://api.town.icloudinn.com/uploads/'+first.url">
+                <img :src="first.url">
             </a>
         </div>
 
@@ -13,7 +13,7 @@
         <div v-for="item in List" class="mui-slider-item">
             <div class="mask"></div>
             <a href="javascript:;">
-                <img  :src="'http://api.town.icloudinn.com/uploads/'+item.url">
+                <img  :src="item.url">
             </a>
         </div>
 
@@ -21,7 +21,7 @@
         <div class="mui-slider-item mui-slider-item-duplicate">
             <div class="mask"></div>
             <a href="javascript:;">
-                <img :src="'http://api.town.icloudinn.com/uploads/'+last.url">
+                <img :src="last.url">
             </a>
         </div>
     </div>

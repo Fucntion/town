@@ -7,7 +7,8 @@
 
 		</div>-->
 	</div> 
-	<div class="bar_after" v-if="isplus=='plus'"></div>
+	 <div class="bar_after" :style="{paddingTop:ishead+'px'}" v-if="isplus=='plus'"></div>
+
 	<!--<div id="banner">
 
 			<div class="search-bar" :class="{top:ishead}">

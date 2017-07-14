@@ -2,7 +2,7 @@
 <div class="wrap">
 	<div class="bar relatived"   :style="{paddingTop:ishead+'px'}"  v-if="isplus=='plus'">
 		全域旅游新时代
-		<div class="search-bar" :style="{marginTop:ishead+'px'}">
+		<div class="search-bar" >
 			<!--<div class="scan" @click="Toscan()" v-show="is_plus" ></div>-->
 			<!--<div class="weui-search">
 				<div class="weui-icon-search" ></div>
@@ -94,14 +94,14 @@
 			</a>
 			
 		</div>
-		<div class="" style="margin-top:20px;font-size:16px;">
-			<p style="text-align:center;color:#333333">行程定制</p>
-			<div style="margin:15px 0 10px;">
-			<input style="font-size:14px;color:#444444;width:49%;line-height:2.5;padding:2px 6px;box-sizing:border-box;border:1px solid #e7e7e7;border-radius:0;" placeholder="称呼" class="" type="text" /> 
-			<input style="font-size:14px;color:#444444;width:49%;line-height:2.5;padding:2px 6px;box-sizing:border-box;border:1px solid #e7e7e7;border-radius:0;" placeholder="联系方式" class="" type="text" /> 
-			<!--<textarea style="font-size:14px;color:#444444;width:100%;margin-top:10px;height:100px;line-height:1.4;padding:2px 6px;box-sizing:border-box;border:1px solid #e7e7e7;border-radius:0;" placeholder="您的期望" >
+		<div class="dingzhi">
+			<p class="title" >行程定制</p>
+			<div  class="dingzhi_info_box">
+				<input v-model="name" class="name"  placeholder="称呼"  type="text" /> 
+				<input v-model="telphone" class="telphone"  placeholder="联系方式" type="text" /> 
+				<textarea v-model="content" class="content"  placeholder="请填写您的需求，方便更好为您服务。" >
 
-			</textarea>-->
+				</textarea>
 			</div>
 
 			<div class="weui-btn weui-btn_primary" style="line-height:2.7;font-size:16px;border-radius:0">定制行程</div>
@@ -137,7 +137,7 @@
 		<div class="mudi_row">
 			<div class="mudi_item" v-if="index<3"  v-for="(item,index) in townInfo" @click="Totown(item)">
 				<div class="thumb" 
-				:style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}"></div>
+				:style="{backgroundImage: 'url(' + item.town_thumb + ')'}"></div>
 				<p class="name">{{item.town_name}} <span class="small"> {{item.city_name}}</span></p>
 			</div>
 			
@@ -145,7 +145,7 @@
 		<div class="mudi_row" >
 			<div class="mudi_item" v-if="index>2"  v-for="(item,index) in townInfo" @click="Totown(item)">
 				<div class="thumb" 
-				:style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}"></div>
+				:style="{backgroundImage: 'url(' + item.town_thumb + ')'}"></div>
 				<p class="name">{{item.town_name}} <span class="small">{{item.city_name}}</span></p>
 			</div>
 			

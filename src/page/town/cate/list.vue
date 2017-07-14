@@ -1,13 +1,15 @@
 <template>
 <div class="wrap">
-     <header class="bar" :style="{marginTop:ishead+'px'}">
+     <header class="bar" :style="{paddingTop:ishead+'px'}">
 		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >美食</div>
-	</header>
-    <div class="town-content marTop" :style="{marginTop:ishead+'px'}">
+    </header>
+    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+    <div class="town-content ">
         <div id="hotel" class="hotel_box">
             <div class="town-row">
-                <div @click="toCate(item)" class="town-col-xs-12" v-for="item in cateList" :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb[0].url + ')'}">
+                <div @click="toCate(item)" class="town-col-xs-12" v-for="item in cateList" 
+                :style="{backgroundImage: 'url(' + item.thumb[0].url + ')'}">
 
                     <div class="hotel_title">{{item.name}}</div>
                     <div class="hotel_number"><span>{{parseInt(Math.random()*100)+1}}</span>人来过</div>
@@ -29,7 +31,7 @@ export default {
 
 		return {
             cateList: [],
-            ishead:null
+            ishead:this.$util.istop()
 		}
 	},
     computed:{
@@ -38,7 +40,7 @@ export default {
 	methods: {
 		toCate:function(item){
 
-			this.$router.push('cate/'+item.cate_id)
+			this.$router.push('/cate/'+item.cate_id)
 		}
 	},
 	components: {
@@ -51,7 +53,6 @@ export default {
 
         var self = this
 
-        sessionStorage.setItem('town_id',self.$route.params)
 
         this.$http.get('/cate/list').then(response => {
 

@@ -1,10 +1,11 @@
 <template>
 <div class="wrap  list_wrap">
-	 <header class="bar" :style="{marginTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-		<div class="bar-title" >伴手礼</div>
+	 <header class="bar" :style="{paddingTop:ishead+'px'}">
+		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+	伴手礼
 	</header>
-	<div id="main" class="town-content marTop" :style="{marginTop:ishead+'px'}">
+	<div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+	<div id="main" class="town-content " >
 		<!--<div id="hotel" class="hotel_box">
             <div class="town-row">
                 <div @click="toware(ware.goods_id)" class="town-col-xs-12" v-for="(ware,index) in wareList" :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ware.thumb[0].url + ')'}">
@@ -16,13 +17,13 @@
 				
             </div>
         </div>-->
-		<div class="swiper-container card_container" :style="{marginTop:ishead+'px',top:swiperTop+'px'}">
+		<div class="swiper-container card_container" :style="{paddingTop:swiperTop+ishead/2+44+'px'}">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"  v-for="(ware,index) in wareList"  @click="toware(ware.goods_id)" >
 					<div class="hands_img card_img" >
 						<!--:style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + ware.thumb + ')'}"-->
 						<!--<img  :src="'http://api.town.icloudinn.com/uploads/' + ware.thumb">-->
-						<div class="img" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + ware.thumb + ')'}"></div>
+						<div class="img" :style="{backgroundImage: 'url('+ware.thumb + ')'}"></div>
 						<!--<div class="fram_title">{{ware.name}}</div>-->
 						<div class="card_mask"></div>
 					</div>		
@@ -64,7 +65,7 @@ export default {
 
 		toware:function(goods_id){
 
-			this.$router.push('ware/'+goods_id)
+			this.$router.push('/ware/'+goods_id)
 
 		},
 		// 轮播

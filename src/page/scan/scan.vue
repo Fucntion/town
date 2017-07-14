@@ -1,6 +1,6 @@
 <template>
 	<div class="wrap">
-		<header class="bar" :style="{marginTop:ishead+'px'}">
+		<header class="bar" :style="{paddingTop:ishead+'px'}">
 			<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="closeScan()" /></div>
 			<div class="bar-title">扫一扫</div>
 		</header>

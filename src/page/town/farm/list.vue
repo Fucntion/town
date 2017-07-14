@@ -1,10 +1,11 @@
 <template>
 <div class="wrap list_wrap">
-	 <header class="bar"  :style="{marginTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-		<div class="bar-title" >我在海南有农庄</div>
+	 <header class="bar"  :style="{paddingTop:ishead+'px'}">
+		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+		我在海南有农庄
 	</header>
-	<div class="town-content marTop " :style="{marginTop:ishead+'px'}" id="farm" >
+<div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+	<div class="town-content  "  id="farm" >
 		
 					<!--<div class="town-row">
 							<div @click="tofarm(farm.farms_id)"  class="town-col-xs-12" v-for="farm in farmList" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + farm.thumb + ')'}">
@@ -13,7 +14,7 @@
 							</div>
 
 					</div>-->
-			<div class="swiper-container card_container" :style="{marginTop:ishead+'px',top:swiperTop+'px'}">
+			<div class="swiper-container card_container" :style="{paddingTop:swiperTop+ishead/2+44+'px'}">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"  v-for="(farm,index) in farmList"  @click="tofarm(farm.farms_id)" >
 					<div class="hands_img card_img" >
@@ -67,7 +68,7 @@ export default {
 
 		tofarm:function(goods_id){
 
-			this.$router.push('farm/'+goods_id)
+			this.$router.push('/farm/'+goods_id)
 
 		},
 		// 轮播

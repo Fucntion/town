@@ -2,12 +2,15 @@
 <div class="wrap" v-if="show">
      
 
-    <header class="bar"  :style="{marginTop:ishead+'px'}">
-		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-		<div class="bar-title" >{{sceneInfo.scene_name}}</div>
-	</header>
+    <header class="bar"  :style="{paddingTop:ishead+'px'}">
+		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+        <img  v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right" @click="updateSerivces()">
+{{sceneInfo.scene_name}}
+    </header>
+    <div class="bar_after"></div>
+    
     <div class="content">
-        <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + sceneInfo.scene_thumb + ')'}"></div>
+        <div class="thumb" :style="{backgroundImage: 'url('+sceneInfo.scene_thumb + ')'}"></div>
 
         <div class="scene_audio">
             <audio style="margin-top:5px;width:414px !important;"  v-if="sceneInfo.scene_voice" :src="sceneInfo.scene_voice" controls="controls">
@@ -34,11 +37,15 @@
                 sceneInfo: {},
                 show:false,
                 ishead:this.$util.istop(),
+                isplus:this.$util.isEnvironment()
             }
         },
         methods: {
 
+            updateSerivces:function(){
 
+              this.$util.updateSerivces()
+            },
             init: function () {
 
                 var self = this,

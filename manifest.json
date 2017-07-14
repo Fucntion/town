@@ -7,7 +7,7 @@
 	"id": "H59FFF9C4",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "小镇演义",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.1.0",/*应用版本名称*/
+		"name": "1.1.1",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "小镇演义，为全域旅游而生",/*应用描述信息*/
@@ -40,12 +40,12 @@
 		"NativeUI": {},
 		"Navigator": {},
 		"NativeObj": {},
-		"Zip": {},
 		
-		"File": {},
+		
+		
 		"Audio": {},
 		"Camera": {},
-		"Speech": {},
+		
 		"Device": {},
 		"Runtime": {},
 		"Gallery": {},
@@ -53,17 +53,17 @@
 		"Webview": {},
 		"Barcode": {},
 		"Uploader": {},
-		"Contacts": {},
-		"Proximity": {},
+		
+		
 		"Messaging": {},
-		"Invocation": {},
-		"Downloader": {},
+		
+		
 		"Orientation": {},
 		"Geolocation": {},
-		"Accelerometer": {},
+		
 		"XMLHttpRequest": {},
 		"Payment": {},
-		"Share": {},"Maps":{}
+		"Share": {},"Maps":{},"OAuth":{}
 	},
 	"plus": {
 		"statusbar": {
@@ -81,18 +81,18 @@
 			"plugins": {
 				"share": {
 					
-					"weixin": {"appid":"wxbe02a4b56312f554","appsecret":"f7fd94ff50128a5deaa152ab11adf801","description":"可选，微信分享"}
+					"weixin": {"appid":"wxe00d1314a29f18a9","appsecret":"dba1b15ffad3f9962fb12ab7369b0ae0","description":"可选，微信分享"}
 				},
 				"payment": {
 					"weixin": {
 						"description": "微信支付",
-						"appid": "wxbe02a4b56312f554"
+						"appid": "wxe00d1314a29f18a9"
 					}
 				},
 				"maps": {"baidu":{"appkey_ios":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey_android":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey":"","description":""}
 					
 				},
-				"oauth": {}
+				"oauth": {"weixin":{"appid":"wxe00d1314a29f18a9","appsecret":"dba1b15ffad3f9962fb12ab7369b0ae0"}}
 			},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
@@ -107,7 +107,7 @@
 				"key ": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>","<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_LOGS\"/>","<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>","<uses-permission android:name=\"com.android.launcher.permission.UNINSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>","<uses-permission android:name=\"com.android.launcher.permission.INSTALL_SHORTCUT\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.SEND_SMS\"/>","<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>","<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.READ_SMS\"/>"]
 			},
 			"orientation": [
 				"portrait-primary"
@@ -843,6 +843,14 @@
 	  "readme.md",
 	  "webpack.config.development.js",
 	  "webpack.config.production.js",
-	  "webpack.config.web.js"
+	  "webpack.config.web.js",
+	  "static/css/common.css",
+	  "static/css/mui.picker.min.css",
+	  "static/images/way_btn2.png",
+	  "static/images/zhen.png",
+	  "static/img/card_mask_bg.jpg",
+	  "static/img/card_mask_bg2.jpg",
+	  "static/img/user_bg.jpg",
+	  "static/js/index.js"
 	]
 }

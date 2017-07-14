@@ -390,12 +390,12 @@ const routes_app = [
 		name: '支付',
 		component: require('./page/pay.vue')
 	},
-	{
-		path: '*',
-		redirect: '/error',
-		name: '其他',
-		hidden: true
-	}
+	// {
+	// 	path: '*',
+	// 	redirect: '/error',
+	// 	name: '其他',
+	// 	hidden: true
+	// }
 	
 	
 
@@ -406,6 +406,6 @@ const routes_app = [
 
 
 
-export default routes_web;
+export default routes_app;
 
 

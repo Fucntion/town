@@ -7,8 +7,10 @@
 
 		</div>-->
 	</div>
+	<div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
 
-		<div class="swiper-container card_container" :style="{marginTop:ishead+'px',top:swiperTop+'px'}" >
+
+		<div class="swiper-container card_container" :style="{paddingTop:swiperTop+ishead/2+44+'px'}">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide"  v-for="(lu,index) in luList"  @click="tolu(lu.lu_id)" >
 					<div class="hands_img card_img" >
@@ -100,6 +102,7 @@
 				// console.log($('.card_img img'))
     			
 				self.Swiper() 
+				// alert(self.swiperTop)
 
 			})
 

@@ -1,10 +1,12 @@
 <template>
 <div class="wrap">
-    <header class="bar" :style="{marginTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="user()"/></div>
-		<div class="bar-title">登录</div>
-	</header>
-    <div class="town-content marTop" :style="{marginTop:ishead+'px'}" >
+    <header class="bar" :style="{paddingTop:ishead+'px'}">
+        <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+		<!-- <div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" /></div> -->
+		登录
+    </header> 
+    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+    <div class="town-content "  >
         <div class="town-input-group">
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
@@ -51,7 +53,7 @@
                 failure_show:false,
                 win_show:false,
                 judge:null,
-                ishead:null
+                ishead:this.$util.istop(),
 
 
             }

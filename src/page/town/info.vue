@@ -1,14 +1,16 @@
 <template>
 <div class="wrap">
      <header class="bar" :style="{paddingTop:ishead+'px'}" >
-		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-		<div class="bar-title" >{{townName}}简介</div>
-        <div class="bar-icon" @click="updateSerivces()">
-            <img src="~assets/img/share.png" class="icon_img icon_right">
-        </div>
+
+		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+        <img  v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right" @click="updateSerivces()">
+
+		{{townName}}简介
+       
     </header>
-    <div class="bar_after"></div>
-    <div class="town_intro" :style="{marginTop:ishead+'px'}" v-html="townDesc" >   
+
+    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+    <div class="town_intro"  v-html="townDesc" >   
    </div>
 </div>
 </template>
@@ -23,6 +25,7 @@ export default {
 
 		return {
             ishead:this.$util.istop(),
+            isplus:this.$util.isEnvironment(),
             townName:null,
             townDesc:null,
             text:""
@@ -31,7 +34,10 @@ export default {
 	},
 	methods: {
 
+            updateSerivces:function(){
 
+              this.$util.updateSerivces()
+            },
             init:function(){
 
                 var self=this,

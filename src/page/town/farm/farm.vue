@@ -1,15 +1,12 @@
 <template>
 <div class="wrap farm-detail" v-if="show">
-    <!--<header class="bar":style="{marginTop:ishead+'px'}">
-  		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
-  		<div class="bar-title" >认领—{{farmInfo.name}}</div>
-  	</header>-->
 
-        <div class="bar bar-clear notfixed" :style="{marginTop:ishead+'px'}">
+    <div class="bar bar-clear notfixed" :style="{paddingTop:ishead+'px'}">
         <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/>
         <div class="bar-title" >认领—{{farmInfo.name}}</div>
-        <img src="~assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()">
+        <img v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()">
     </div>
+    <div class="bar_after"></div>
     <slider :List="farmInfo.pic" v-if="farmInfo.pic"></slider>
 
 
@@ -58,7 +55,7 @@
             <div class="news_hr"> </div>
             <div class="news_img" @click="Tonews(news)">
                 <div class="news_title">{{news.title}}</div>
-                <img  :src="'http://api.town.icloudinn.com/uploads/'+news.thumb">
+                <img  :src="news.thumb">
             </div>
         </div>
       </div>
@@ -73,7 +70,7 @@
     </nav>
     <div id="choose" v-if="news_show">
         <div class="news_info">
-            <div class="top" :style="{marginTop:ishead+'px'}">
+            <div class="top" :style="{paddingTop:ishead+'px'}">
                <div class="title town-pull-left">动态内容</div>
                 <i  @click="colsenews()" class="weui-icon-cancel icon-close"></i>
             </div>
@@ -142,6 +139,7 @@
                 channels:null,
                 amount:null,
                 ishead:this.$util.istop(),
+                isplus:this.$util.isEnvironment(),
                 newsinfo:null,
                 news_show:false,
                 pays:{},
@@ -161,7 +159,10 @@
             }
         },
         methods: {
+            updateSerivces: function () {
 
+                this.$util.updateSerivces()
+            },
             select:function(sku){
               if(sku.status!=0){
                 alert('已经被人认领啦');

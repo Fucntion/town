@@ -1,23 +1,16 @@
 <template>
 <div class="wrap">
-     <header class="bar" :style="{marginTop:ishead+'px'}">
+     <header class="bar" :style="{paddingTop:ishead+'px'}">
 		<div class="bar-icon"  ><img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/></div>
 		<div class="bar-title" >语音导览</div>
-	</header>
-    <div class="town-content marTop" :style="{marginTop:ishead+'px'}">
-        <!--<div id="live" class="live">
-            <div class="town-row">
-                <div class="town-col-xs-12" @click="toscene(item.scene_id)" v-for="item in sceneList" :style="{backgroundImage: 'url(' + 'http://api.town.icloudinn.com/uploads/'+item.scene_thumb+ ')'}">
-                    <img :src="'http://api.town.icloudinn.com/uploads/'+ item.town_thumb">
-                    <div class="l_title">{{item.scene_name}}</div>
-                    <div class="mask"></div>
-                </div>
+    </header>
+   <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+    <div class="town-content ">
 
-            </div>
-        </div>-->
          <div id="hotel" class="hotel_box">
             <div class="town-row">
-                <div @click="toscene(item.scene_id)" class="town-col-xs-12" v-for="item in sceneList" :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.scene_thumb + ')'}">
+                <div @click="toscene(item.scene_id)" class="town-col-xs-12" v-for="item in sceneList" 
+                :style="{backgroundImage: 'url(' + item.scene_thumb + ')'}">
 
                     <div class="hotel_title">{{item.scene_name}}</div>
                     <div class="hotel_number"><span>{{parseInt(Math.random()*100)+1}}</span>人来过</div>
@@ -41,7 +34,7 @@ export default {
 
 		return {
             sceneList: [],
-            ishead:null
+            ishead:this.$util.istop()
 		}
 	},
     computed:{
@@ -50,7 +43,7 @@ export default {
 	methods: {
 		toscene:function(scene_id){
 
-			this.$router.push('scene/'+scene_id)
+			this.$router.push('/scene/'+scene_id)
 
 		}
 	},

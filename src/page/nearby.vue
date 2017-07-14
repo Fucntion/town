@@ -48,7 +48,7 @@
 				<div class="bar-title"  >请选择您所在的镇</div>
 			</header>
 			<div class="bar_after"></div>
-			<div class="address_box marTop" :style="{marginTop:ishead+'px'}">
+			<div class="address_box " :style="{paddingTop:ishead+'px'}">
 				<ul id="accordion" class="accordion">
 
 					<li v-for="city in townInfo"><div class="link">{{city.city_name}}</div>
@@ -88,15 +88,13 @@ export default {
 			baiduAddress:null, 
 			marker_info_box:null,
 			ishead:this.$util.istop(),
+			isplus:this.$util.isEnvironment()
 			
 
 		}
 	},
 	computed: {
-		is_plus:function(){
 
-			return 'plus'==this.$util.isEnvironment()
-		}
 	},
 	methods: {
 		todetail:function(info){
