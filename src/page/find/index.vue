@@ -12,10 +12,10 @@
 
 		<div class="swiper-container card_container" :style="{paddingTop:swiperTop+ishead/2+44+'px'}">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide"  v-for="(lu,index) in luList"  @click="tolu(lu.lu_id)" >
+				<div class="swiper-slide"  v-for="(lu,index) in luList"  @click="todetail(lu.lu_id)" >
 					<div class="hands_img card_img" >
 						
-						<div class="img" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + lu.thumb + ')'}"></div>
+						<div class="img" :style="{backgroundImage: 'url('+lu.thumb + ')'}"></div>
 						
 						<div class="card_mask"></div>
 					</div>		
@@ -46,9 +46,9 @@
 			
 		},
 		methods: {
-			toware:function(goods_id){
+			todetail:function(lu_id){
 
-				this.$router.push('ware/'+goods_id)
+				this.$router.push('/way/'+lu_id)
 
 			},
 			Swiper:function(){

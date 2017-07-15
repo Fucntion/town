@@ -26,10 +26,7 @@
         </div>
     </div>
     <div class="mui-slider-indicator">
-        <div class="mui-indicator mui-active"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
-        <div class="mui-indicator"></div>
+        <div class="mui-indicator" v-for="(item,index) in List"  ></div>
     </div>
 </div>
 </template>
@@ -45,7 +42,7 @@ export default {
 		data() {
 
 			return {
-                visibility:false
+                // visibility:false
 			}
 
 		},
@@ -64,15 +61,15 @@ export default {
 
 		},
 		methods:{
-            show:function(){
-                this.visibility =true
-            },
-            hide:function(){
-                this.visibility =false
-            }
+            // show:function(){
+            //     this.visibility =true
+            // },
+            // hide:function(){
+            //     this.visibility =false
+            // }
 		},
 		mounted() {
-          this.show() 
+        //   this.show() 
 		}
 	}
 </script>

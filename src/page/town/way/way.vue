@@ -6,9 +6,9 @@
 	</header>-->
 
     
-         <div class="bar bar-clear notfixed" :style="{paddingTop:ishead+'px'}">
-            <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/>
-            <img v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()">
+         <div class="bar bar-clear" :style="{paddingTop:ishead+'px'}">
+            <img src="~assets/img/left.png" class="icon_img icon_left gray" onclick="javascript:history.go(-1)"/>
+            <img v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right gray" @click="updateSerivces()">
         </div>
 
 

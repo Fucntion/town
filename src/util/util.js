@@ -60,7 +60,7 @@ util.swiperTop = function(){
 
  // 更新分享服务及发布分享
 util.updateSerivces=function(){
-
+    return false;//微信审核不通过
     var self=this,shares={};
     plus.share.getServices( function(s){
         console.log(s)
@@ -134,6 +134,23 @@ util.shareShow=function(shares){
     shareBts.length>0?plus.nativeUI.actionSheet({title:'分享',cancel:'取消',buttons:shareBts},function(e){
         (e.index>0)&&self.shareAction(shareBts[e.index-1],true);
     }):plus.nativeUI.alert('当前环境无法支持分享操作!');
+}
+
+
+util.checkPhone=function(phone){ 
+    var phone = parseInt(phone)
+
+    if(!(/^1[34578]\d{9}$/.test(phone))&&!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){ 
+
+        
+
+       return false; 
+
+    }else{
+        return true
+    } 
+
+    
 }
 
 export default {

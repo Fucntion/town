@@ -1,44 +1,12 @@
 <template>
 <div class="wrap" v-if="show">
 
-    <div class="bar bar-clear notfixed" :style="{paddingTop:ishead+'px'}">
-        <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/>
-        <img v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_left" @click="updateSerivces()">
+    <div class="bar bar-clear" :style="{paddingTop:ishead+'px'}">
+        <img src="~assets/img/left.png" class="icon_img icon_left gray" onclick="javascript:history.go(-1)"/>
+        <img v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right gray" @click="updateSerivces()">
     </div>
-    <div id="slider" class="mui-slider ware_imgs">
-        
-        <div class="mui-slider-group mui-slider-loop">
 
-            <div class="mui-slider-item mui-slider-item-duplicate">
-                <div class="mask"></div>
-                <a href="javascript:;">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=47&txt=500×300&w=414&h=276">
-                </a>
-            </div>
-
-
-            <div v-for="item in hotelInfo.pic" class="mui-slider-item">
-                <div class="mask"></div>
-                <a href="javascript:;">
-                    <img  :src="item.url">
-                </a>
-            </div>
-
-
-            <div class="mui-slider-item mui-slider-item-duplicate">
-                <div class="mask"></div>
-                <a href="javascript:;">
-                    <img src="https://placeholdit.imgix.net/~text?txtsize=47&txt=500×300&w=414&h=276">
-                </a>
-            </div>
-        </div>
-        <div class="mui-slider-indicator">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-        </div>
-    </div>
+    <slider :List="hotelInfo.pic" v-if="hotelInfo.pic"></slider>
 
 
     <div id="introduction">
@@ -154,8 +122,9 @@
 
 <script>
 
- 
+import Slider from 'plugin/slider'
 import 'static/css/mui.picker.min.css'
+
     export default {
         name: 'hotel',
         data: function () {
@@ -442,7 +411,7 @@ import 'static/css/mui.picker.min.css'
 
         },
         components: {
-
+             slider:Slider
         },
         watch: {
 

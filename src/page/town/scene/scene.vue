@@ -2,14 +2,14 @@
 <div class="wrap" v-if="show">
      
 
-    <header class="bar"  :style="{paddingTop:ishead+'px'}">
-		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
-        <img  v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right" @click="updateSerivces()">
+    <header class="bar bar-clear"  :style="{paddingTop:ishead+'px'}">
+		<img src="~assets/img/left.png" class="icon_img icon_left gray" onclick="javascript:history.go(-1)" />
+        <img  v-if="isplus=='plus'" src="~assets/img/share.png" class="icon_img icon_right gray" @click="updateSerivces()">
 {{sceneInfo.scene_name}}
     </header>
-    <div class="bar_after"></div>
-    
+
     <div class="content">
+        <!-- 是否要用幻灯 -->
         <div class="thumb" :style="{backgroundImage: 'url('+sceneInfo.scene_thumb + ')'}"></div>
 
         <div class="scene_audio">

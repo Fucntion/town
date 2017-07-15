@@ -8,7 +8,7 @@
                 <img src="~assets/img/share.png" v-if="isplus=='plus'"  class="icon_img icon_right" @click="updateSerivces()">
             </div>
             <div class="bar_after"></div>
-            <img width="100%" :src="'http://api.town.icloudinn.com/uploads/'+townInfo.town_thumb" />
+            <img width="100%" :src="townInfo.town_thumb" />
             
 
         </div>
@@ -33,7 +33,7 @@
 
                 <div class="box">
                     <a class="item" v-for="(scene,index) in sceneList" :href="'/#/scene/'+scene.scene_id">
-                        <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + scene.scene_thumb + ')'}"></div>
+                        <div class="thumb" :style="{backgroundImage: 'url('+ scene.scene_thumb + ')'}"></div>
 
                         <p>{{scene.scene_name}}</p>
                     </a>
@@ -47,7 +47,7 @@
                 <div class="box">
                     <a class="item" v-for="(cate,index) in cateList" :href="'/#/cate/'+cate.cate_id">
                         <!--{{cate.thumb[0].url}}-->
-                        <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + cate.thumb[0].url + ')'}"></div>
+                        <div class="thumb" :style="{backgroundImage: 'url('+ cate.thumb[0].url + ')'}"></div>
 
                         <p> {{cate.name}}</p>
                     </a>
@@ -62,7 +62,7 @@
                 <div class="box">
                     <a class="item" v-for="(ware,index) in wareList" :href="'/#/ware/'+ware.goods_id">
 
-                        <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + ware.thumb + ')'}"></div>
+                        <div class="thumb" :style="{backgroundImage: 'url('+ ware.thumb + ')'}"></div>
 
                         <p> {{ware.name}}</p>
 
@@ -77,7 +77,7 @@
                 <div class="box">
                     <a class="item" v-for="(hotel,index) in hotelList" :href="'/#/hotel/'+hotel.hotel_id">
 
-                        <div class="thumb" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + hotel.thumb + ')'}"></div>
+                        <div class="thumb" :style="{backgroundImage: 'url('+ hotel.thumb + ')'}"></div>
 
                         <p> {{hotel.name}}</p>
 

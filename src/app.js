@@ -62,7 +62,7 @@ Vue.http.interceptors.push((request, next) => {
 	next((response) => {
 		// token存在，但是过期
 
-		if(response.body.code == 404){
+		if(response.body.code == 404||response.body.code ==20005){
 			location.hash = 'login'
 		}else if(response.body.code == 405){
 			
@@ -82,7 +82,7 @@ import App from './App.vue'
 
 // import './filter.js'
 
-// import './directive.js'
+import './util/directive.js'
 
 
 const app = new Vue({

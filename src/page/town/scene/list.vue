@@ -5,6 +5,8 @@
 		<div class="bar-title" >语音导览</div>
     </header>
    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
+
+   
     <div class="town-content ">
 
          <div id="hotel" class="hotel_box">

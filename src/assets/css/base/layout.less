@@ -70,7 +70,7 @@
     position: fixed;
     top: 0px;
     width: 100%;
-    z-index: 999;
+    z-index: 4;
     text-align: center;
     line-height: 44px;
     height: 44px;
@@ -102,13 +102,30 @@
     // .bar-title {
     //     font-size: 18px;
     // }
-   
-     .icon_img {
-        padding: 12px;
+    .icon_text{
+        margin: 8px;
+        padding: 4px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 14px;
+        bottom: 0px;
+        position: absolute;
+    }
+
+    .icon_img {
+        margin: 8px;
+        padding: 4px;
         width: 20px;
         height: 20px;
-         bottom: 0px;
+        bottom: 0px;
         position: absolute;
+        &.gray{
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+        }
+        &.neary_left_icon{
+            bottom: -50px;
+        }
     }
 
     .icon_left {
@@ -123,6 +140,9 @@
 }
 .bar_after{
     height: 44px;
+    // &.after-clear{
+    //     background: rgba(0,0,0,0.2)
+    // }
 }
 
 // .head{
@@ -213,3 +233,11 @@
         }
 }
 
+// 去除高德版权信息
+.amap-logo {
+    display: none;
+} 
+.amap-copyright {
+    bottom:-100px;
+    display: none;
+}  

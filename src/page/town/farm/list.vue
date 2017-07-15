@@ -20,7 +20,7 @@
 					<div class="hands_img card_img" >
 						<!--:style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + ware.thumb + ')'}"-->
 						<!--<img  :src="'http://api.town.icloudinn.com/uploads/' + farm.thumb">-->
-						<div class="img" :style="{backgroundImage: 'url('+'http://api.town.icloudinn.com/uploads/' + farm.thumb + ')'}"></div>
+						<div class="img" :style="{backgroundImage: 'url('+ farm.thumb + ')'}"></div>
 						<!--<div class="fram_title">{{ware.name}}</div>-->
 						<div class="card_mask"></div>
 					</div>		

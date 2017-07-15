@@ -18,54 +18,19 @@
 		    	
 			<div class="mui-slider-group mui-slider-loop">
 				
-				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
+				
+				<div class="mui-slider-item" v-for="slider in sliders">
 					<div class="mask"></div>
-					<a href="javascript:;">
-						
-						<img src="http://api.town.icloudinn.com/static/img/slider2.jpg">
+					<a :href="slider.jump_path">
+						<img :src="slider.url" />
 					</a>
 				</div>
-				<!-- 第一张 -->
-				<!--<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider1.jpg">
-					</a>
-				</div>-->
-				<!-- 第二张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider2.jpg">
-					</a>
-				</div>
-				<!-- 第三张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider3.jpg">
-					</a>
-				</div>
-				<!-- 第四张 -->
-				<div class="mui-slider-item">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider4.jpg">
-					</a>
-				</div>
-				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
-				<div class="mui-slider-item mui-slider-item-duplicate">
-					<div class="mask"></div>
-					<a href="javascript:;">
-						<img src="http://api.town.icloudinn.com/static/img/slider4.jpg">
-					</a>
-				</div>
+
+				
 			</div>
 			<div class="mui-slider-indicator">
-				<div class="mui-indicator mui-active"></div>
-				<div class="mui-indicator"></div>
-				<div class="mui-indicator"></div>
+				<div class="mui-indicator" v-for="slider in sliders"></div>
+
 			</div>
 		</div>
 	</div>
@@ -97,14 +62,14 @@
 		<div class="dingzhi">
 			<p class="title" >行程定制</p>
 			<div  class="dingzhi_info_box">
-				<input v-model="name" class="name"  placeholder="称呼"  type="text" /> 
-				<input v-model="telphone" class="telphone"  placeholder="联系方式" type="text" /> 
-				<textarea v-model="content" class="content"  placeholder="请填写您的需求，方便更好为您服务。" >
+				<input v-model="contact_person" class="name"  placeholder="称呼"  type="text" /> 
+				<input v-model="phone" class="telphone"  placeholder="联系方式" type="text" /> 
+				<textarea v-model="demand" class="content"  placeholder="请填写您的需求，方便更好为您服务。" >
 
 				</textarea>
 			</div>
 
-			<div class="weui-btn weui-btn_primary" style="line-height:2.7;font-size:16px;border-radius:0">定制行程</div>
+			<div @click="dingzhi()" class="weui-btn weui-btn_primary" style="line-height:2.7;font-size:16px;border-radius:0">定制行程</div>
 		</div>
 	</div>
 	
@@ -132,7 +97,7 @@
 		</div>
 	</div>-->
 
-	<p class="block_title" style="margin-top:20px;">热门小镇</p>
+	<p class="block_title">热门小镇</p>
 	<div class=" mudi_box" >
 		<div class="mudi_row">
 			<div class="mudi_item" v-if="index<3"  v-for="(item,index) in townInfo" @click="Totown(item)">
@@ -194,20 +159,47 @@
 			return {
 				townInfo:null,
 				ishead:this.$util.istop(),
-				isplus:this.$util.isEnvironment()
+				isplus:this.$util.isEnvironment(),
+				demand:null,//定制需求
+				phone:null,//定制联系方式
+				contact_person:null,//定制联系人
+				sliders:[]
 			}
 		},
 		computed: {
-			is_plus:function(){
-				return 'plus'==this.$util.isEnvironment()
-			}
+
 		},
 		components: {
 			foot:footer
 		},
 		methods: {
 			
-			
+			dingzhi:function(){
+
+				var self = this
+
+				// if(!self.demand||!self.contact_parson||!self.phone){
+				// 	console.log('信息不全哦')
+				// 	return
+				// }
+				// console.log(self.$util.checkPhone(self.phone))
+				if(!self.$util.checkPhone(self.phone)){
+					console.log('联系方式不符合')
+					return
+				}
+
+				var dataObj = {
+					demand:self.demand,
+					phone:self.phone,//定制联系方式
+					contact_person:self.contact_person,//定制联系人
+				}
+				self.$http.post('/v1/travel_customization',dataObj).then(response=>{
+
+				},response=>{
+
+				})
+
+			},
 			Totown:function(towns){
 				
 				var self = this
@@ -234,6 +226,27 @@
 					console.log("请求失败")
 				});
 				
+			},
+			init:function(){
+
+				var self = this 
+				self.$http.get('/v1/slide_show').then(response=>{
+
+					self.sliders = response.body.data
+
+					self.$nextTick(function () {
+
+						var gallery = mui('.mui-slider')
+						gallery.slider({
+							interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
+						});
+
+						// new JRoll(".wrap");
+					})
+
+				},response=>{
+
+				})
 			}
 			
 		},
@@ -244,15 +257,9 @@
 		mounted() {
 
 			var self = this
-			 self.$nextTick(function () {
+			self.init()
+			 
 
-				var gallery = mui('.mui-slider')
-				gallery.slider({
-					interval:5000//自动轮播周期，若为0则不自动播放，默认为0；
-				});
-
-				// new JRoll(".wrap");
-			})
 			self.getTown()
 
 			// self.istop()
