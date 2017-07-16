@@ -153,6 +153,22 @@ util.checkPhone=function(phone){
     
 }
 
+// @click="$util.toBack()"
+// 为了兼容有的页面没有底部菜单，或者分享出去后没有history导致无法返回上一页，可以初始化的时候显式调用本函数，添加首页到history中
+util.toBack = function(){
+    
+    if(history.length==0){
+        location.hash = ''//返回首页
+       
+    }else{
+         history.go(-1)
+    }
+    
+
+}
+
+
+
 export default {
   install: function(Vue) {
     Object.defineProperty(Vue.prototype, '$util', { value: util });

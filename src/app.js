@@ -12,7 +12,6 @@ import routes from './routes'
 
 
 
-
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -76,7 +75,7 @@ Vue.http.interceptors.push((request, next) => {
 
 
 
-require ('assets/css/app.less')
+require ('assets/style/app.less')
 
 import App from './App.vue'
 

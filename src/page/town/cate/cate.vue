@@ -3,7 +3,7 @@
 
 
    <div class="bar bar-clear" :style="{paddingTop:ishead+'px'}">
-        <img src="~assets/img/left.png" class="icon_img icon_left gray" onclick="javascript:history.go(-1)"/>
+        <img src="~assets/img/left.png" class="icon_img icon_left gray" @click="$util.toBack()"/>
         <img src="~assets/img/share.png" v-if="isplus=='plus'"  class="icon_img icon_right gray" @click="updateSerivces()">
     </div>
 

@@ -1,7 +1,7 @@
 <template>
 <div class="wrap list_wrap">
 	 <header class="bar"  :style="{paddingTop:ishead+'px'}">
-		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
 		我在海南有农庄
 	</header>
 <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>

@@ -1,6 +1,4 @@
-
-// component: function(resolve) { require(['./page/hot/cate.vue'], resolve) }
-const routes_web = [
+var routes_web = [
 	{
 		path: '/error',
 		component: { template: '<h3>出错了</h3>' },
@@ -115,14 +113,14 @@ const routes_web = [
 		component: function(resolve) { require(['./page/find/index.vue'], resolve) }
 	},
 	{
-		path: '/play',
+		path: '/activity',
 		name: '活动首页',
-		component: function(resolve) { require(['./page/play/index.vue'], resolve) }
+		component: function(resolve) { require(['./page/activity/index.vue'], resolve) }
 	},
 	{
-		path: '/play/:id',
+		path: '/activity/:id',
 		name: '活动详情',
-		component: function(resolve) { require(['./page/play/index.vue'], resolve) }
+		component: function(resolve) { require(['./page/activity/activity.vue'], resolve) }
 	},
 	{
 		path: '/way/:id',
@@ -201,7 +199,7 @@ const routes_web = [
 
 ]
 
-const routes_app = [
+var routes_app = [
 	{
 		path: '/error',
 		component: { template: '<h3>出错了</h3>' },
@@ -316,14 +314,14 @@ const routes_app = [
 		component: require('./page/find/index.vue')
 	},
 	{
-		path: '/play',
+		path: '/activity',
 		name: '活动首页',
-		component: require('./page/play/index.vue')
+		component: require('./page/activity/index.vue')
 	},
 	{
-		path: '/play/:id',
+		path: '/activity/:id',
 		name: '活动详情',
-		component: require('./page/play/index.vue')
+		component: require('./page/activity/activity.vue')
 	},
 	{
 		path: '/way/:id',

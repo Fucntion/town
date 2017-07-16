@@ -1,11 +1,11 @@
 <template>
 	<div class="wrap">
 		<header class="bar" :style="{paddingTop:ishead+'px'}">
-			<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="closeScan()" /></div>
-			<div class="bar-title">扫一扫</div>
+			<img src="~assets/img/left.png" class="icon_img icon_left" @click="closeScan()" />
+			扫一扫
 		</header>
 		
-		<div id="bcid">
+		<div id="bcid" v-if="isplus=='plus'">
 			
 		</div>
 		
@@ -15,112 +15,254 @@
 <script>
 	
 	 
-	require('../../assets/js/common.js')
+// require('assets/js/common.js')
 
-	export default {
-		name: 'travel',
-		data: function() {
 
-			return {
+export default {
+	name: 'scan',
+	data: function() {
 
-				ishead:this.$util.istop(),
-				scan: null,
-			}
-		},
-		computed: {
+		return {
 
-		},
-		methods: {
-			plusReady: function() {
+			ishead:this.$util.istop(),
+			isplus:this.$util.isEnvironment(),
+			scan: null,
+		}
+	},
+	computed: {
 
-//				var e = document.getElementById("scan");
-//				e.removeAttribute("disabled");
-			this.startRecognize()
+	},
+	methods: {
+		// H5 plus事件处理
+		// onmarked:function (type, result, file){
+		// 	console.log('plus',plus)
+		// 	var self = this
+		// 	switch(type){
+		// 		case plus.barcode.QR:
+		// 		type = 'QR';
+		// 		break;
+		// 		case plus.barcode.EAN13:
+		// 		type = 'EAN13';
+		// 		break;
+		// 		case plus.barcode.EAN8:
+		// 		type = 'EAN8';
+		// 		break;
+		// 		default:
+		// 		type = '其它'+type;
+		// 		break;
+		// 	}
+		// 	result = result.replace(/\n/g, '');
+		// 	console.log(type,result,file);
+		// 	self.scan.close()
 			
-				
-			},
-			onmarked: function(type, result) {
-				var text = '未知: ';
-				switch(type) {
-					case plus.barcode.QR:
-						text = 'QR: ';
-						break;
-					case plus.barcode.EAN13:
-						text = 'EAN13: ';
-						break;
-					case plus.barcode.EAN8:
-						text = 'EAN8: ';
-						break;
-				}
-				
-				if(type==plus.barcode.QR){
-					self.cancelScan()
-					var data = JSON.parse(result),
-						type =data.type,
-						id = data.id;
-						
-					location.href ="http://tonw.icloudinn.com";
-					
-				}else{
-					alert('二维码无效');
-					this.startScan()
-				}
-			},
-			startRecognize: function() {
-				self =this
-				var styles = {frameColor: "#1AAD19",scanbarColor: "#1AAD19"};
-				var filter;
-				self.scan = new plus.barcode.Barcode('bcid',filter,styles);
-				self.scan.onmarked = self.onmarked;
-				this.startScan()
-			},
-			startScan: function() {
-				self.scan.start();
-			},
-			cancelScan: function() {
-				self.scan.cancel();
-			},
-			setFlash: function() {
-				self.scan.setFlash();
-			},
-			closeScan:function(){
-				if(typeof(plus)!='undefined'&&plus){
-					self.scan.close();
-				}
-				history.go(-1)
+		// },
+		onmarked: function(type, result) {
+
+			console.log(type,result);
+			console.log('扫码结束')
+
+			var self= this,
+				text = '未知: ';
+			switch(type) {
+				case plus.barcode.QR:
+					text = 'QR: ';
+					break;
+				case plus.barcode.EAN13:
+					text = 'EAN13: ';
+					break;
+				case plus.barcode.EAN8:
+					text = 'EAN8: ';
+					break;
 			}
 
-		},
-		components: {
-			 
-		},
-		watch: {
+			result = result.replace(/\n/g, '');
+			console.log(result)
 
+			if(type==plus.barcode.QR){
+
+				
+				// 搞了半天是我自己做的二维码不符合json格式。。。
+				var data = JSON.parse(result),
+					resource_type =data.type,
+					resource_id = data.id;
+				
+				if(resource_type&&resource_id){
+					self.scan.close()
+				}else{
+					cosnole.log('内容有误')
+					self.cancelScan()
+					self.startScan()
+				}
+
+				switch(resource_type){
+					case 'scene':
+						self.$router.push('/scene/'+resource_id)
+					break;
+
+					case 'town':
+					self.$router.push('/town/category/'+resource_id)
+					break;
+
+					case 'hotel':
+					self.$router.push('/hotel/'+resource_id)
+					break;
+
+					case 'ware':
+					self.$router.push('/ware/'+resource_id)
+					break;
+
+					case 'lu':
+					self.$router.push('/way/'+resource_id)
+					break;
+
+					case 'cate':
+					self.$router.push('/cate/'+resource_id)
+					// alert('类别有误')
+					break;
+					default:
+						console.log('类别有误')
+						self.$router.push('/')
+					break;
+
+				}
+
+
+				// location.href ="http://tonw.icloudinn.com"
+				
+			}else{
+
+				console.log('二维码无效')
+				self.cancelScan()
+				self.startScan()
+				
+				
+			}
 		},
-		mounted() {
+		onerror:function(error){
+			var code = error.code; 			// 错误编码
+			var message = error.message;	// 错误描述信息
+			console.log(code,message)
+		},
+		startScan: function() {
+			console.log('跑起来')
+			var self = this
+			self.scan.start({vibrate:true})
+			console.log('跑起来2')
+		},
+		cancelScan: function() {
+			var self = this
+			self.scan.cancel();
+		},
+		setFlash: function() {
+			var self = this
+			self.scan.setFlash();
+		},
+		closeScan:function(){
 
 			var self = this
+			self.scan.close();
 
-			  
+			self.$util.toBack()
 
-			if(window.plus) {
-				self.plusReady();
-			} else {
-				document.addEventListener('plusready', self.plusReady, false);
+		},
+		plusReady:function (){
+
+			var self = this
+			console.log('开始开始开始')
+
+			if(!window.plus){
+				return;
 			}
 
-		}
-	}
-</script>
-<style lang="less">
+			var styles = {frameColor: "#1AAD19",scanbarColor: "#1AAD19"};
+			var filter = [plus.barcode.QR];
+console.log('跑起来---------')
+			self.scan = new plus.barcode.Barcode('bcid',filter,styles);
+			self.scan.onmarked = self.onmarked
+			self.scan.onerror = self.onerror
+console.log('跑起来0')
+			self.startScan()
+			console.log('跑起来3')
+		},
 
-	
-	
-	#bcid {
-		position: absolute;
-		top:0;
-		left: 0;
-		bottom: 0;
-		right: 0;
+	},
+	components: {
+			
+	},
+	watch: {
+
+	},
+	mounted() {
+
+		var self = this
+
+		// if(window.plus) {
+		// 	self.plusReady();
+		// } else {
+		// 	document.addEventListener('DOMContentLoaded', self.plusReady, false);
+		// }
+
+		// var ws=null,wo=null;
+		// var domready=false;
+
+
+		// // 二维码扫描成功
+		// function onmarked(type, result, file){
+
+
+		// 	switch(type){
+		// 		case plus.barcode.QR:
+		// 		type = 'QR';
+		// 		break;
+		// 		case plus.barcode.EAN13:
+		// 		type = 'EAN13';
+		// 		break;
+		// 		case plus.barcode.EAN8:
+		// 		type = 'EAN8';
+		// 		break;
+		// 		default:
+		// 		type = '其它'+type;
+		// 		break;
+		// 	}
+		// 	result = result.replace(/\n/g, '');
+		// 	console.log(type,result,file);
+		// 	self.scan.close()
+			
+		// }
+
+
+		
+
+
+		if(window.plus){
+			
+			self.plusReady();
+
+		}else{
+			document.addEventListener('plusready', self.plusReady, false);
+		}
+
+
+		// 监听DOMContentLoaded事件
+		document.addEventListener('DOMContentLoaded', function(){
+			self.plusReady();
+		}, false);
+
+
+		
+		
+
+
+		
 	}
+}
+</script>
+<style lang="less">	
+#bcid {
+	position: absolute;
+	top:0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
 </style>

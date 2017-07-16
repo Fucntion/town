@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
      <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img  icon_left" onclick="javascript:history.go(-1)"/></div>
+		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img  icon_left" @click="$util.toBack()"/></div>
 		<div class="bar-title" >添加收货地址</div>
 	</header>
     <div class="town-content ">

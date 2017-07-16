@@ -26,8 +26,7 @@ Payment模块管理支付功能，可通过js调用第三方支付服务。通�
 </template>
 <script>
 
-// import { alert } from 'vue-mui'
-// require('../assets/js/common.js');
+
 require('../assets/js/immersed.js');
 
 export default {

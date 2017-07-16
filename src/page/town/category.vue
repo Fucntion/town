@@ -4,7 +4,7 @@
 
             <div class="bar" :style="{paddingTop:ishead+'px'}">
                 小镇简介
-                <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+                <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
                 <img src="~assets/img/share.png" v-if="isplus=='plus'"  class="icon_img icon_right" @click="updateSerivces()">
             </div>
             <div class="bar_after"></div>

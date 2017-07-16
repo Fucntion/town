@@ -2,15 +2,19 @@
 <div class="wrap nearby_wrap" >
 
 	 <header class="bar " :style="{paddingTop:ishead+'px'}">
-		<img src="~assets/img/left.png" class="icon_img icon_left gray neary_left_icon" onclick="javascript:history.go(-1)"/>
+		 <!-- neary_left_icon -->
+		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
 		 <!-- <span class="icon_text icon_right">搜索</span>  -->
-		<span @click="toMap()" class="icon_text icon_left">切换小镇</span>
+		
+		<div class="scan icon_img icon_right" @click="Toscan()"  v-if="isplus=='plus'" ></div>
 		{{IS_TOWN_NAME}}
 	</header>
+
+	
 	 <!--搜索-->
-	<div v-show="!marker_info_box" class="nearby-search-bar" >
+	<div v-show="!marker_info_box" class="nearby-search-bar" :style="{marginTop:ishead+'px'}">
 		<!-- <span @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}</span> -->
-		<div class="scan" @click="Toscan()" v-if="isplus=='plus'" ></div>
+		<span @click="toMap()" class="change_town_btn">切换小镇</span>
 	</div>
 
 	<!--底部按钮-->
@@ -78,7 +82,7 @@
 				<span class="control_title">美食品鉴</span> 
 			</div>
 			<div class="control_item" @click="openSuspend('ware')">
-				<img class="control_icon"  src="~assets/img/play.png" /> 
+				<img class="control_icon"  src="~assets/img/activity.png" /> 
 				<span class="control_title">特色商品</span> 
 			</div>
 			<div class="control_item" @click="openSuspend('lu')">
@@ -181,6 +185,9 @@ export default {
 
 	},
 	methods: {
+		Toscan:function(){
+			this.$router.push('/scan')
+		},
 		openSuspend:function(type){
 			var self = this 
 			
@@ -219,7 +226,7 @@ export default {
 
 					//救救没有图片的穷鬼哦
 					if(!self.suspendList[i].thumb){
-						self.suspendList[i].thumb = 'http://localhost:8081/static/img/play3.png'
+						self.suspendList[i].thumb = 'http://town.icloudinn.com//static/img/play3.png'
 					}
 
 				}

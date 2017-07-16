@@ -2,7 +2,7 @@
 <div class="wrap">
 
     <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)"/>
+		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/>
 		<span class="icon_text icon_right">搜索</span>
 		{{IS_TOWN_NAME}}
 	</header>

@@ -115,33 +115,15 @@
 			</div>
 			
 		</div>
-		<!--<div class="town_img" @click="Totown(item)" v-for="item in townInfo"  :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}">
-			
-			<div class="index_item">
-				<div class="index_title"><span>{{item.town_name}}  </span>{{item.city_name}} </div>
-				<p>推荐理由</p>
-			</div>
-			<div class="index_mask"></div>
-		</div>-->
-		<!--<div class="town_img" @click="Totown(item)" v-for="item in townInfo"  :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}">
-			<div class="index_item">
-				<div class="index_title"><span>{{item.town_name}}  </span>{{item.city_name}} </div>
-				<p>推荐理由</p>
-			</div>
-			<div class="index_mask"></div>
-		</div>-->
+	
 	</div>
 
 	<p class="block_title" style="margin-top:20px;">最新活动</p>
 	<div class="index_town play_box" >
-		<!--:style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}"-->
+
+		<div class="play_item" v-for="activity in activitys"  
+		:style="{backgroundImage: 'url(' +activity.thumb + ')'}"></div>
 		
-		<div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
-		<div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
-		<div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
-		<div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
-		<div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
-		<div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
 		
 	</div>
 	<foot></foot>
@@ -163,7 +145,8 @@
 				demand:null,//定制需求
 				phone:null,//定制联系方式
 				contact_person:null,//定制联系人
-				sliders:[]
+				sliders:[],
+				activitys:[]
 			}
 		},
 		computed: {
@@ -211,9 +194,6 @@
 			share:function(){
 				this.$router.push('/share')
 			},
-			Toscan:function(){
-				this.$router.push('/scan')
-			},
 			getTown:function(){
 
 				var self = this
@@ -247,6 +227,20 @@
 				},response=>{
 
 				})
+
+				self.$http.get('/v1/activity').then(response=>{
+
+					self.activitys = response.body.data
+
+					
+
+				},response=>{
+
+				})
+
+
+
+				
 			}
 			
 		},

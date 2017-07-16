@@ -2,9 +2,9 @@
     <div class="wrap" v-if="townList.length>0">
         
          <div class="bar bar-clear" :style="{marginTop:ishead+'px'}">
-            <img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+            <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
         </div>
-        <div class="town_img" @click="Totown(item)" v-for="item in townList"  :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}">
+        <div class="town_img" @click="Totown(item)" v-for="item in townList"  :style="{backgroundImage: 'url(' + item.town_thumb + ')'}">
 			
 			<div class="index_item">
 				<div class="index_title"><span>{{item.town_name}}  </span>{{item.city_name}} </div>

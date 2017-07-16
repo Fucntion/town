@@ -17,7 +17,7 @@
         <p class="weui-tabbar__label">发现</p>
     </a>
    
-     <a href="#/play" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/play'}">
+     <a href="#/activity" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/activity'}">
         
        <i class="iconfont icon-huodong-copy"></i>
         <p class="weui-tabbar__label">活动</p>
@@ -29,12 +29,7 @@
     </a>
     
 </div>
-<!--<a href="#/nearby" class="weui-tabbar__item" id="nav_town">
-        <span style="display: inline-block;position: relative;">
-            <img src="~assets/img/town_s.png" class="icon_img"/>
-        </span>
-        <p class="weui-tabbar__label">附近</p>
-    </a>-->
+
 </footer>
 
 </template>

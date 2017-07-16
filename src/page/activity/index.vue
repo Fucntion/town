@@ -89,18 +89,8 @@
     <div class="index_town play_box" >
         <!--:style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}"-->
         
-        <div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play4.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play5.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play6.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play1.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play2.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play3.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play4.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play5.png);"></div>
-        <div class="play_item"   style="background-image:url(static/img/play6.png);"></div>
+        <div class="play_item" @click="todetail(activity.activity_id)" v-for="activity in activitys"  
+		:style="{backgroundImage: 'url(' +activity.thumb + ')'}"></div>
 
 
     </div>
@@ -111,12 +101,13 @@
 <script>
     import footer from 'plugin/footer'
 	export default {
-		name: 'travel',
+		name: 'activityList',
 		data: function() {
 
 			return {
 				ishead:this.$util.istop(),
-				isplus:this.$util.isEnvironment()
+				isplus:this.$util.isEnvironment(),
+				activitys:[]
 				
 			}
 		},
@@ -125,7 +116,9 @@
 		},
 		methods: {
 		
-
+			todetail:function(activitys_id){
+				this.$router.push('/activity/'+activitys_id)
+			}
 		},
 		components: {
 			 foot:footer
@@ -136,6 +129,17 @@
 		mounted() {
 
 			var self = this
+			self.$http.get('/v1/activity').then(response=>{
+
+				self.activitys = response.body.data
+
+				
+
+			},response=>{
+
+			})
+
+
 
 			  
 

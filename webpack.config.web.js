@@ -71,7 +71,7 @@ module.exports = {
 				loader: 'url-loader',
 				query: {
 					name: 'img/[name].[ext]?[hash:8]',
-					limit: 8192*3 // inline base64 URLs for <=8k images, direct URLs for the rest
+					limit: 8192 // inline base64 URLs for <=8k images, direct URLs for the rest
 				}
 			}, {
 				test: /\.(svg|eot|woff|woff2|ttf)$/,

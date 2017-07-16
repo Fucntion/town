@@ -1,7 +1,7 @@
 <template>
 <div class="wrap">
      <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<img src="~assets/img/left.png" class="icon_img icon_left" onclick="javascript:history.go(-1)" />
+		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
 		民宿酒店
     </header>
     <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
