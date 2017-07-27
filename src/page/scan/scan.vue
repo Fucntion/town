@@ -5,9 +5,12 @@
 			扫一扫
 		</header>
 		
-		<div id="bcid" v-if="isplus=='plus'">
+		<div id="bcid" v-if="isplus=='plus'" :style="{top:44+ishead+'px'}">
 			
 		</div>
+
+		
+
 		
 	</div>
 </template>
@@ -76,23 +79,36 @@ export default {
 			}
 
 			result = result.replace(/\n/g, '');
-			console.log(result)
 
+			WeVue.Toast({
+                            duration: 1000,
+                            message: result,
+                            type: 'text'
+                        })
 			if(type==plus.barcode.QR){
 
 				
 				// 搞了半天是我自己做的二维码不符合json格式。。。
 				var data = JSON.parse(result),
 					resource_type =data.type,
-					resource_id = data.id;
+					resource_id = data.resource_id;
 				
 				if(resource_type&&resource_id){
+					// alert('成功啦')
 					self.scan.close()
 				}else{
-					cosnole.log('内容有误')
+				// alert('失败啦')
+					WeVue.Toast({
+                            duration: 1000,
+                            message: '内容有误',
+                            type: 'text'
+                        })
 					self.cancelScan()
 					self.startScan()
+					return
 				}
+
+				
 
 				switch(resource_type){
 					case 'scene':
@@ -104,6 +120,7 @@ export default {
 					break;
 
 					case 'hotel':
+					// self.$router.push('/')
 					self.$router.push('/hotel/'+resource_id)
 					break;
 
@@ -121,7 +138,7 @@ export default {
 					break;
 					default:
 						console.log('类别有误')
-						self.$router.push('/')
+						self.$router.back()
 					break;
 
 				}
@@ -131,7 +148,11 @@ export default {
 				
 			}else{
 
-				console.log('二维码无效')
+				WeVue.Toast({
+					duration: 1000,
+					message: '二维码无效',
+					type: 'text'
+				})
 				self.cancelScan()
 				self.startScan()
 				
@@ -264,5 +285,6 @@ console.log('跑起来0')
 	left: 0;
 	bottom: 0;
 	right: 0;
+	z-index: 2;
 }
 </style>

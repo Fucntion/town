@@ -5,7 +5,7 @@
 		<div class="bar-title" >我的订单</div>
 	</header>
 	<div id="order_list" class="" >
-		<div class="weui-form-preview" v-for="order in orderList">
+		<div class="weui-form-preview" v-for="order in orderList" v-if="orderList.length>0">
             <div class="weui-form-preview__hd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">付款金额</label>

@@ -17,12 +17,10 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "videojs-contrib-hls": "^5.4.0",
-    "vue": "^2.2.6",
-    "vue-mui": "^2.0.0",
+    "vue": "^2.4.0",
     "vue-resource": "^1.2.1",
     "vue-router": "^2.3.1",
-    "vue-video-player": "^3.0.2",
-    "vuex": "^2.2.1"
+    "we-vue": "^1.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

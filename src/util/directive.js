@@ -11,24 +11,39 @@ import Vue from 'vue'
 
 Vue.directive('strcut', {
   // 当绑定元素插入到 DOM 中。
-  inserted: function (el) {
-  
-    if(el.innerHTML.length>10){
-        el.innerHTML = el.innerHTML.substring(0,10)+'..'; 
+  inserted: function (el,binding) {
+
+    if(!binding.value||isNaN(binding.value)){
+      console.log('指令参数有误')
+      return
+    }
+
+    if(el.innerHTML.length>binding.value){
+        el.innerHTML = el.innerHTML.substring(0,binding.value)+'..'; 
     }
     
   },
-  update: function (el) {
-   
-    if(el.innerHTML.length>10){
-        el.innerHTML = el.innerHTML.substring(0,10)+'..'; 
+  update: function (el,binding) {
+
+   if(!binding.value||isNaN(binding.value)){
+      console.log('指令参数有误')
+      return
+    }
+
+    if(el.innerHTML.length>binding.value){
+        el.innerHTML = el.innerHTML.substring(0,binding.value)+'..'; 
     }
     
   },
-  componentUpdated: function (el) {
-  
-    if(el.innerHTML.length>10){
-        el.innerHTML = el.innerHTML.substring(0,10)+'..'; 
+  componentUpdated: function (el,binding) {
+
+    if(!binding.value||isNaN(binding.value)){
+      console.log('指令参数有误')
+      return
+    }
+
+    if(el.innerHTML.length>binding.value){
+        el.innerHTML = el.innerHTML.substring(0,binding.value)+'..'; 
     }
     
   }

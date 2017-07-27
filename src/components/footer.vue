@@ -14,7 +14,7 @@
     <a href="#/find" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/find'}">
         
        <i class="iconfont icon-faxian"></i>
-        <p class="weui-tabbar__label">发现</p>
+        <p class="weui-tabbar__label">路线</p>
     </a>
    
      <a href="#/activity" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/activity'}">

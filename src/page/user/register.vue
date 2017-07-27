@@ -43,7 +43,7 @@
 
      
     export default {
-        name: 'ware',
+        name: 'register',
         data: function () {
 
             return {
@@ -96,7 +96,7 @@
                             self.failure_show = false
                             setTimeout(function () {
                                 self.css_show = false
-                                self.$router.push('/login')
+                                self.$router.push({path:'/login',query:{isRegister:true}})
                             }, 1000);
                             
                         }else{

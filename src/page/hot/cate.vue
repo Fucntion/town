@@ -14,8 +14,8 @@
             <div class="hot_list">
                 
                 <div class="hot_item cate_item" v-for="item in cateList"  @click="tocate(item)">
-                    <div class="thumb"  v-if="item.thumb[0].url"
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb[0].url + ')'}"></div>
+                    <div class="thumb"  v-if="item.thumb"
+                    :style="{backgroundImage: 'url(' + item.thumb + ')'}"></div>
                     <p class="name">{{item.name}}</p>
                     <!-- <span class="total"></span> -->
                 </div>
@@ -27,8 +27,8 @@
             <div class="hot_list">
                 
                 <div class="hot_item cate_item" v-for="item in cateList"  @click="tocate(item)">
-                    <div class="thumb"  v-if="item.thumb[0].url"
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb[0].url + ')'}"></div>
+                    <div class="thumb"  v-if="item.thumb"
+                    :style="{backgroundImage: 'url(' + item.thumb + ')'}"></div>
                     <p class="name">{{item.name}}</p>
                     <!-- <span class="total"></span> -->
                 </div>
@@ -41,8 +41,8 @@
             <div class="hot_all_list">
                 
                 <div class="hot_item cate_item" v-for="(item,index) in cateList" @click="tocate(item)">
-                    <div class="thumb"  v-if="item.thumb[0].url"
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb[0].url + ')'}"></div>
+                    <div class="thumb"  v-if="item.thumb"
+                    :style="{backgroundImage: 'url(' +item.thumb + ')'}"></div>
                     <div class="info">
                         <p class="name">{{item.name}}</p>
                         <p class="index">排名第{{index+1}}的美食</p> 

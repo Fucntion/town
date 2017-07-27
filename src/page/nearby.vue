@@ -5,12 +5,12 @@
 		 <!-- neary_left_icon -->
 		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
 		 <!-- <span class="icon_text icon_right">搜索</span>  -->
-		
-		<div class="scan icon_img icon_right" @click="Toscan()"  v-if="isplus=='plus'" ></div>
+		<!-- v-if="isplus!='plus'" -->
+		<div class="scan icon_img icon_right" @click="Toscan()"   ></div>
 		{{IS_TOWN_NAME}}
 	</header>
 
-	
+	 
 	 <!--搜索-->
 	<div v-show="!marker_info_box" class="nearby-search-bar" :style="{marginTop:ishead+'px'}">
 		<!-- <span @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}</span> -->
@@ -23,37 +23,38 @@
 	</div> -->
 	<!-- static/img/play3.png -->
 	<div class="suspend_box" v-show="suspendSatus" :style="{marginTop:ishead+50+'px'}">
-		 <div class="suspend_titel" @click="suspend_back()">{{IS_TOWN_NAME}}热门推荐 <i class="icon-right iconfont"></i></div>  
+		 <div class="suspend_titel" @click="suspend_back()">{{IS_TOWN_NAME}}推荐 <i class="icon-right iconfont"></i></div>  
 		<!-- <div class="suspend_back" >返回</div> -->
 		<div class="list_box" >
+
 			<div v-show="suspendType=='hotel'"  @click="todetail('hotel',item.hotel_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb + ')'}">
-				<p class="item_name"  v-strcut>{{item.name}}</p>
+				<p class="item_name"  v-strcut='10'>{{item.name}}</p>
 				<div class="mask"></div>
 			</div>
 			
 			<!-- 这里单独用if是为了避免vue报错，但是会增加dom渲染成本。准备让后台换数据格式 -->
 			<div v-show="suspendType=='cate'"  @click="todetail('cate',item.cate_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb  + ')'}">
-				<p class="item_name"  v-strcut>{{item.name}}</p>
+				<p class="item_name"  v-strcut='10'>{{item.name}}</p>
 				<div class="mask"></div>
 			</div>
 
 			<div v-show="suspendType=='scene'"  @click="todetail('scene',item.scene_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb + ')'}">
-				<p class="item_name"  v-strcut>{{item.name}}</p>
+				<p class="item_name"  v-strcut='10'>{{item.scene_name}}</p>
 				<div class="mask"></div>
 			</div>
 
 			<div v-show="suspendType=='ware'"  @click="todetail('ware',item.goods_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb+ ')'}">
-				<p class="item_name"  v-strcut>{{item.name}}</p>
+				<p class="item_name"  v-strcut='10'>{{item.name}}</p>
 				<div class="mask"></div>
 			</div>
 
 			<div v-show="suspendType=='lu'"  @click="todetail('lu',item.lu_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb + ')'}">
-				<p class="item_name"  v-strcut>{{item.title}}</p>
+				<p class="item_name"  v-strcut='10'>{{item.title}}</p>
 				<div class="mask"></div>
 			</div>
 
@@ -153,6 +154,7 @@
 <script>
 
 import footer from 'plugin/footer'
+
 export default {
 	name: 'nearby',
 	data: function () {
@@ -171,11 +173,11 @@ export default {
 			ishead:this.$util.istop(),
 			isplus:this.$util.isEnvironment(),
 			suspendSatus:false,//右侧是关闭的
-			all_scene_list:[],
-			all_hotel_list:[],
-			all_cate_list:[],
-			all_ware_list:[],//这个内容不再地图上标记，不要拖累初始化进度，后期考虑需要才加载
-			all_lu_list:[],//这个内容不再地图上标记，不要拖累初始化进度，后期考虑需要才加载
+			town_scene_list:[],
+			town_hotel_list:[],
+			town_cate_list:[],
+			town_ware_list:[],//这个内容不再地图上标记，不要拖累初始化进度，后期考虑需要才加载
+			town_lu_list:[],//这个内容不再地图上标记，不要拖累初始化进度，后期考虑需要才加载
 			suspendList:[],
 			suspendType:null,//记录当前打开的数据类别，方便选择不同模板
 
@@ -204,32 +206,47 @@ export default {
 			// 	return
 			// }
 
-			// 到底哪种好呢？
-			// switch(type){
-			// 	case 'hotel':
-			// 		self.suspendList = self.all_hotel_list
-			// 	break;
-			// 	case 'cate':
-			// 		self.suspendList = self.all_cate_list
-			// 	break;
-			// 	default:
-			// 	break;
-			// }
+
+			var tempArr = self['town_'+type+'_list']
+			
+			if(tempArr.length>0){
+
+				if(self.IS_TOWN_ID){
+
+					for(var i = 0;i<tempArr.length;i++){
+
+						//救救没有图片的穷鬼哦
+						if(!tempArr[i].thumb){
+							tempArr[i].thumb = 'http://static.icloudinn.com/play3.png'
+						}
+
+						// 如果有已经选好的镇，就过滤下。没有的话局一股脑全海南的都来
+						if(self.IS_TOWN_ID&&tempArr[i].town_id==self.IS_TOWN_ID){
+							self.suspendList.push(tempArr[i])
+						}
+						
 
 
-			self.suspendList = self['all_'+type+'_list']
-								
-			if(self.suspendList.length>0){
-				for(var i = 0;i<self.suspendList.length;i++){
-
-
-
-					//救救没有图片的穷鬼哦
-					if(!self.suspendList[i].thumb){
-						self.suspendList[i].thumb = 'http://town.icloudinn.com//static/img/play3.png'
 					}
 
+				}else{
+
+					for(var i = 0;i<tempArr.length;i++){
+
+						//救救没有图片的穷鬼哦
+						if(!tempArr[i].thumb){
+							tempArr[i].thumb = 'http://static.icloudinn.com/play3.png'
+						}
+
+						// 如果有已经选好的镇，就过滤下。没有的话局一股脑全海南的都来
+							self.suspendList.push(tempArr[i])
+						
+
+
+					}
 				}
+				
+
 				self.suspendSatus = true
 			}
 		},
@@ -329,6 +346,7 @@ export default {
 		toMap:function(){
 			var self = this
 			self.town_show = true
+			self.suspendSatus = false //清除掉右侧列表
 		},
 		totown:function(){
 			var self = this
@@ -339,9 +357,6 @@ export default {
 			}else{
 				this.$router.push({path:'/town/'+self.IS_TOWN_ID,query:{town_name:self.IS_TOWN_NAME}})
 			}
-
-
-
 			
 		},
 		Tocity:function(){
@@ -352,7 +367,7 @@ export default {
 				self.$nextTick(function () {
 					self.accordions()
 				})
-				
+				 
 			}, response => {
 				console.log("请求失败")
 			});
@@ -375,7 +390,7 @@ export default {
 								icon: new AMap.Icon({            
 										size: new AMap.Size(128, 128),  //图标大小
 										imageSize: new AMap.Size(36,36),
-										image: 'http://town.icloudinn.com/map/map.png',
+										image: 'http://static.icloudinn.com/mammmmm.png',
 										// imageOffset: new AMap.Pixel(0, -60)
 								})    
 							});
@@ -463,7 +478,7 @@ export default {
 			marker.name=label||null;
 			marker.type =type ||null
 			marker.resource_id = resource_id||null
-			marker.thumb = thumb||'http://town.icloudinn.com/xzyy.png'
+			marker.thumb = thumb||'http://static.icloudinn.com/xzyy.png'
 
 			//给Marker绑定单击事件
 			marker.on('click', self.markerClick);
@@ -520,9 +535,28 @@ export default {
 			});
 
 
-		
-			//获取当前位置
-			self.getLocation()
+			if(self.$route.query.type=='target'&&self.$route.query.town_id){
+				//如果是通过小镇专题页、扫码等页面进来。则自动定位到指定小镇
+				
+				self.$http.get('/town/' + self.$route.query.town_id).then(response => {
+
+					var townInfo = response.body.data
+
+					self.reloadMap(townInfo)
+
+                    
+                }, response => {
+                    // error callback
+				});
+				
+			}else{
+
+				//如果是通过底部导航栏进来，则通过app、微信、ip等获取当前位置
+				self.getLocation()
+			}
+			
+
+			
 
 
 		
@@ -542,7 +576,7 @@ export default {
 						type = 'town',
 						label = townList[i].town_name,
 						resource_id = townList[i].town_id,
-						thumb = townList[i].thumb
+						thumb = townList[i].town_thumb
 				
 						self.addMarker(point,type,resource_id,label,thumb);
 					}
@@ -569,20 +603,20 @@ export default {
 						// 让缩略图统一字段名字哦。。
 						sceneList[i].thumb = sceneList[i].scene_thumb
 						sceneList[i].name = sceneList[i].scene_name
-						delete sceneList[i].scene_thumb
-						delete sceneList[i].scene_name
+						// delete sceneList[i].scene_thumb
+						// delete sceneList[i].scene_name
 						var point = [sceneList[i].lng,sceneList[i].lat],
 						type = 'scene',
 						label = sceneList[i].scene_name,
 						resource_id = sceneList[i].scene_id,
-						thumb = sceneList[i].scene_thumb
+						thumb = sceneList[i].thumb
 				
 						self.addMarker(point,type,resource_id,label,thumb);
 					}
 								
 				}
 
-				self.all_scene_list = sceneList
+				self.town_scene_list = sceneList
 							
 			}, response => {
 				// error callback
@@ -593,7 +627,7 @@ export default {
 				// get body data
 				
 				var hotelList = response.body.data
-				self.all_hotel_list = hotelList
+				self.town_hotel_list = hotelList
 
 				for(var i=0;i<hotelList.length;i++){
 					
@@ -621,7 +655,7 @@ export default {
 				// get body data
 				
 				var cateList = response.body.data
-				self.all_cate_list = cateList
+				self.town_cate_list = cateList
 				
 				for(var i=0;i<cateList.length;i++){
 					
@@ -648,7 +682,7 @@ export default {
 				// get body data
 				
 				var wareList = response.body.data
-				self.all_ware_list = wareList
+				self.town_ware_list = wareList
 				
 				
 							
@@ -662,7 +696,7 @@ export default {
 				// get body data
 				
 				var luList = response.body.data
-				self.all_lu_list = luList
+				self.town_lu_list = luList
 				
 				
 							
@@ -690,6 +724,8 @@ export default {
 		self.IS_TOWN_NAME = '海南'
 		self.mapload()
 		self.Tocity()
+
+	
 			
 	}
 }

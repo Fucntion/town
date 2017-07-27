@@ -1,4 +1,14 @@
 import Vue from 'vue'
+
+// 引入vue-weui
+import WeVue from 'we-vue'
+import 'we-vue/lib/style.css'
+Vue.use(WeVue)
+
+//前端第一戒：不能污染全局空间
+window.WeVue = WeVue
+
+
 var _ = require('lodash')
 
 import util from './util/util'
@@ -16,15 +26,15 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
 	//  mode: 'history',
-	 routes
+	routes
 });
 
 
 router.beforeEach((to, from, next) => {
 
-	if(to.path == "/login" || to.path == "/register") {
+	if (to.path == "/login" || to.path == "/register") {
 		next();
-	}else{
+	} else {
 		next();
 
 	}
@@ -43,28 +53,37 @@ Vue.http.interceptors.push((request, next) => {
 
 
 
-    if(request.url.indexOf('nature=')>=0){
+	if (request.url.indexOf('nature=') >= 0) {
 
-        request.url = request.url.substr(7)
+		request.url = request.url.substr(7)
 
-    }else{
+	} else {
 
 
 		var url = 'http://api.town.icloudinn.com'
-      
-        request.url = url + request.url
-        request.headers.set('token', localStorage.getItem("token"))
-    	request.headers.set('town', sessionStorage.getItem("town_id")) //后台接口把town_id废弃了
-    }
+
+		request.url = url + request.url
+		request.headers.set('token', localStorage.getItem("token"))
+		request.headers.set('town', sessionStorage.getItem("town_id")) //后台接口把town_id废弃了
+	}
 
 
 	next((response) => {
 		// token存在，但是过期
 
-		if(response.body.code == 404||response.body.code ==20005){
-			location.hash = 'login'
-		}else if(response.body.code == 405){
-			
+		if (response.body.code == 404 || response.body.code == 20005) {
+
+			//提示登录，用户确认后跳转登录
+			WeVue.Dialog({
+				title: '需要登录',
+				message: '该操作需要登录，是否跳转到登录页？',
+				skin: 'ios'
+			},
+			function () {
+				location.hash = 'login'
+			})
+		} else if (response.body.code == 405) {
+
 			location.hash = 'towninfo'
 		}
 		return response
@@ -75,13 +94,14 @@ Vue.http.interceptors.push((request, next) => {
 
 
 
-require ('assets/style/app.less')
+require('assets/style/app.less')
 
 import App from './App.vue'
 
 // import './filter.js'
 
 import './util/directive.js'
+
 
 
 const app = new Vue({

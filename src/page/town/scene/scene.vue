@@ -17,7 +17,7 @@
             </audio>
         </div>
 
-        <div class="message">
+        <div class="">
             <div v-html="sceneInfo.scene_content" class="m_content child_color">
             </div>
         </div>

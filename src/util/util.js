@@ -1,6 +1,8 @@
 //检查一变量是否每个属性都有值
 var util = {}
 
+util.host = 'http://town.icloudinn.com'
+
 util.isEnvironment = function(){
 
     var ua= navigator.userAgent.toLowerCase();
@@ -60,7 +62,7 @@ util.swiperTop = function(){
 
  // 更新分享服务及发布分享
 util.updateSerivces=function(){
-    return false;//微信审核不通过
+    // return false;//微信审核不通过
     var self=this,shares={};
     plus.share.getServices( function(s){
         console.log(s)
@@ -156,16 +158,19 @@ util.checkPhone=function(phone){
 // @click="$util.toBack()"
 // 为了兼容有的页面没有底部菜单，或者分享出去后没有history导致无法返回上一页，可以初始化的时候显式调用本函数，添加首页到history中
 util.toBack = function(){
+
     
-    if(history.length==0){
-        location.hash = ''//返回首页
-       
+    if(JSON.stringify(history)=='{}'||history.length==0){
+        // location.href=this.host//返回首页
+       history.go(-1)
     }else{
          history.go(-1)
     }
     
 
 }
+
+
 
 
 

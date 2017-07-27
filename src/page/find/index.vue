@@ -91,12 +91,13 @@
 			var self = this
 
 
-		self.$http.get('/test/travelRoute').then(response => {
+		self.$http.get('/v1/travel_route').then(response => {
 
  
 
 			if(!_.isArray(response.body.data))return
-			self.luList = self.$util.getRandomArrayElements(response.body.data,6)
+			// self.luList = self.$util.getRandomArrayElements(response.body.data,6)
+			self.luList = response.body.data
 			// console.log(self.wareList)
 			self.$nextTick(function () {
 				// console.log($('.card_img img'))

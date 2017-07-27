@@ -2,33 +2,33 @@
     <div class="wrap white_wrap" v-if="hotelList.length>0">
         
          <div class="bar bot" :style="{paddingTop:ishead+'px'}">
-             热门美食
+             热门民宿
             <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
             
         </div>
         <div class="bar_after"></div>
        
-    
+<!--     
         <div class="hot_list_box block">
             <div class="hot_title">按类别浏览</div>
             <div class="hot_list">
                 
                 <div class="hot_item cate_item" v-for="item in hotelList"  @click="tohotel(item)">
                     <div class="thumb"  
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb + ')'}"></div>
+                    :style="{backgroundImage: 'url(' +item.thumb + ')'}"></div>
                     <p class="name">{{item.name}}</p>
-                    <!-- <span class="total"></span> -->
+                    
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="hot_list_box block">
-            <div class="hot_title">热门美食</div>
+            <div class="hot_title">热门民宿</div>
             <div class="hot_list">
                 
                 <div class="hot_item cate_item" v-for="item in hotelList"  @click="tohotel(item)">
                     <div class="thumb"  
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb + ')'}"></div>
+                    :style="{backgroundImage: 'url(' +item.thumb + ')'}"></div>
                     <p class="name">{{item.name}}</p>
                     <!-- <span class="total"></span> -->
                 </div>
@@ -37,12 +37,12 @@
         
         
         <div class="hot_list_box block">
-            <div class="hot_title">美食排行榜</div>
+            <div class="hot_title">民宿排行榜</div>
             <div class="hot_all_list">
                 
                 <div class="hot_item cate_item" v-for="(item,index) in hotelList" @click="tohotel(item)">
                     <div class="thumb"  
-                    :style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.thumb + ')'}"></div>
+                    :style="{backgroundImage: 'url(' +item.thumb + ')'}"></div>
                     <div class="info">
                         <p class="name">{{item.name}}</p>
                         <p class="index">排名第{{index+1}}的美食</p> 

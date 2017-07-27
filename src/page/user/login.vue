@@ -1,125 +1,124 @@
 <template>
-<div class="wrap">
-    <header class="bar" :style="{paddingTop:ishead+'px'}">
-        <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
-		<!-- <div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" /></div> -->
-		登录
-    </header> 
-    <div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
-    <div class="town-content "  >
-        <div class="town-input-group">
-            <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">账号</label></div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" v-model="login.account" placeholder="账号/手机/邮箱">
+    <div class="wrap login_wrap">
+        <div class="bar bar-clear" :style="{marginTop:ishead+'px'}">
+            <img src="~assets/img/left.png" class="icon_img icon_left  gray" @click="$util.toBack()" />
+        </div>
+
+        <div class="login_box">
+            <div class="town-input-group">
+                <div class="weui-cell">
+                    <!-- <div class="weui-cell__hd"><label class="weui-label">账号</label></div> -->
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="text" v-model="login.account" placeholder="账号/手机/邮箱">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <!-- <div class="weui-cell__hd"><label class="weui-label">密码</label></div> -->
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" type="password" v-model="login.password" placeholder="密码">
+                    </div>
+                </div>
+                <div class="weui-cell">
+                    <!-- <div class="weui-cell__hd"><label class="weui-label">密码</label></div> -->
+
                 </div>
             </div>
-            <div class="weui-cell">
-                <div class="weui-cell__hd"><label class="weui-label">密码</label></div>
-                <div class="weui-cell__bd">
-                    <input class="weui-input" type="password" v-model="login.password" placeholder="密码">
-                </div>
+            <div class="town-button-row">
+                
+                <wv-button @click="toRegister()" type="default login_btn" :mini="true">注册</wv-button>
+                <wv-button  @click="doLogin()" type="primary login_btn" :mini="true">登录</wv-button>
+                <!-- <div  class="weui-btn weui-btn_warn">注册</div>
+                <div  class="weui-btn weui-btn_primary">登录</div> -->
             </div>
         </div>
+
     </div>
-    <div class="town-button-row">
-        <a href="javascript:;" @click="doLogin()" class="weui-btn weui-btn_primary">登录</a>
-        <a href="javascript:;" @click="toRegister()" class="weui-btn weui-btn_warn">注册</a>
-    </div>
-    <div id="toast" v-if="css_show">
-        <div class="weui-mask_transparent"></div>
-        <div class="weui-toast">
-            <i class="weui-icon-warn weui-icon_msg warn_show" v-if="failure_show"></i>
-            <i class="weui-icon-success-no-circle weui-icon_toast" v-if="win_show"></i>
-            <p class="weui-toast__content">{{judge}}</p>
-        </div>
-    </div>
-</div>
 </template>
 
 <script>
-
-
     export default {
-        name: 'ware',
+        name: 'login',
         data: function () {
 
             return {
-                login:{
-                    account:null,
-                    password:null
+                login: {
+                    account: null,
+                    password: null
                 },
-                css_show:false,
-                failure_show:false,
-                win_show:false,
-                judge:null,
-                ishead:this.$util.istop(),
+                ishead: this.$util.istop(),
 
 
             }
         },
         methods: {
-             user:function(){
-                 this.$router.push('/')
-             },
-             doLogin:function(){
+            user: function () {
+                this.$router.push('/')
+            },
+            doLogin: function () {
 
                 var self = this,
-                url = '/user/login',
-                data = self.login;
-                if(self.login.account==null || self.login.password==null){
+                    data = self.login;
+                if (!self.login.account || !self.login.password) {
 
-                     self.judge = "不能为空"
-                     self.css_show = true
-                     self.failure_show = true
-                     self.win_show =false
-                     setTimeout(function () {
-                        self.css_show = false
-                    }, 1000);
-                }else{
-                    this.$http.post(url,data).then(response => {
-                    var result = response.body;
-                    console.log(result);
+                    WeVue.Toast({
+                        duration: 1000,
+                        message: '账号密码不能为空',
+                        type: 'text'
+                    })
 
-                    var datas = JSON.parse(result.data);
-                    
-                    if(result.code == 100){
-						var access_token = datas.data.access_token;
-                        localStorage.setItem("token",access_token );
+                } else {
+                    this.$http.post('/user/login', data).then(response => {
+                        var result = response.body;
 
-                        self.judge = "登录成功"
-                        self.css_show = true
-                        self.win_show = true
-                        self.failure_show =false
-                        setTimeout(function () {
-                            self.css_show = false
-                            self.$router.back()
-                        }, 1000);
 
-                    }else{
+                        var datas = JSON.parse(result.data);
+                        console.log(result);
+                        if (result.code == 100) {
+                            var access_token = datas.data.access_token;
+                            localStorage.setItem("token", access_token);
 
-                        self.judge = "登录失败"
-                        self.css_show = true
-                        self.failure_show = true
-                        self.win_show = false
-                        setTimeout(function () {
-                            self.css_show = false
-                            window.location.reload();
-                        }, 1000);
+                            WeVue.Toast({
+                                duration: 1000,
+                                message: '登录成功',
+                                icon: 'success'
+                            })
 
-                    }
+                            setTimeout(function () {
+
+                                if (self.$route.query.isRegister) {
+                                    self.$router.push('/')
+                                } else {
+                                    self.$router.back()
+                                }
+
+                            }, 1000);
+
+                        } else {
+                            WeVue.Toast({
+                                duration: 1000,
+                                message: '登录失败',
+                                icon: 'warn'
+                            })
+                            self.login = {
+                                account: null,
+                                password: null
+                            }
+
+
+
+                        }
 
                     }, response => {
                         // error callback
                     });
                 }
-             },
-             toRegister:function(){
+            },
+            toRegister: function () {
 
-                 var self = this
+                var self = this
 
-                 self.$router.push('/register')
-             }
+                self.$router.push('/register')
+            }
 
         },
         components: {
@@ -130,7 +129,7 @@
         },
         mounted() {
 
-            var self=this
+            var self = this
 
 
 

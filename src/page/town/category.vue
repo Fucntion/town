@@ -2,86 +2,91 @@
     <div class="wrap" v-if="townInfo">
         <div id="banner">
 
-            <div class="bar" :style="{paddingTop:ishead+'px'}">
-                小镇简介
-                <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
-                <img src="~assets/img/share.png" v-if="isplus=='plus'"  class="icon_img icon_right" @click="updateSerivces()">
+            <div class="bar bar-clear" :style="{paddingTop:ishead+'px'}">
+                <!-- 小镇简介 -->
+                <img src="~assets/img/left.png" class="icon_img icon_left gray" @click="$util.toBack()" />
+                <img src="~assets/img/share.png" v-if="isplus=='plus'" class="icon_img icon_right gray" @click="updateSerivces()">
             </div>
-            <div class="bar_after"></div>
-            <img width="100%" :src="townInfo.town_thumb" />
-            
+            <!-- <div class="bar_after"></div> -->
+            <img class="category_thumb" :style="{backgroundImage: 'url(' + townInfo.town_thumb + ')'}"  />
+
 
         </div>
-        
 
         <div class="info_list">
             <div class="block info_item info_item_desc">
                 <div class="info_title">
-                    简介
+                    {{townInfo.town_name}}简介
                 </div>
-                <div v-html="townInfo.town_desc" style="margin-top:20px;" :class="isDrop?'desc_box':''">
+                <div v-html="townInfo.town_desc" style="margin-top:10px;" class="m_content" :class="isDrop?'desc_box':''">
 
                 </div>
 
-                <div class="weui-btn" style="border-radius:0;margin:20px auto 10px;width:100px;font-size:14px;color:#666666;" @click="changeDrop()">显示全部</div>
+                <div class="weui-btn drop-btn" v-if="isDrop" @click="changeDrop()">显示全部</div>
+
+                <div class="weui-btn drop-btn" v-else @click="changeDrop()">收起</div>
 
             </div>
+
             <div class="block info_item" v-if="sceneList.length>0">
                 <div class="info_title">
                     自然风光
                 </div>
 
                 <div class="box">
-                    <a class="item" v-for="(scene,index) in sceneList" :href="'/#/scene/'+scene.scene_id">
+                    <div class="item" v-for="(scene,index) in sceneList" @click="todetail('scene',scene.scene_id)">
                         <div class="thumb" :style="{backgroundImage: 'url('+ scene.scene_thumb + ')'}"></div>
 
-                        <p>{{scene.scene_name}}</p>
-                    </a>
+                        <p v-strcut='6'>{{scene.scene_name}}</p>
+                    </div>
                 </div>
             </div>
+
             <div class="block info_item" v-if="cateList.length>0">
                 <div class="info_title">
                     美食
                 </div>
 
                 <div class="box">
-                    <a class="item" v-for="(cate,index) in cateList" :href="'/#/cate/'+cate.cate_id">
-                        <!--{{cate.thumb[0].url}}-->
-                        <div class="thumb" :style="{backgroundImage: 'url('+ cate.thumb[0].url + ')'}"></div>
+                    <div class="item" v-for="(cate,index) in cateList" @click="todetail('cate',cate.cate_id)">
 
-                        <p> {{cate.name}}</p>
-                    </a>
+                        <div class="thumb" :style="{backgroundImage: 'url('+ cate.thumb + ')'}"></div>
+
+                        <p v-strcut='6'> {{cate.name}}</p>
+                    </div>
 
                 </div>
             </div>
+
             <div class="block info_item" v-if="wareList.length>0">
                 <div class="info_title">
                     手礼
                 </div>
 
                 <div class="box">
-                    <a class="item" v-for="(ware,index) in wareList" :href="'/#/ware/'+ware.goods_id">
+                    <div class="item" v-for="(ware,index) in wareList" @click="todetail('ware',ware.goods_id)">
 
                         <div class="thumb" :style="{backgroundImage: 'url('+ ware.thumb + ')'}"></div>
 
-                        <p> {{ware.name}}</p>
+                        <p v-strcut='6'> {{ware.name}}</p>
 
-                    </a>
+                    </div>
                 </div>
             </div>
+
             <div class="block info_item" v-if="hotelList.length>0">
                 <div class="info_title">
                     民宿
                 </div>
 
                 <div class="box">
-                    <a class="item" v-for="(hotel,index) in hotelList" :href="'/#/hotel/'+hotel.hotel_id">
+                    <div class="item" v-for="(hotel,index) in hotelList" @click="todetail('hotel',hotel.hotel_id)">
 
                         <div class="thumb" :style="{backgroundImage: 'url('+ hotel.thumb + ')'}"></div>
 
-                        <p> {{hotel.name}}</p>
+                        <p v-strcut='6'> {{hotel.name}}</p>
 
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,14 +110,52 @@
                 hotelList: [],
                 isDrop: true,
                 ishead: this.$util.istop(),
-                isplus:this.$util.isEnvironment()
+                isplus: this.$util.isEnvironment()
             }
         },
         computed: {
 
         },
         methods: {
+            todetail: function (type, resource_id) {
+                //为了兼容右侧悬浮层的跳转，所以就把type，id拿出来
+                console.log(type, resource_id)
+                var self = this
+                if (!type || !resource_id) {
+                    console.log('参数错误')
+                    return
+                }
+                switch (type) {
+                    case 'scene':
+                        self.$router.push('/scene/' + resource_id)
+                        break;
 
+                    case 'town':
+                        self.$router.push('/town/category/' + resource_id)
+                        break;
+
+                    case 'hotel':
+                        self.$router.push('/hotel/' + resource_id)
+                        break;
+
+                    case 'ware':
+                        self.$router.push('/ware/' + resource_id)
+                        break;
+
+                    case 'lu':
+                        self.$router.push('/way/' + resource_id)
+                        break;
+
+                    case 'cate':
+                        self.$router.push('/cate/' + resource_id)
+                        // alert('类别有误')
+                        break;
+                    default:
+                        // alert('类别有误')
+                        break;
+
+                }
+            },
             changeDrop: function () {
                 this.isDrop = !this.isDrop
             },
@@ -123,14 +166,23 @@
                 this.$util.updateSerivces()
             },
 
-           
+
             totown: function () {
-                this.$router.push('/town/' + this.$route.params.id)
+                // this.$router.push('/town/' + this.$route.params.id)
+                this.$router.push({
+                    path: '/nearby', query: {
+                        town_id: this.$route.params.id,
+                        type: 'target'
+                    }                
+})
             },
             init: function () {
 
                 var self = this,
                     townId = self.$route.params.id
+
+
+                sessionStorage.setItem("town_id", townId)
 
                 this.$http.get('/town/' + townId).then(response => {
 

@@ -6,7 +6,7 @@ module.exports = {
 
 	 entry: {
 	 	app: './src/app.js',
-	 	vender:['vue','vue-resource','vue-router']
+	 	vender:['vue','vue-resource','vue-router','we-vue']
 	 },
 	output: {
 		path: path.resolve(__dirname, './dist'),

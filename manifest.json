@@ -7,7 +7,7 @@
 	"id": "H59FFF9C4",/*应用的标识，创建应用时自动生成，勿手动修改*/
 	"name": "小镇演义",/*应用名称，程序桌面图标名称*/
 	"version": {
-		"name": "1.2.0",/*应用版本名称*/
+		"name": "1.2.2",/*应用版本名称*/
 		"code": "83"
 	},
 	"description": "小镇演义，为全域旅游而生",/*应用描述信息*/
@@ -81,18 +81,18 @@
 			"plugins": {
 				"share": {
 					
-					"weixin": {"appid":"wxe00d1314a29f18a9","appsecret":"dba1b15ffad3f9962fb12ab7369b0ae0","description":"可选，微信分享"}
+					"weixin": {"appid":"wxfdec1f816b61676c","appsecret":"8fe52751412a5ab7822e342fe7e0a974","description":"可选，微信分享"}
 				},
 				"payment": {
 					"weixin": {
 						"description": "微信支付",
-						"appid": "wxe00d1314a29f18a9"
+						"appid": "wxfdec1f816b61676c"
 					}
 				},
 				"maps": {"baidu":{"appkey_ios":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey_android":"eQo07CsDo1GfmLkM8fvqWrrjBvOXchzW","appkey":"","description":""}
 					
 				},
-				"oauth": {"weixin":{"appid":"wxe00d1314a29f18a9","appsecret":"dba1b15ffad3f9962fb12ab7369b0ae0"}}
+				"oauth": {"weixin":{"appid":"wxfdec1f816b61676c","appsecret":"8fe52751412a5ab7822e342fe7e0a974"}}
 			},
 			"apple": {
 				"appid": "",/*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
@@ -154,7 +154,7 @@
 				"ios": {
 					"iphone": {
 						"default": "", /*iPhone3启动图片选，分辨率：320x480*/
-						"retina35": "E:/github/ioszs/750.png","retina47":"E:/github/ioszs/750.png","retina40":"E:/github/ioszs/750.png"
+						"retina35": "E:/ioszs/750.png","retina47":"E:/ioszs/750.png","retina40":"E:/ioszs/750.png"
 					},
 					"ipad": {
 						 /*iPad竖屏启动图片，分辨率：768x1004*/
@@ -169,7 +169,7 @@
 				},
 				"android": {
 					"mdpi": "", /*普通屏启动图片，分辨率：240x282*/
-					"ldpi": "","hdpi":"E:/github/ioszs/750.png","xhdpi":"E:/github/ioszs/750.png","xxhdpi":"E:/github/ioszs/750.png"
+					"ldpi": "","hdpi":"E:/ioszs/750.png","xhdpi":"E:/ioszs/750.png","xxhdpi":"E:/ioszs/750.png"
 				}
 			},
 			"debug": false
