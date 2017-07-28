@@ -3,26 +3,27 @@
      <header class="bar" :style="{paddingTop:ishead+'px'}">
 		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img  icon_left" @click="$util.toBack()"/></div>
 		<div class="bar-title" >添加收货地址</div>
-	</header>
+    </header>
+    <div class="bar_after"></div>
     <div class="town-content ">
         <div class="town-input-group">
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">收货人</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入收货人姓名" v-model="addressadd.link">
+                    <input class="weui-input" type="text" placeholder="请输入收货人姓名" v-model="addressInfo.link">
                 </div>
             </div>
-             <div class="weui-cell phone">
+             <!-- <div class="weui-cell phone">
                 <div class="weui-cell__hd"><label class="weui-label">+86</label></div>
                 <div class="weui-cell__bd">
                     中国
                 </div>
-                <img src="~assets/img/right.png" class="icon_img address_icon"/>
-            </div>
+                <i class="icon-angle-right iconfont address_icon right"></i>
+            </div> -->
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">手机号码</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" placeholder="请输入收货人的手机号" v-model="addressadd.tel">
+                    <input class="weui-input" type="number" placeholder="请输入收货人的手机号" v-model="addressInfo.tel">
                 </div>
             </div>
             <div class="weui-cell" id='showCityPicker3'>
@@ -33,23 +34,23 @@
                     </div>
                     <!-- <input class="weui-input" type="text" placeholder="--请选择--" v-model="address" id='cityResult3' > -->
                     <!--<div id='cityResult3'>{{address}}</div>-->
-                    <input type="hidden" class="town-input-clear" placeholder="请输入您所在的省" v-model="addressadd.province">
-                    <input type="hidden" class="town-input-clear"  placeholder="请输入您所在的市" v-model="addressadd.city">
-                    <input type="hidden" class="town-input-clear" placeholder="请输入您所在的县区" v-model="addressadd.area">
+                    <input type="hidden" class="town-input-clear" placeholder="请输入您所在的省" v-model="addressInfo.province">
+                    <input type="hidden" class="town-input-clear"  placeholder="请输入您所在的市" v-model="addressInfo.city">
+                    <input type="hidden" class="town-input-clear" placeholder="请输入您所在的县区" v-model="addressInfo.area">
                 </div>
-                <img src="~assets/img/right.png" class="icon_img address_icon"/>
+                <i class="icon-angle-right iconfont address_icon right"></i>
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">详细地址</label></div>
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="text" placeholder="请输入详细地址" v-model="addressadd.detail">
+                    <input class="weui-input" type="text" placeholder="请输入详细地址" v-model="addressInfo.detail">
                 </div>
             </div>
             <div class="weui-cell weui-cell_switch">
                 <div class="weui-cell__bd">设为默认地址</div>
                 <div class="weui-cell__ft">
                     <label for="switchCP" class="weui-switch-cp">
-                        <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked" @click="active()">
+                        <input id="switchCP" class="weui-switch-cp__input" type="checkbox"  @click="active()">
                         <div class="weui-switch-cp__box"></div>
                     </label>
                 </div>
@@ -80,14 +81,14 @@
         data: function () {
             return {
                address:null,
-               addressadd:{
+               addressInfo:{
                     link:null,
                     tel:null,
                     province:null,
                     city:null,
                     area:null,
                     detail:null,
-                    ismain:1
+                    ismain:0
                 },
                 on:true,
                 css_show:false,
@@ -104,40 +105,58 @@
                 var self = this
                 self.on=!self.on
                 if(self.on){
-                    self.addressadd.ismain = 1
+                    self.addressInfo.ismain = 1
                 }else{
-                    self.addressadd.ismain = 0
+                    self.addressInfo.ismain = 0
                 }
             },
 
             doAddress:function(){
 
                 var self = this,
-                url = '/address/list',
-                data = self.addressadd
-                this.$http.post(url,data).then(response => {
+
+                data = self.addressInfo
+                if(!self.addressInfo.link||!self.addressInfo.tel||!self.addressInfo.province||!self.addressInfo.city||!self.addressInfo.area||!self.addressInfo.area||!self.addressInfo.detail){
+                   WeVue.Toast({
+                        duration: 1000,
+                        message: '信息不完整',
+                        type: 'text'
+                    })
+                    return  
+                }
+
+                 if (!self.$util.checkPhone(self.addressInfo.tel)) {
+					
+					WeVue.Toast({
+						duration: 1000,
+						message: '联系方式格式不符',
+						type: 'text'
+					})
+					return
+				}
+
+                this.$http.post('/v1/delivery_address',data).then(response => {
                     var result = response.body;
                     console.log(result)
-                    if(result.code == 101){
+                    if(result.code == 100){
 
-                        self.judge = "添加成功"
-                        self.css_show = true
-                        self.win_show = true
-                        self.failure_show =false
-                        setTimeout(function () {
-                            self.css_show = false
-                            self.$router.push('/addresslist')
-                        }, 1000);
+                        WeVue.Toast({
+                            duration: 1000,
+                            message: '添加成功',
+                            icon: 'success'
+                        })
+                        self.$router.push('/addresslist')
+                        
 
                     }else{
 
-                        self.judge = "添加失败"
-                        self.css_show = true
-                        self.failure_show = true
-                        self.win_show = false
-                        setTimeout(function () {
-                            self.css_show = false
-                        }, 1000);
+                        WeVue.Toast({
+                            duration: 1000,
+                            message: '添加失败',
+                            icon: 'error'
+                        })
+                        
+                        
                     }
 
                 }, response => {
@@ -159,9 +178,9 @@
                             if((items[2] || {}).text == undefined){
                                 (items[2] || {}).text =' ';
                             }
-                            self.addressadd.province = (items[0] || {}).text;
-                            self.addressadd.city = (items[1] || {}).text;
-                            self.addressadd.area = (items[2] || {}).text;
+                            self.addressInfo.province = (items[0] || {}).text;
+                            self.addressInfo.city = (items[1] || {}).text;
+                            self.addressInfo.area = (items[2] || {}).text;
                             self.address = (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
                             //返回 false 可以阻止选择框的关闭
                             //return false;

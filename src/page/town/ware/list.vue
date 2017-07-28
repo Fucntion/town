@@ -2,7 +2,7 @@
 <div class="wrap  list_wrap">
 	 <header class="bar" :style="{paddingTop:ishead+'px'}">
 		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
-	伴手礼
+	伴特产
 	</header>
 	<div class="bar_after" :style="{paddingTop:ishead+'px'}"></div>
 	<div id="main" class="town-content " >

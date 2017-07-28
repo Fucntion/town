@@ -80,11 +80,11 @@ export default {
 
 			result = result.replace(/\n/g, '');
 
-			WeVue.Toast({
-                            duration: 1000,
-                            message: result,
-                            type: 'text'
-                        })
+			// WeVue.Toast({
+            //                 duration: 1000,
+            //                 message: result,
+            //                 type: 'text'
+            //             })
 			if(type==plus.barcode.QR){
 
 				

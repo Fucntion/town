@@ -52,7 +52,7 @@
 		<div class="town_right flex">
 			<div class="town_hand">
 				<a :href="'#/town/'+IS_TOWN_ID+'/ware'" class="town_box">
-					<p class="weui__label">伴手礼</p>
+					<p class="weui__label">伴特产</p>
 					<div class="weui__icon">
 						<img src="~assets/img/town/hand.png" alt="">
 					</div>

@@ -20,7 +20,7 @@
         </div>
     </div>
 
-    <div class="message">
+    <div class="message padding_bottom_50">
         <div class="rqm_title"><img src="~assets/img/hotel.png">路线详情:</div>
         <div v-html="wayInfo.content" class="m_content child_colo way_content">
         </div>
@@ -56,7 +56,7 @@
                 var self = this,
                     wayId = self.$route.params.id
 
-                this.$http.get('/lu/' + wayId).then(response => {
+                this.$http.get('/v1/travel_route/' + wayId).then(response => {
 
                     self.wayInfo = response.body.data
 

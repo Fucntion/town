@@ -64,7 +64,7 @@ Vue.http.interceptors.push((request, next) => {
 
 		request.url = url + request.url
 		request.headers.set('token', localStorage.getItem("token"))
-		request.headers.set('town', sessionStorage.getItem("town_id")) //后台接口把town_id废弃了
+		// request.headers.set('town', sessionStorage.getItem("town_id")) //后台接口把town_id废弃了
 	}
 
 
@@ -84,7 +84,7 @@ Vue.http.interceptors.push((request, next) => {
 			})
 		} else if (response.body.code == 405) {
 
-			location.hash = 'towninfo'
+			// location.hash = 'towninfo'
 		}
 		return response
 	});

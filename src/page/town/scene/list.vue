@@ -61,7 +61,7 @@ export default {
 
         //   
         
-        this.$http.post('/scene/list',{town_id:localStorage.getItem('town_id')}).then(response => {
+        this.$http.post('/v1/scene',{town_id:sessionStorage.getItem('town_id')}).then(response => {
             // get body data
             //   
             self.sceneList = response.body.data

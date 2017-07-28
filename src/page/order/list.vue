@@ -1,9 +1,14 @@
 <template>
 <div class="wrap">
 	<header class="bar" :style="{paddingTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/></div>
-		<div class="bar-title" >我的订单</div>
+		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/>
+		我的订单
 	</header>
+<div class="bar_after" ></div>
+	<div style="text-align:center" v-if="!orderList||orderList.length<1">
+		<img src="~assets/img/nores.png" />
+		<p style="font-size:14px;color:gray;margin-top:10px;">空空如也</p>
+	</div>
 	<div id="order_list" class="" >
 		<div class="weui-form-preview" v-for="order in orderList" v-if="orderList.length>0">
             <div class="weui-form-preview__hd">
@@ -66,11 +71,11 @@ export default {
 
 		  
 
-		this.$http.get('/order/list').then(response => {
+		this.$http.get('/v1/hotel/orderList').then(response => {
 
 			  
 			// get body data
-			self.orderList = response.body
+			self.orderList = response.body.data
 			// self.orderList = self.orderList.purchaser
 
 		}, response => {

@@ -25,6 +25,11 @@ var routes_web = [
 		component: function(resolve) { require(['./page/hot/cate.vue'], resolve) }
 	}, 
 	{
+		path: '/hot/ware',
+		name: '热门手礼',
+		component: function(resolve) { require(['./page/hot/ware.vue'], resolve) }
+	}, 
+	{
 		path: '/login',
 		name: '用户登录',
 		component: function(resolve) { require(['./page/user/login.vue'], resolve) }
@@ -147,15 +152,16 @@ var routes_web = [
 		name: '小镇风光',
 		component: function(resolve) { require(['./page/town/scene/scene.vue'], resolve) }
 	},
+	
+	{
+		path: '/ware/order',
+		name: '用户下单',
+		component: function(resolve) { require(['./page/town/ware/order.vue'], resolve) }
+	},
 	{
 		path: '/ware/:id',
 		name: '商品详细信息',
 		component: function(resolve) { require(['./page/town/ware/ware.vue'], resolve) }
-	},
-	{
-		path: '/order',
-		name: '用户下单',
-		component: function(resolve) { require(['./page/order/order.vue'], resolve) }
 	},
 	{
 		path: '/orderlist',
@@ -186,6 +192,11 @@ var routes_web = [
 		path: '/pay',
 		name: '支付',
 		component: function(resolve) { require(['./page/pay.vue'], resolve) }
+	},
+	{
+		path: '/iframe',
+		name: '支付',
+		component: function(resolve) { require(['./page/iframe.vue'], resolve) }
 	},
 	{
 		path: '*',
@@ -224,6 +235,11 @@ var routes_app = [
 		path: '/hot/cate',
 		name: '热门美食',
 		component: require('./page/hot/cate.vue')
+	}, 
+	{
+		path: '/hot/ware',
+		name: '热门手礼',
+		component: require('./page/hot/ware.vue')
 	}, 
 	{
 		path: '/login',
@@ -349,14 +365,14 @@ var routes_app = [
 		component: require('./page/town/scene/scene.vue')
 	},
 	{
+		path: '/ware/order',
+		name: '用户下单',
+		component: require('./page/town/ware/order.vue')
+	},
+	{
 		path: '/ware/:id',
 		name: '商品详细信息',
 		component: require('./page/town/ware/ware.vue')
-	},
-	{
-		path: '/order',
-		name: '用户下单',
-		component: require('./page/order/order.vue')
 	},
 	{
 		path: '/orderlist',
@@ -387,6 +403,11 @@ var routes_app = [
 		path: '/pay',
 		name: '支付',
 		component: require('./page/pay.vue')
+	},
+	{
+		path: '/iframe',
+		name: '支付',
+		component: require('./page/iframe.vue')
 	},
 	// {
 	// 	path: '*',

@@ -17,7 +17,7 @@
 
     </div>
 
-    <div class="message">
+    <div class="message padding_bottom_50">
         <div class="rqm_title"><img src="~assets/img/hotel.png">商品详情:</div>
         <div v-html="wareInfo.content" class="m_content child_color">
         </div>
@@ -33,7 +33,7 @@
         <div class="goodsc" style="height: auto;">
             <div class="top">
                 <div class="title town-pull-left">请选择您想样的商品类型</div>
-                <i  @click="change()" class="weui-icon-cancel icon-close"></i>
+                <i @click="change()" class="iconfont icon-close"></i>
                 
             </div>
             <div class="goods_sku">
@@ -58,6 +58,13 @@
                         <input type="number" class="input-number" v-model.number="number" >
 
                         <span @click="plus()" class="plus">+</span>
+                    </div>
+                </div>
+                
+                <div class="sku_group">
+                    <div class="s_title">总价:</div>
+                    <div class="s_content ">
+                        <span v-if="select_sku" style="color:red">￥{{count}}</span>
                     </div>
                 </div>
             </div>
@@ -86,6 +93,12 @@
                 // 分享
                 
              
+            }
+        },
+        computed:{
+            count:function(){
+                var self = this
+                return self.number*self.select_sku.price
             }
         },
          // 过滤器
@@ -150,7 +163,7 @@
                     sessionStorage.setItem('select_sku',JSON.stringify(self.select_sku))
                     sessionStorage.setItem('wareInfo',JSON.stringify(self.wareInfo))
                     sessionStorage.setItem('number',self.number)
-                     this.$router.push('/order')
+                     this.$router.push('/ware/order')
 
                 }else{
                     alert('未选择商品')
@@ -166,9 +179,6 @@
                 if(self.number==1)return
 
                 this.number--
-
-
-
             }
 
         },

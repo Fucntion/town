@@ -4,21 +4,22 @@
 		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/></div>
 		<div class="bar-title" >确认订单</div>
 	</header>
-
+    <div class="bar_after"></div>
     <div class="town-content " >
 
         <div class="address-box" @click="toaddress()" >
-            <img src="../../assets/img/address_s.png"  class="icon_img order_icon left "/>
+            <img src="~assets/img/address_s.png"  class="icon_img order_icon left "/>
             <div class="info">
                <div class="info-group"> 收货人:<h2>{{name}}</h2><h2> {{tel}}</h2></div>
                <div class="info-group address"> 地址:{{address}}</div>
             </div>
-            <img src="~assets/img/right.png" class="icon_img order_icon right"/>
+            <i class="icon-angle-right iconfont order_icon right"></i>
+            <!-- <img src="~assets/img/right.png" class="icon_img order_icon right"/> -->
         </div>
 
         <div class="ware-list" >
             <div class="ware-item">
-                <img class="ware-thumb" v-if="wareInfo.goods_pic"  :src="'http://api.town.icloudinn.com/uploads/'+wareInfo.goods_pic[0].url" />
+                <img class="ware-thumb" v-if="wareInfo.goods_pic"  :src="wareInfo.thumb" />
                 <div class="ware-info">
                     <div class="info-group info-name">{{wareInfo.name}}</div>
                     <div class="info-group info-sku">商品规格:{{skuInfo.name}}</div>
@@ -31,7 +32,8 @@
         <div class="foot">
             <div class="count-box">合计：<span class="count">￥{{count}}</span></div>
             <!--<button class="btn-sub-order">提交订单</button>-->
-            <button  class="btn-sub-order" v-for="channel in channels" :id="channel.id" @click="doOrder(channel.id)">提交订单</button>
+            <!-- 用于标识支付通道： "alipay" - 表示支付宝； "wxpay" - 表示微信支付； "appleiap" - 表示苹果应用内支付； "qhpay"  -->
+            <button  class="btn-sub-order" :id="wxpay" @click="doOrder('wxpay')">提交订单</button>
         </div>
 
 
@@ -98,7 +100,7 @@
 
             },
             doOrder:function(id){
-
+                
                 var self = this,
                 url = '/order/list',
 
@@ -161,9 +163,9 @@
                         self.tel= self.addressInfo.tel
 
                     }else{
-                        self.$http.get('/address/list').then(response => {
+                        self.$http.get('/v1/delivery_address').then(response => {
                             // get body data
-                            self.addressList = response.body
+                            self.addressList = response.body.data
 
                             if(self.addressList==null){
                                  self.address = "请选择地址";

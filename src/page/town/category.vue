@@ -60,7 +60,7 @@
 
             <div class="block info_item" v-if="wareList.length>0">
                 <div class="info_title">
-                    手礼
+                    特产
                 </div>
 
                 <div class="box">
@@ -182,7 +182,7 @@
                     townId = self.$route.params.id
 
 
-                sessionStorage.setItem("town_id", townId)
+                // sessionStorage.setItem("town_id", townId)
 
                 this.$http.get('/town/' + townId).then(response => {
 
@@ -192,7 +192,7 @@
                     // error callback
                 });
 
-                this.$http.get('/cate/list').then(response => {
+                this.$http.get('/v1/cate?town_id='+townId).then(response => {
 
 
                     self.cateList = response.body.data
@@ -201,7 +201,7 @@
                     // error callback
                 });
 
-                this.$http.get('/ware/list').then(response => {
+                this.$http.get('/v1/goods?town_id='+townId).then(response => {
 
 
                     self.wareList = response.body.data
@@ -210,7 +210,7 @@
                     // error callback
                 });
 
-                this.$http.get('/hotel/list').then(response => {
+                this.$http.get('/v1/hotel?town_id='+townId).then(response => {
 
 
                     self.hotelList = response.body.data

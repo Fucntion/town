@@ -21,7 +21,7 @@
             </div>
             <span class="weui-cell__ft"></span>
         </div>
-        <div class="weui-cell weui-cell_access user_nav" @click="toOrder()">
+        <div class="weui-cell weui-cell_access user_nav" >
             <div class="weui-cell__hd"><img src="~assets/img/order.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
             <div class="weui-cell__bd weui-cell_primary">
                 <p>我的收藏</p>
@@ -37,7 +37,7 @@
             </div>
             <span class="weui-cell__ft"></span>
         </div> -->
-        <div class="weui-cell weui-cell_access user_nav">
+        <div class="weui-cell weui-cell_access user_nav" >
             <div class="weui-cell__hd"><img src="~assets/img/service.png" alt="" style="width:20px;margin-right:5px;display:block"></div>
             <div class="weui-cell__bd weui-cell_primary">
                 <p>联系客服</p>

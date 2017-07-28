@@ -27,6 +27,10 @@
 		<!-- <div class="suspend_back" >返回</div> -->
 		<div class="list_box" >
 
+			<div v-show="suspendList.length<1"  style="color:#333333;"  >
+				暂时还没有数据哦
+			</div>
+
 			<div v-show="suspendType=='hotel'"  @click="todetail('hotel',item.hotel_id)" v-for="item in suspendList" class="suspend_item" 
 			:style="{backgroundImage: 'url(' + item.thumb + ')'}">
 				<p class="item_name"  v-strcut='10'>{{item.name}}</p>
@@ -66,10 +70,10 @@
 	<!--地图-->
 	<div  id="mapbox"></div>
 
-	<!-- <foot></foot> -->
+	 <foot></foot> 
 		
 		<!-- 底部菜单 -->
-		<div class="bottom_control">
+		<!-- <div class="bottom_control">
 			<div class="control_item" @click="openSuspend('scene')">
 				<img class="control_icon"  src="~assets/img/fengguang.png" /> 
 				<span class="control_title" >自然风光</span>  
@@ -91,7 +95,7 @@
 				<span class="control_title">精品线路</span> 
 			</div>
 			
-		</div>
+		</div> -->
 	<!--游线列表-->
  
 	<!--点信息-->
@@ -192,9 +196,6 @@ export default {
 		},
 		openSuspend:function(type){
 			var self = this 
-			
-
-
 			if(!type){
 				console.log('请选择类别')
 				return 
@@ -205,8 +206,6 @@ export default {
 			// 	console.log('请先点击左上角选择镇')
 			// 	return
 			// }
-
-
 			var tempArr = self['town_'+type+'_list']
 			
 			if(tempArr.length>0){
@@ -225,8 +224,6 @@ export default {
 							self.suspendList.push(tempArr[i])
 						}
 						
-
-
 					}
 
 				}else{
@@ -240,13 +237,10 @@ export default {
 
 						// 如果有已经选好的镇，就过滤下。没有的话局一股脑全海南的都来
 							self.suspendList.push(tempArr[i])
-						
-
 
 					}
 				}
-				
-
+		
 				self.suspendSatus = true
 			}
 		},
@@ -340,8 +334,6 @@ export default {
 			}	
 
 			var accordion = new Accordion($('#accordion'), false);
-
-
 		},
 		toMap:function(){
 			var self = this
@@ -511,8 +503,6 @@ export default {
 			// 		center: [109.769514,19.188529]
 			// });
 
-			
-			
 			window.map = map
 
 			map.setMapStyle('amap://styles/efcd282ccc6602c716da03bfa4d88a3c');
@@ -555,11 +545,6 @@ export default {
 				self.getLocation()
 			}
 			
-
-			
-
-
-		
 
 			//加载镇
 			this.$http.get('/town/list').then(response => {

@@ -1,10 +1,13 @@
 <template>
 <div class="wrap">
-    <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/></div>
-		<div class="bar-title" >选择收货地址</div>
-        <div class="bar-right" @click="addresslist()">管理</div>
-	</header>
+
+    <div class="bar bar" :style="{paddingTop:ishead+'px'}">
+        <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/>
+        选择收货地址
+        <div  class="icon_right icon_text" @click="addresslist()">管理</div>
+    </div>
+    <div class="bar_after"></div>
+
     <div class="town-content ad ad_select ">
         <div class="addres" v-for="item in addressList" @click="addressSelect(item)">
             <div class="top">
@@ -53,7 +56,7 @@ export default {
             self.addressInfo = item
             sessionStorage.setItem('addressInfo',JSON.stringify(self.addressInfo))
             sessionStorage.setItem('isaddress',JSON.stringify(self.isaddress))
-            this.$router.push('/order')    
+            this.$router.push('/ware/order')    
         }
 	},
 	components: {
@@ -64,11 +67,11 @@ export default {
 	},
 	mounted() {
 		var self = this	
-		this.$http.get('/address/list').then(response => {
+		this.$http.get('/v1/delivery_address').then(response => {
 			// get body data
-			self.addressList = response.body
-            self.ismain = response.body.ismain
-            console.log(self.addressList);
+			self.addressList = response.body.data
+            self.ismain = response.body.data.ismain
+            
 		}, response => {
 			// error callback
 		});

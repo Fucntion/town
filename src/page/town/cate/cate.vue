@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="message">
+    <div class="message padding_bottom_50">
         <div class="rqm_title"><img src="~assets/img/hotel.png">商品详情</div>
         <div v-html="cateInfo.content" class="m_content child_color">
         </div>
@@ -26,7 +26,7 @@
 
     <nav  id="foot">
 
-        <button class="town-tab-item town-btn weui-btn weui-btn_primary">电话预约</button>
+        <button class="town-tab-item town-btn weui-btn weui-btn_primary">立即预订</button>
 
     </nav>
 </div>

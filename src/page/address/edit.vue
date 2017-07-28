@@ -1,10 +1,13 @@
 <template>
 <div class="wrap">
-   <header class="bar" :style="{paddingTop:ishead+'px'}">
-		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()"/></div>
-		<div class="bar-title" >选择收货地址</div>
-        <div class="bar-right" @click="present()">保存</div>
-	</header>
+
+    <header class="bar" :style="{paddingTop:ishead+'px'}">
+		<div class="bar-icon"><img src="~assets/img/left.png" class="icon_img  icon_left" @click="$util.toBack()"/></div>
+        编辑收货地址
+        <div  class="icon_right icon_text" @click="present()">保存</div>
+    </header>
+
+    <div class="bar_after"></div>
     <div class="town-content ">
         <div class="town-input-group">
             <div class="weui-cell">
@@ -30,7 +33,8 @@
                     <input type="hidden" class="town-input-clear" v-model="addressInfo.city">
                     <input type="hidden" class="town-input-clear" v-model="addressInfo.area">
                 </div>
-                <img src="~assets/img/right.png" class="icon_img address_icon"/>
+                <i class="icon-angle-right iconfont address_icon right"></i>
+                <!-- <img src="~assets/img/right.png" class="icon_img address_icon"/> -->
             </div>
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">详细地址</label></div>
@@ -79,7 +83,6 @@
             return {
                 show:false,
                 addressInfo:{},
-                isDefault:null,
                 css_show:false,
                 failure_show:false,
                 win_show:false,
@@ -108,9 +111,9 @@
                 var self = this,
                     addressId = self.$route.params.id
 
-                this.$http.get('/address/' + addressId).then(response => {
+                this.$http.get('/v1/delivery_address/' + addressId).then(response => {
 
-                    self.addressInfo = response.body
+                    self.addressInfo = response.body.data
                     console.log(self.addressInfo)
                     // self.show = true
 
@@ -146,32 +149,49 @@
 
                  var self = this,
                 addressId = self.$route.params.id,
-                url = '/address/' + addressId;
+                url = '/v1/delivery_address/' + addressId;
 
-            this.$http.post(url,{link:this.addressInfo.link,tel:this.addressInfo.tel,province:this.addressInfo.province,city:this.addressInfo.city,	area:this.addressInfo.area,detail:this.addressInfo.detail,ismain:this.addressInfo.ismain}).then(response => {
+                if(!self.addressInfo.link||!self.addressInfo.tel||!self.addressInfo.province||!self.addressInfo.city||!self.addressInfo.area||!self.addressInfo.area||!self.addressInfo.detail){
+                   WeVue.Toast({
+                        duration: 1000,
+                        message: '信息不完整',
+                        type: 'text'
+                    })
+                    return  
+                }
+
+                 if (!self.$util.checkPhone(self.addressInfo.tel)) {
+					
+					WeVue.Toast({
+						duration: 1000,
+						message: '联系方式格式不符',
+						type: 'text'
+					})
+					return
+                }
+                
+            this.$http.put(url,this.addressInfo).then(response => {
 
                     var result = response.body;
                     console.log(result);
-                   if(result.code == 12){
+                   if(result.code == 100){
 
-                        self.judge = "修改成功"
-                        self.css_show = true
-                        self.win_show = true
-                        self.failure_show = false
-                        setTimeout(function () {
-                            self.css_show = false
+                        WeVue.Toast({
+                        duration: 1000,
+                        message: '修改成功',
+                        icon: 'success'
+                    })
+
                             self.$router.push('/addresslist')
-                        }, 1000);
+                        
 
                     }else{
 
-                        self.judge = "修改失败"
-                        self.css_show = true
-                        self.failure_show = true
-                        self.win_show = false
-                        setTimeout(function () {
-                            self.css_show = false
-                        }, 1000);
+                        WeVue.Toast({
+                        duration: 1000,
+                        message: '修改失败',
+                        icon: 'warn'
+                    })
                     }
                     }, response => {
                     console.log(response.body)

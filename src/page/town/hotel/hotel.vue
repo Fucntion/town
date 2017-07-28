@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="message">
+        <div class="message padding_bottom_50">
             <div class="rqm_title"><img src="~assets/img/hotel.png">酒店介绍:</div>
             <div v-html="hotelInfo.content" class="m_content child_color">
             </div>
@@ -102,9 +102,9 @@
 </template>
 
 <script>
-    
     import Slider from 'plugin/slider'
-    import 'static/css/mui.picker.min.css'
+    import 'static/css/mui.picker.css'
+    // require('static/js/mui.picker.js') 
 
     export default {
         name: 'hotel',
@@ -248,6 +248,18 @@
             change: function () {
 
                 var self = this
+                if(!localStorage.getItem("token")){
+
+                    WeVue.Dialog({
+                        title: '需要登录',
+                        message: '该操作需要登录，是否跳转到登录页？',
+                        skin: 'ios'
+                    },
+                    function () {
+                        location.hash = 'login'
+                    })
+                    return
+                }
                 self.box_show = !self.box_show
 
             },
@@ -279,6 +291,7 @@
             },
             toorder: function () {
 
+               
                 var self = this
                 // 入住时间
                 // time_start:null,
@@ -294,17 +307,28 @@
                     return;
                 }
 
+                if (!self.$util.checkPhone(self.linkTel)) {
+					
+					WeVue.Toast({
+						duration: 1000,
+						message: '联系方式格式不符',
+						type: 'text'
+					})
+					return
+				}
+
                 var post = {
                     start_time: self.time_start,
                     end_time: self.time_end,
-                    count: self.select_sku.price * self.getTime2Time(self.time_end, self.time_start),
+                    // count: self.select_sku.price * self.getTime2Time(self.time_end, self.time_start),
+                    count: 0.01,
                     hotel_sku_id: self.select_sku.hotel_sku_id,
                     link: self.linkTel,
                     name: self.linkName
                 }
                 console.log(post)
-
-                self.$http.post('/hotel/order', post).then((response) => {
+                // return;
+                self.$http.post('/v1/hotel/order', post).then((response) => {
 
                     if (response.body.code == 100) {
                         self.pay(response.body.data)
@@ -344,19 +368,33 @@
                     var order = response.body.data
 
                     WeVue.Toast({
-                            duration: 1000,
-                            message: '前往微信支付',
-                            type: 'text'
-                        })
+                        duration: 1000,
+                        message: '前往微信支付',
+                        type: 'text'
+                    })
                     //写死微信了
                     plus.payment.request(self.pays[type], order, function (result) {
 
                         plus.nativeUI.alert('支付成功', function () {
                             back();
                         }, '支付');
-                        self.$router.push('order/list')
+
+                        WeVue.Dialog({
+                            title: '支付成功',
+                            message: '是否前往查看订单信息?',
+                            skin: 'ios'
+                        },function () {
+                            self.$router.push('order/list')
+                        })
+
                     }, function (e) {
-                        plus.nativeUI.alert(null, null, '支付失败：' + e.code);
+
+                         WeVue.Toast({
+                            duration: 1000,
+                            message: '支付失败，请重新支付',
+                            icon: 'warn'
+                        })
+
                     });
 
 
@@ -387,7 +425,7 @@
                 }, function (e) {
                     WeVue.Toast({
                         duration: 1000,
-                        message:'获取支付通道失败：' + e.message,
+                        message: '获取支付通道失败：' + e.message,
                         icon: 'warn'
                     })
                     console.log('获取支付通道失败：' + e.message);
@@ -434,9 +472,6 @@
             mui.plusReady(function () {
                 self.initPay()
             })
-
-
-
 
         }
     }

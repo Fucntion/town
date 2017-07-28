@@ -53,10 +53,14 @@
 				<img src="~assets/img/cate.png"/>
 				<p>美食</p>
 			</a>
-				<a class="nav_item" href="#/find">
+				<a class="nav_item" href="#/hot/ware">
+				<img src="~assets/img/luxian.png"/>
+				<p>特产</p>
+			</a>
+				<!-- <a class="nav_item" href="#/find">
 				<img src="~assets/img/luxian.png"/>
 				<p>路线</p>
-			</a>
+			</a> -->
 
 			</div>
 			<div class="dingzhi">
