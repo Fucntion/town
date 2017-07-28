@@ -99,7 +99,7 @@
             },
             toOrder:function(){
 
-               this.$router.push('/orderlist')
+               this.$router.push('/user/order')
             },
             init:function(){
 

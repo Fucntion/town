@@ -217,7 +217,7 @@
 			Totown: function (towns) {
 
 				var self = this
-				self.$router.push('/town/category/' + towns.town_id)
+				self.$router.push('/town/' + towns.town_id+'/category')
 			},
 			way: function () {
 				this.$router.push('/waylist')

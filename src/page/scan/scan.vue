@@ -116,7 +116,7 @@ export default {
 					break;
 
 					case 'town':
-					self.$router.push('/town/category/'+resource_id)
+					self.$router.push('/town/'+resource_id+'/category')
 					break;
 
 					case 'hotel':

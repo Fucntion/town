@@ -163,7 +163,7 @@
         methods: {
             toTownCategory: function (town_id) {
                 if (town_id) {
-                    this.$router.push('/town/category/' + town_id)
+                    this.$router.push('/town/' + town_id+'/category')
                 }
 
             },

@@ -28,7 +28,7 @@
 
             </div>
 
-            <div class="block info_item" v-if="sceneList.length>0">
+            <div class="block info_item" v-if="sceneList&&sceneList.length>0">
                 <div class="info_title">
                     自然风光
                 </div>
@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="block info_item" v-if="cateList.length>0">
+            <div class="block info_item" v-if="cateList&&cateList.length>0">
                 <div class="info_title">
                     美食
                 </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="block info_item" v-if="wareList.length>0">
+            <div class="block info_item" v-if="wareList&&wareList.length>0">
                 <div class="info_title">
                     特产
                 </div>
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="block info_item" v-if="hotelList.length>0">
+            <div class="block info_item" v-if="hotelList&&hotelList.length>0">
                 <div class="info_title">
                     民宿
                 </div>
@@ -131,7 +131,7 @@
                         break;
 
                     case 'town':
-                        self.$router.push('/town/category/' + resource_id)
+                        self.$router.push('/town/' + resource_id+'/category')
                         break;
 
                     case 'hotel':

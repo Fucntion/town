@@ -11,7 +11,7 @@
        <i class="iconfont icon-ditu"></i>
         <p class="weui-tabbar__label">附近</p>
     </a>
-    <a href="#/find" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/find'}">
+    <a href="#/way/list" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/way/list'}">
         
        <i class="iconfont icon-faxian"></i>
         <p class="weui-tabbar__label">路线</p>

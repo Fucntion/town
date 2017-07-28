@@ -82,7 +82,7 @@
 
                 var self = this
 
-                self.$http.get('/test/getHotel').then(response => {
+                self.$http.get('/v1/hotel').then(response => {
 
                     if(!_.isArray(response.body.data))return
                     self.hotelList = self.$util.getRandomArrayElements(response.body.data,10)
