@@ -9,7 +9,7 @@
 	</div> 
 	 <div class="bar_after" :style="{paddingTop:ishead+'px'}" v-if="isplus=='plus'"></div>
 
-	<div class="index_list">
+	<!-- <div class="index_list">
 			<div class="index_box box_bor">
 				<div class="index_title">
 					<p>发起活动</p>
@@ -29,7 +29,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
     <!--<p class="block_title" >官方活动</p>-->
     <div class="index_town play_box" >
         <!--:style="{backgroundImage: 'url(' +'http://api.town.icloudinn.com/uploads/'+ item.town_thumb + ')'}"-->
