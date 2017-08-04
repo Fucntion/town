@@ -2,19 +2,19 @@
 <div class="wrap nearby_wrap" >
 
 	 <header class="bar " :style="{paddingTop:ishead+'px'}">
-		 <!-- neary_left_icon -->
-		<img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" />
-		 <!-- <span class="icon_text icon_right">搜索</span>  -->
-		<!-- v-if="isplus!='plus'" -->
-		<div class="scan icon_img icon_right" @click="Toscan()"   ></div>
-		{{IS_TOWN_NAME}}
+		<div class="icon_text icon_left" @click="toMap()"   >{{IS_TOWN_NAME}}</div>
+		
+		<div class="scan icon_img icon_right" @click="Toscan()"   ></div> 
+		
+		附近
 	</header>
-
+	<!-- <img src="~assets/img/left.png" class="icon_img icon_left" @click="$util.toBack()" /> -->
+<!-- <div class="scan icon_img icon_right" @click="ToUsercenter()"   ></div> -->
 	 
-	 <!--搜索-->
+	 <!--搜索，别删，为后期的搜索做准备-->
 	<div v-show="!marker_info_box" class="nearby-search-bar" :style="{marginTop:ishead+'px'}">
 		<!-- <span @click="toMap()" class="change_town_btn">{{IS_TOWN_NAME}}</span> -->
-		<span @click="toMap()" class="change_town_btn">切换小镇</span>
+		<!-- <span @click="toMap()" class="change_town_btn">切换小镇</span> -->
 	</div>
 
 	<!--底部按钮-->
@@ -23,7 +23,8 @@
 	</div> -->
 	<!-- static/img/play3.png -->
 	<div class="suspend_box" v-show="suspendSatus" :style="{marginTop:ishead+50+'px'}">
-		 <div class="suspend_titel" @click="suspend_back()">{{IS_TOWN_NAME}}推荐 <i class="icon-right iconfont"></i></div>  
+		 <div v-if="IS_TOWN_NAME=='手动选择位置'" class="suspend_titel" @click="suspend_back()">全岛热门推荐 <i class="icon-right iconfont"></i></div> 
+		 <div v-else class="suspend_titel" @click="suspend_back()">{{IS_TOWN_NAME}}推荐 <i class="icon-right iconfont"></i></div>  
 		<!-- <div class="suspend_back" >返回</div> -->
 		<div class="list_box" >
 
@@ -45,7 +46,7 @@
 			</div>
 
 			<div v-show="suspendType=='scene'"  @click="todetail('scene',item.scene_id)" v-for="item in suspendList" class="suspend_item" 
-			:style="{backgroundImage: 'url(' + item.thumb + ')'}">
+			:style="{backgroundImage: 'url(' + item.scene_thumb + ')'}">
 				<p class="item_name"  v-strcut='10'>{{item.scene_name}}</p>
 				<div class="mask"></div>
 			</div>
@@ -70,7 +71,7 @@
 	<!--地图-->
 	<div  id="mapbox"></div>
 
-	 <foot></foot> 
+	 <foot></foot>   
 		
 		<!-- 底部菜单 -->
 		<!-- <div class="bottom_control">
@@ -97,32 +98,69 @@
 			
 		</div> -->
 	<!--游线列表-->
+	
  
 	<!--点信息-->
-	<div v-if="marker_info_box" class="marker_info_box info_box">
-		<div class="info">
-			
-			<div class="info_c">
-
-				<div class="thumb" :style="{backgroundImage: 'url(' + marker_info_box.thumb + ')'}"></div>
+	
+	<div v-if="infobox" class="marker_info_box">
+		<div class="townlist btn" @click="townrouteClick">小镇路线</div>  
+		<div class="info_box">	
+			<div class="info">	
+				<div class="info_c">
+					<div class="thumb" :style="{backgroundImage: 'url(' + marker_info_box.thumb + ')'}"></div>
+				</div>
+				<dl class="info_l">
+					<dd class="name"><span>{{marker_info_box.name}}</span><small>66人想去</small></dd>
+					<dd class="adress"><span>xx</span><span>xx</span></dd>
+					<dd class="juli"><span>距您xx公里</span></dd>
+				</dl>
+				<div class="info_r">
+					<div class="detail btn" @click="todetail(marker_info_box.type,marker_info_box.resource_id)">查看详情</div>
+					<div class="go btn">导航这里</div>
+				</div>
 			</div>
-			<dl class="info_l">
+			<div class="hr"></div>
+			<div class="feature">
+				<span class="feature-item  active"><i class="icon-VR iconfont feature-icon"></i>体验VR</span>
+				<span class="feature-item active"><i class="icon-AR iconfont  feature-icon"></i>体验AR</span>
+				<!-- v-if="isplus=='plus'" -->
+				<span class="feature-item active" @click="playvoice"><i class="icon-yuyin iconfont  feature-icon"></i>播放语音</span>
+			</div>
+		</div>
+	</div>
+
+	<!--路线详情  -->
+	<div v-if="routeclick" class="marker_info_box info_box">
+		<div class="route_list_box">
+			
+			<div class="tname">
+
+				{{marker_info_box.name}}
+			</div>
+			<!-- <dl class="info_l">
 				<dd class="name"><span>{{marker_info_box.name}}</span><small>66人想去</small></dd>
 				<dd class="adress"><span>xx</span><span>xx</span></dd>
 				<dd class="juli"><span>距您xx公里</span></dd>
-			</dl>
-			<div class="info_r">
-				<div class="detail btn" @click="todetail(marker_info_box.type,marker_info_box.resource_id)">查看详情</div>
-				<div class="go btn">导航这里</div>
+			</dl> -->
+			
+			 <div class="hr"></div> 
+			<div class="route_list">
+				<div class="route_item cate_item" v-for="item in routes" @click="torouteinfo(item)">
+					<p class="name">{{item.title}}</p>
+					<div class="thumb"  :style="{backgroundImage: 'url(' +item.thumb + ')'}" ></div>
+				</div>
 			</div>
+			<div class="hr"></div> 
+			<div class="feature" v-if = "routelistClick">
+				<span class="tname">
+				线路详情
+				</span>
+				<span class="tname" @click="playvoice">语音导览</span> 
+			
+			</div>
+			 
 		</div>
-		<div class="hr"></div>
-		<div class="feature">
-			<span class="feature-item  active"><i class="icon-VR iconfont feature-icon"></i>体验VR</span>
-			<span class="feature-item active"><i class="icon-AR iconfont  feature-icon"></i>体验AR</span>
-			 <!-- v-if="isplus=='plus'" -->
-			<span class="feature-item"><i class="icon-yuyin iconfont  feature-icon"></i>暂无语音</span>
-		</div>
+		
 	</div>
 
 	<!--选择所在镇组件-->
@@ -167,8 +205,8 @@ export default {
 
 			town_show:false,
 			townInfo:[],
-			IS_TOWN_NAME:'',
-			IS_TOWN_ID:null,//小镇id
+			IS_TOWN_NAME:sessionStorage.getItem("town_name")||'手动选择位置',
+			IS_TOWN_ID:sessionStorage.getItem("town_id")||null,//小镇id
 			gpsPoint:null,  
 			baiduPoint:null, 
 			gpsAddress:null,  
@@ -184,6 +222,11 @@ export default {
 			town_lu_list:[],//这个内容不再地图上标记，不要拖累初始化进度，后期考虑需要才加载
 			suspendList:[],
 			suspendType:null,//记录当前打开的数据类别，方便选择不同模板
+			routeclick: null,
+			infobox: null,
+			routes: null,
+			routelistClick: null,
+			lu_id: null
 
 		}
 	},
@@ -191,8 +234,25 @@ export default {
 
 	},
 	methods: {
+
+				
 		Toscan:function(){
 			this.$router.push('/scan')
+		},
+		ToUsercenter: function () {
+			if(!localStorage.getItem("token")){
+
+                    WeVue.Dialog({
+                        title: '需要登录',
+                        message: '该操作需要登录，是否跳转到登录页？',
+                        skin: 'ios'
+                    },
+                    function () {
+                        location.hash = 'login'
+                    })
+                    return
+            }
+			this.$router.push('/user/order')
 		},
 		openSuspend:function(type){
 			var self = this 
@@ -301,8 +361,11 @@ export default {
 			if(town_info.lat&&town_info.lng){
 				map.panTo([town_info.lng,town_info.lat]); // 用城市名设置地图中心点
 				
-				// sessionStorage.setItem("town_id",town_info.town_id);//这里的每个接口都有用
-				// sessionStorage.setItem("town_name",town_info.town_name);
+				sessionStorage.setItem("town_id",town_info.town_id);
+				// sessionStorage.setItem("lng",town_info.lng);
+				// sessionStorage.setItem("lat",town_info.lng);
+				//这里的每个接口都有用
+				sessionStorage.setItem("town_name",town_info.town_name);
 
 			}
 			self.town_show = false;
@@ -343,7 +406,7 @@ export default {
 		totown:function(){
 			var self = this
 
-			if(!self.IS_TOWN_ID ||self.IS_TOWN_NAME=='海南'){
+			if(!self.IS_TOWN_ID ||self.IS_TOWN_NAME=='手动选择位置'){
 				alert('请先点击左上角选择镇')
 				return 
 			}else{
@@ -353,7 +416,8 @@ export default {
 		},
 		Tocity:function(){
 			var self = this
-			self.$http.get('/city/list').then(response => {
+			self.$http.get('/v1/city').then(response => {
+			// self.$http.get('/city/list').then(response => {
 
 				self.townInfo = response.body.data
 				self.$nextTick(function () {
@@ -414,6 +478,102 @@ export default {
 			
 			
 		},
+
+
+		// 点击小镇路线图标
+		townrouteClick: function (e) {
+			var self = this;
+			this.routeclick = 1;
+			// this.marker_info_box = null;
+			var town_id = this.marker_info_box.resource_id;
+			// console.log(town_id);
+			this.infobox = false;
+			this.$http.get('/v1/travel_route/',1).then(response => {
+				this.routes = response.body.data
+			}, response => {
+				WeVue.Toast({
+                        duration: 1000,
+                        message: '抱歉，还不存在该小镇路线',
+                        icon: 'warn'
+                    })
+         
+            });
+			// if (this.routeclick){
+			// 	console.log("route is already...")
+			// }
+			
+		},
+
+		torouteinfo: function (e) {
+			var self = this;
+			if(!self.routelistClick){
+				self.routelistClick = 1;
+			}else{
+				self.routelistClick =null;
+			}
+			var voicesArr = [];
+			var id = 2||e.lu_id;
+			console.log(e)
+			this.$http.get('/v1/travel_route/'+id).then(response => {
+				var re = response.body.data
+				var playpoint = re.play_point
+				console.log(playpoint)
+				// var voices = _.find(playpoint,function(o){
+				// 	return o.voice!=2;
+				// })
+				for (var item=0;item<playpoint.length;item++){
+					if (playpoint[item].voice) {
+						voicesArr.push(playpoint[item].voice)
+					}
+				}	
+				
+				console.log(voicesArr);
+				// for(var x in re){
+				// 	if(re[x][voice]!=null){
+				// 		return voices.push(re[x][voice]);
+				// 		break;
+    			// 	}
+				// }
+				
+			}, response => {
+				WeVue.Toast({
+                        duration: 1000,
+                        message: '抱歉',
+                        icon: 'warn'
+                    })
+         
+			});
+			
+		},
+
+
+		playvoice: function (e) {
+			var self = this;
+			// var lu_id = self.route.lu_id;
+			// var town_id = self.route.town_id;
+			// var voices = [];
+			// this.$http.get('/v1/hotel',1).then(response => {
+			// 	var re = response.body.data
+					
+			// 	for (item in re) {
+			// 		if(item.voice) {
+			// 			voices.push(item.voice);
+			// 		}
+			// 	} 
+			// }, response => {
+			// 	WeVue.Toast({
+            //             duration: 1000,
+            //             message: '抱歉',
+            //             icon: 'warn'
+            //         })
+         
+			// });
+			
+				
+		},
+
+
+
 		markerClick:function (e){
 			
 			// 让marker_info_box变量不为空，就控制页面显示/消失了
@@ -426,12 +586,16 @@ export default {
 				lat:e.lnglat.lat,
 				thumb:e.target.thumb,
 			}
+			
+			self.infobox = true;
+			
 			map.panTo([e.lnglat.lng,e.lnglat.lat]); 
 
 			// 修改所有控件显示状态
 			self.mapPluginHide()
 
 			self.suspendSatus = false
+			this.routeclick = null
 		
 		},
 		// 编写自定义函数,创建标注
@@ -520,10 +684,12 @@ export default {
 
 				self.marker_info_box = null
 				self.suspendSatus = false //顺路也把左侧给清空了
+				self.routeclick = null
 				self.mapPluginShow()
 				
 			});
 
+			
 
 			if(self.$route.query.type=='target'&&self.$route.query.town_id){
 				//如果是通过小镇专题页、扫码等页面进来。则自动定位到指定小镇
@@ -539,6 +705,20 @@ export default {
                     // error callback
 				});
 				
+			}else if(sessionStorage.getItem("town_id")){
+
+				self.$http.get('/town/' + sessionStorage.getItem("town_id")).then(response => {
+
+					var townInfo = response.body.data
+
+					self.reloadMap(townInfo)
+
+                    
+                }, response => {
+                    // error callback
+				});
+				
+
 			}else{
 
 				//如果是通过底部导航栏进来，则通过app、微信、ip等获取当前位置
@@ -548,6 +728,7 @@ export default {
 
 			//加载镇
 			this.$http.get('/town/list').then(response => {
+			// this.$http.get('/town/list').then(response => {
 				// get body data
 				
 				var townList = response.body.data
@@ -705,8 +886,10 @@ export default {
 		// localStorage.clear()
 		// sessionStorage.clear()
 
+
+
 		var self = this
-		self.IS_TOWN_NAME = '海南'
+
 		self.mapload()
 		self.Tocity()
 

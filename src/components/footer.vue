@@ -1,15 +1,16 @@
 <template>
 <footer>
     <div class="weui-tabbar index-tabbar">
-    <a href="#/" class="weui-tabbar__item " v-bind:class="{'active_tabbar': path=='/'}" >
-       <i class="iconfont icon-shouye"></i>
-        <p class="weui-tabbar__label " >首页</p>
-    </a>
     
-     <a href="#/nearby" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/nearby'}" >
+    
+     <a href="#/" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/'}" >
         
        <i class="iconfont icon-ditu"></i>
         <p class="weui-tabbar__label">附近</p>
+    </a>
+    <a href="#/home" class="weui-tabbar__item " v-bind:class="{'active_tabbar': path=='/home'}" >
+       <i class="iconfont icon-shouye"></i>
+        <p class="weui-tabbar__label " >小镇</p>
     </a>
     <a href="#/way/list" class="weui-tabbar__item" v-bind:class="{'active_tabbar': path=='/way/list'}">
         

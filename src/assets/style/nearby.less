@@ -97,6 +97,83 @@ position: absolute
 }
 
 
+.route_list_box{
+    // color: #555555;
+    margin: 0 0 0;
+    .tname{
+        background-color: #09BB07;
+        width: 80px;
+        color: white;
+        text-align: center;
+        padding: 6px 10px;
+    // margin-top: 8px;
+        // display: block;
+        margin-right: 10px; 
+    }
+    .route_list{
+
+        white-space: nowrap; 
+        overflow-x: scroll;
+        padding-bottom: 10px;
+        padding-top: 10px;
+
+        .route_item{
+            display: inline-block;
+            margin-right: 16px;
+            border: 1px;
+            border-color: #09BB07;
+            .thumb{
+                width: 120px;
+                height: 120px;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .name{
+                font-size: 14px;
+                padding: 4px 0;
+            }
+        }
+    }
+    .route_all_list{
+
+        .route_item{
+            display: flex;
+            padding: 15px 0;
+            border-bottom: 1px solid #e7e7e7;
+            &:first-child{
+                padding-top: 6px;
+            }
+            .thumb{
+                // flex: 1;
+                width: 90px;
+                height: 90px;
+                margin: 10px 15px 10px 0 ;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            .info{
+                font-size: 14px;
+                p{
+                    line-height: 1.8;
+                    
+                }
+                .index{
+                    color: #1AAD19;
+                }
+                
+                .name{
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
 
 
 .info_box{
@@ -111,6 +188,17 @@ position: absolute
   bottom: 0;
   z-index: 501;//底部是500
   font-size: 14px;
+  width: 100%;
+  .townlist {
+    height: 25px;
+    width: 60px;
+    color: white;
+    background-color: #09BB07;
+    position: absolute;
+    top: -450px;
+    left: 20px;
+
+  }
   .hr{
     height: 1px;
     width: 100%;

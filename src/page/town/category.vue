@@ -170,7 +170,7 @@
             totown: function () {
                 // this.$router.push('/town/' + this.$route.params.id)
                 this.$router.push({
-                    path: '/nearby', query: {
+                    path: '/', query: {
                         town_id: this.$route.params.id,
                         type: 'target'
                     }                

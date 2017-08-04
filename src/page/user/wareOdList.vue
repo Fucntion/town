@@ -14,10 +14,10 @@
             <div class="weui-form-preview__hd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">付款金额</label>
-                    <span class="weui-form-preview__value price">¥{{order.count}}</span>
+                    <span class="weui-form-preview__value price">¥{{order.count}}.00</span>
                 </div>
             </div>
-             <div class="weui-form-preview__bd">
+            <div class="weui-form-preview__bd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">收货人</label>
                     <span class="weui-form-preview__value">{{order.link}}</span>
@@ -26,10 +26,10 @@
                     <label class="weui-form-preview__label">联系电话</label>
                     <span class="weui-form-preview__value">{{order.tel}}</span>
                 </div>
-                <!-- <div class="weui-form-preview__item">
+                <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">地址</label>
                     <span class="weui-form-preview__value">{{order.address}}</span>
-                </div>  -->
+                </div>
             </div>
             <div class="weui-form-preview__ft">
                 <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">下单成功</a>
@@ -76,8 +76,7 @@ export default {
 
 			  
 			// get body data
-			self.orderList = response.body.data.data
-			console.log(self.orderList);
+			self.orderList = response.body.data
 			// self.orderList = self.orderList.purchaser
 
 		}, response => {

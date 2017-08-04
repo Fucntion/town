@@ -144,7 +144,8 @@
                 isplus: this.$util.isEnvironment(),
                 pays: {},
                 w: null,
-                channels: null
+                channels: null,
+                paytype: null
 
 
             }
@@ -323,15 +324,17 @@
                     // count: self.select_sku.price * self.getTime2Time(self.time_end, self.time_start),
                     count: 0.01,
                     hotel_sku_id: self.select_sku.hotel_sku_id,
-                    link: self.linkTel,
-                    name: self.linkName
+                    tel: self.linkTel,
+                    link: self.linkName
                 }
                 console.log(post)
                 // return;
                 self.$http.post('/v1/hotel/order', post).then((response) => {
-
+                    
                     if (response.body.code == 100) {
+                        self.paytype = '1'
                         self.pay(response.body.data)
+                        
                     } else {
                         WeVue.Toast({
                             duration: 1000,
@@ -352,7 +355,7 @@
             pay: function (amount) {
 
                 var self = this,
-                    type = 'wxpay'
+                    type = 'wxpay';
 
                 console.log(amount.count)
                 // 支付
@@ -364,34 +367,35 @@
                 this.$http.post('/order/pay/wx', { amount: amount.count }).then(response => {
 
                     self.w.close(); self.w = null;
-
+                    
                     var order = response.body.data
-
+                    
                     WeVue.Toast({
                         duration: 1000,
                         message: '前往微信支付',
                         type: 'text'
                     })
                     //写死微信了
+                    
                     plus.payment.request(self.pays[type], order, function (result) {
 
-                        plus.nativeUI.alert('支付成功', function () {
-                            back();
-                        }, '支付');
+                        // plus.nativeUI.alert('支付成功', function () {
+                        //     back();
+                        // }, '支付');
 
                         WeVue.Dialog({
                             title: '支付成功',
                             message: '是否前往查看订单信息?',
                             skin: 'ios'
                         },function () {
-                            self.$router.push('order/list')
+                            self.$router.push('/user/order')
                         })
 
                     }, function (e) {
-
+                        self.$router.push('/user/order')
                          WeVue.Toast({
-                            duration: 1000,
-                            message: '支付失败，请重新支付',
+                            duration: 5000,
+                            message: e,
                             icon: 'warn'
                         })
 

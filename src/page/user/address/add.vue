@@ -5,7 +5,7 @@
 		<div class="bar-title" >添加收货地址</div>
     </header>
     <div class="bar_after"></div>
-    <div class="town-content ">
+    <div class="town-content " :style="{marginTop:ishead+'px'}">
         <div class="town-input-group">
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">收货人</label></div>
@@ -95,7 +95,8 @@
                 failure_show:false,
                 win_show:false,
                 judge:null,
-                ishead:null
+                ishead:this.$util.istop(),
+                isplus:this.$util.isEnvironment()
 
 
             }
@@ -145,7 +146,7 @@
                             message: '添加成功',
                             icon: 'success'
                         })
-                        self.$router.push('/addresslist')
+                        self.$router.push('/address/list')
                         
 
                     }else{
@@ -189,7 +190,7 @@
 
              },
             doAddresslist:function(){
-                this.$router.push('/addresslist')
+                this.$router.push('/address/list')
             }
         },
         components: {

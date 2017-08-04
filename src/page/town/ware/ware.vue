@@ -158,12 +158,25 @@
             toorder:function(){
 
                 var self =this
+                if(!localStorage.getItem("token")){
+
+                    WeVue.Dialog({
+                        title: '需要登录',
+                        message: '该操作需要登录，是否跳转到登录页？',
+                        skin: 'ios'
+                    },
+                    function () {
+                        location.hash = 'login'
+                    })
+                    return
+                }
+                
                 if(self.select_sku && self.number>0){
 
                     sessionStorage.setItem('select_sku',JSON.stringify(self.select_sku))
                     sessionStorage.setItem('wareInfo',JSON.stringify(self.wareInfo))
                     sessionStorage.setItem('number',self.number)
-                     this.$router.push('/ware/order')
+                    self.$router.push('/ware/order')
 
                 }else{
                     alert('未选择商品')

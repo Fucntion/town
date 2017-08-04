@@ -221,6 +221,18 @@ util.UrlDecode = function (str) {
     return ret;
 }
 
+// util.Playvoice = function (url) {
+//     var p = plus.audio.createPlayer();
+//     if (plus) {
+//         p.play( function () {
+//         alert( "Audio play success!" );
+//         }, function ( e ) {
+//             alert( "Audio play failed: " + e.message );
+//         } );
+
+//     }
+// }
+
 
 
 export default {

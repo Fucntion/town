@@ -8,7 +8,7 @@
     </header>
 
     <div class="bar_after"></div>
-    <div class="town-content ">
+    <div class="town-content " :style="{marginTop:ishead+'px'}">
         <div class="town-input-group">
             <div class="weui-cell">
                 <div class="weui-cell__hd"><label class="weui-label">收货人</label></div>

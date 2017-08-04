@@ -5,7 +5,7 @@
 		<div class="bar-title" >确认订单</div>
 	</header>
     <div class="bar_after"></div>
-    <div class="town-content " >
+    <div class="town-content " :style="{marginTop:ishead+0+'px'}">
 
         <div class="address-box" @click="toaddress()" >
             <img src="~assets/img/address_s.png"  class="icon_img order_icon left "/>
@@ -64,7 +64,8 @@
                 // PAYSERVER:'http://api.town.icloudinn.com/order/pay/wx',
                 channels:null,
                 amount:null,
-                ishead:null
+                ishead:this.$util.istop(),
+                isplus:this.$util.isEnvironment()
 
             }
         },
@@ -104,7 +105,8 @@
                 var self = this,
                 url = '/order/list',
 
-                count=this.count,
+                // count=this.count,
+                count = 0.01,
                 arrPrice = document.querySelectorAll('.info-price'),
 
                 strPrice = [],
@@ -186,7 +188,7 @@
                     }
              },
              toaddress:function(){
-                 this.$router.push('/addressselect')
+                 this.$router.push('/addres/sselect')
              }
 
         },

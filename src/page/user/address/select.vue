@@ -8,7 +8,7 @@
     </div>
     <div class="bar_after"></div>
 
-    <div class="town-content ad ad_select ">
+    <div class="town-content ad ad_select " :style="{marginTop:ishead+'px'}">
         <div class="addres" v-for="item in addressList" @click="addressSelect(item)">
             <div class="top">
                 <input class="link" type="text" :value="item.link" disabled="disabled">
@@ -35,7 +35,9 @@ export default {
 			addressList:[],
             ismain:[],
             isaddress:true,
-            addressInfo:[]
+            addressInfo:[],
+            ishead:this.$util.istop(),
+            isplus:this.$util.isEnvironment()
 
 		}
 	},
@@ -45,7 +47,7 @@ export default {
 	methods: {
 		addresslist:function(){
 
-		 	 this.$router.push('/addresslist')
+		 	 this.$router.push('/address/list')
 
 		 },
         // toorder:function(){

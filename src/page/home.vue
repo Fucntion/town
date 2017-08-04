@@ -1,16 +1,16 @@
 <template>
 	<div class="wrap">
-		<div class="bar relatived" :style="{paddingTop:ishead+'px'}" v-if="isplus=='plus'">
+		<!-- <div class="bar relatived" :style="{paddingTop:ishead+'px'}" v-if="isplus=='plus'">
 			全域旅游新时代
 			<div class="search-bar">
-				<!--<div class="scan" @click="Toscan()" v-show="is_plus" ></div>-->
+				<div class="scan" @click="Toscan()" v-show="is_plus" ></div>-->
 				<!--<div class="weui-search">
 				<div class="weui-icon-search" ></div>
 				<input type="text" class="weui-input">
 			
-			</div>-->
 			</div>
-		</div>
+			</div>
+		</div> -->
 		<div id="banner">
 
 

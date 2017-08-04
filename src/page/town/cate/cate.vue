@@ -72,7 +72,7 @@
                 var self = this,
                     cateId = self.$route.params.id
 
-                this.$http.get('/cate/' + cateId).then(response => {
+                this.$http.get('/v1/cate/' + cateId).then(response => {
 
                     self.cateInfo = response.body.data
 

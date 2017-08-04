@@ -5,7 +5,7 @@
             <div class="bar-title">管理收货地址</div>
         </header>
         <div class="bar_after"></div>
-        <div class="town-content ad ">
+        <div class="town-content ad " :style="{marginTop:ishead+'px'}">
             <div class="addres" v-for="item in addressList">
                 <div class="top">
                     <input class="link" type="text" :value="item.link" disabled="disabled">
@@ -64,7 +64,8 @@
                 failure_show: false,
                 win_show: false,
                 judge: null,
-                ishead: null
+                ishead:this.$util.istop(),
+                isplus:this.$util.isEnvironment()
             }
         },
         computed: {
@@ -73,7 +74,7 @@
         methods: {
             toaddresAdd: function () {
 
-                this.$router.push('/addressadd')
+                this.$router.push('/address/add')
 
             },
             editor: function (address_id) {
